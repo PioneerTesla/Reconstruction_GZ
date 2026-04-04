@@ -1,0 +1,145 @@
+=== 训练配置 ===
+{
+    "num_seqs": 10000,
+    "ground_truth_seq_length": 100,
+    "miss_process_ratio": [
+        0.1,
+        0.15,
+        0.2,
+        0.25,
+        0.3
+    ],
+    "suprious_process_ratio_min": [
+        0.05,
+        0.1,
+        0.15
+    ],
+    "epochs": 1000,
+    "batch_size": 128,
+    "learning_rate": 0.0001,
+    "spliced_seq_length": 220,
+    "noise_schedule": "cosine",
+    "device": "cuda:0",
+    "root": "dataset_random_len",
+    "scene": "Miss",
+    "model_name": "DiffSeqPRI",
+    "quantizer_mode": "uniform",
+    "quantizer_bins": 1500,
+    "quantizer_min": 1,
+    "quantizer_max": 1500,
+    "sampling_method": "ddpm",
+    "diff_steps": 50,
+    "ddim_steps": 5,
+    "ddim_eta": 0.0,
+    "ce_weight": 0.1,
+    "seed": 42,
+    "max_train_samples": null,
+    "max_test_samples": null
+}
+quantizer_mode=uniform
+quantizer_bins(requested)=1500
+quantizer_bins(actual)=1500
+quantizer_value_range=[1.000000, 1500.000000]
+quantizer_key_range=[1, 1500]
+vocab_size(with special tokens)=1505
+special_tokens: start=0, end=1, unk=2, pad=3, sep=4
+sampling_method=ddpm
+D:\Anaconda3\envs\DL\lib\site-packages\torch\nn\modules\transformer.py:531: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\NestedTensorImpl.cpp:182.)
+  output = torch._nested_tensor_from_mask(
+epoch=0 train_loss=1.069604 test_loss=0.716912 train_mse=0.869830 train_ce=1.997735 ap_exact=8.1124% ap_tol1=8.1305% mae=257.30 len_match=0.2000% lr=1.000000e-04
+[viz] epoch=0 codebook map saved -> CheckPoint\DiffSeqPRI\visuals\epoch_0000_codebook.png
+d:\研究生工作\科研工作\Reconstruction\Reconstruction_2\visualization.py:233: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+[viz] epoch=0 diffusion denoise saved -> CheckPoint\DiffSeqPRI\visuals\epoch_0000_diffusion_denoise.png
+New best model saved at epoch 0 with test_loss=0.716912
+epoch=1 train_loss=0.602949 test_loss=0.491445 train_mse=0.549532 train_ce=0.534168 ap_exact=12.7858% ap_tol1=12.7916% mae=201.32 len_match=0.4000% lr=1.000000e-04
+New best model saved at epoch 1 with test_loss=0.491445
+epoch=2 train_loss=0.444970 test_loss=0.387903 train_mse=0.415674 train_ce=0.292960 ap_exact=14.7665% ap_tol1=14.7696% mae=186.23 len_match=0.3000% lr=1.000000e-04
+New best model saved at epoch 2 with test_loss=0.387903
+epoch=3 train_loss=0.372227 test_loss=0.332067 train_mse=0.348845 train_ce=0.233826 ap_exact=15.4455% ap_tol1=15.4507% mae=153.56 len_match=0.1000% lr=1.000000e-04
+New best model saved at epoch 3 with test_loss=0.332067
+epoch=4 train_loss=0.327546 test_loss=0.298616 train_mse=0.307736 train_ce=0.198102 ap_exact=16.8551% ap_tol1=16.8607% mae=158.40 len_match=0.2000% lr=1.000000e-04
+New best model saved at epoch 4 with test_loss=0.298616
+epoch=5 train_loss=0.301551 test_loss=0.282091 train_mse=0.283845 train_ce=0.177066 ap_exact=17.0054% ap_tol1=17.0176% mae=153.24 len_match=0.5000% lr=1.000000e-04
+New best model saved at epoch 5 with test_loss=0.282091
+epoch=6 train_loss=0.276853 test_loss=0.262599 train_mse=0.260374 train_ce=0.164793 ap_exact=18.4770% ap_tol1=18.4904% mae=149.64 len_match=0.6000% lr=1.000000e-04
+New best model saved at epoch 6 with test_loss=0.262599
+epoch=7 train_loss=0.270905 test_loss=0.244662 train_mse=0.254542 train_ce=0.163631 ap_exact=19.8368% ap_tol1=19.8500% mae=139.66 len_match=0.5000% lr=1.000000e-04
+New best model saved at epoch 7 with test_loss=0.244662
+epoch=8 train_loss=0.255990 test_loss=0.238893 train_mse=0.240085 train_ce=0.159047 ap_exact=20.0306% ap_tol1=20.0588% mae=149.09 len_match=1.2000% lr=1.000000e-04
+New best model saved at epoch 8 with test_loss=0.238893
+epoch=9 train_loss=0.245563 test_loss=0.234266 train_mse=0.230626 train_ce=0.149374 ap_exact=20.2393% ap_tol1=20.2585% mae=139.42 len_match=0.5000% lr=1.000000e-04
+New best model saved at epoch 9 with test_loss=0.234266
+epoch=10 train_loss=0.236625 test_loss=0.217826 train_mse=0.221846 train_ce=0.147790 ap_exact=21.2470% ap_tol1=21.2686% mae=148.64 len_match=0.8000% lr=1.000000e-04
+New best model saved at epoch 10 with test_loss=0.217826
+epoch=11 train_loss=0.228078 test_loss=0.209140 train_mse=0.214203 train_ce=0.138759 ap_exact=21.6737% ap_tol1=21.6951% mae=137.51 len_match=1.0000% lr=1.000000e-04
+New best model saved at epoch 11 with test_loss=0.209140
+epoch=12 train_loss=0.229217 test_loss=0.206944 train_mse=0.214900 train_ce=0.143166 ap_exact=21.4663% ap_tol1=21.5066% mae=139.52 len_match=1.4000% lr=1.000000e-04
+New best model saved at epoch 12 with test_loss=0.206944
+epoch=13 train_loss=0.218130 test_loss=0.200951 train_mse=0.204646 train_ce=0.134835 ap_exact=22.0477% ap_tol1=22.0697% mae=137.98 len_match=1.4000% lr=1.000000e-04
+New best model saved at epoch 13 with test_loss=0.200951
+epoch=14 train_loss=0.213064 test_loss=0.195852 train_mse=0.199397 train_ce=0.136669 ap_exact=23.4352% ap_tol1=23.4680% mae=137.42 len_match=1.8000% lr=1.000000e-04
+New best model saved at epoch 14 with test_loss=0.195852
+epoch=15 train_loss=0.207752 test_loss=0.199380 train_mse=0.194453 train_ce=0.132991 ap_exact=23.0507% ap_tol1=23.1065% mae=135.93 len_match=1.6000% lr=1.000000e-04
+epoch=16 train_loss=0.204784 test_loss=0.183534 train_mse=0.191583 train_ce=0.132007 ap_exact=21.4974% ap_tol1=21.5398% mae=137.65 len_match=0.9000% lr=1.000000e-04
+New best model saved at epoch 16 with test_loss=0.183534
+epoch=17 train_loss=0.195874 test_loss=0.178264 train_mse=0.183573 train_ce=0.123003 ap_exact=23.3781% ap_tol1=23.4404% mae=138.12 len_match=1.2000% lr=1.000000e-04
+New best model saved at epoch 17 with test_loss=0.178264
+epoch=18 train_loss=0.195720 test_loss=0.169978 train_mse=0.183018 train_ce=0.127020 ap_exact=21.8014% ap_tol1=21.8745% mae=134.15 len_match=0.9000% lr=1.000000e-04
+New best model saved at epoch 18 with test_loss=0.169978
+epoch=19 train_loss=0.192245 test_loss=0.180162 train_mse=0.179780 train_ce=0.124648 ap_exact=22.6748% ap_tol1=22.7981% mae=131.99 len_match=1.2000% lr=1.000000e-04
+epoch=20 train_loss=0.185314 test_loss=0.183004 train_mse=0.173089 train_ce=0.122256 ap_exact=23.3122% ap_tol1=23.4072% mae=131.21 len_match=1.8000% lr=1.000000e-04
+epoch=21 train_loss=0.186582 test_loss=0.172365 train_mse=0.173899 train_ce=0.126824 ap_exact=23.1286% ap_tol1=23.2478% mae=131.85 len_match=2.2000% lr=1.000000e-04
+epoch=22 train_loss=0.179265 test_loss=0.152419 train_mse=0.167335 train_ce=0.119301 ap_exact=23.0595% ap_tol1=23.1589% mae=134.04 len_match=1.4000% lr=1.000000e-04
+New best model saved at epoch 22 with test_loss=0.152419
+epoch=23 train_loss=0.178146 test_loss=0.164363 train_mse=0.165777 train_ce=0.123694 ap_exact=22.4058% ap_tol1=22.5213% mae=132.90 len_match=1.5000% lr=1.000000e-04
+epoch=24 train_loss=0.175419 test_loss=0.153267 train_mse=0.163318 train_ce=0.121011 ap_exact=22.7043% ap_tol1=22.8521% mae=125.16 len_match=0.9000% lr=1.000000e-04
+epoch=25 train_loss=0.173664 test_loss=0.149676 train_mse=0.161584 train_ce=0.120803 ap_exact=24.3508% ap_tol1=24.4479% mae=128.07 len_match=1.9000% lr=1.000000e-04
+New best model saved at epoch 25 with test_loss=0.149676
+epoch=26 train_loss=0.164716 test_loss=0.146044 train_mse=0.153329 train_ce=0.113868 ap_exact=23.6750% ap_tol1=23.8060% mae=128.63 len_match=2.1000% lr=1.000000e-04
+New best model saved at epoch 26 with test_loss=0.146044
+epoch=27 train_loss=0.164164 test_loss=0.149212 train_mse=0.152590 train_ce=0.115734 ap_exact=22.4419% ap_tol1=22.5520% mae=128.25 len_match=1.1000% lr=1.000000e-04
+epoch=28 train_loss=0.161500 test_loss=0.135965 train_mse=0.150069 train_ce=0.114310 ap_exact=22.2696% ap_tol1=22.3918% mae=128.35 len_match=0.7000% lr=1.000000e-04
+New best model saved at epoch 28 with test_loss=0.135965
+epoch=29 train_loss=0.158721 test_loss=0.138689 train_mse=0.147017 train_ce=0.117041 ap_exact=24.4446% ap_tol1=24.5792% mae=131.74 len_match=2.3000% lr=1.000000e-04
+epoch=30 train_loss=0.155648 test_loss=0.137935 train_mse=0.143924 train_ce=0.117241 ap_exact=24.7872% ap_tol1=24.9038% mae=127.83 len_match=1.1000% lr=1.000000e-04
+epoch=31 train_loss=0.149959 test_loss=0.136062 train_mse=0.138586 train_ce=0.113726 ap_exact=25.4660% ap_tol1=25.5683% mae=124.62 len_match=2.5000% lr=1.000000e-04
+epoch=32 train_loss=0.148631 test_loss=0.129366 train_mse=0.137106 train_ce=0.115248 ap_exact=24.0225% ap_tol1=24.1030% mae=122.58 len_match=1.6000% lr=1.000000e-04
+New best model saved at epoch 32 with test_loss=0.129366
+epoch=33 train_loss=0.144838 test_loss=0.138206 train_mse=0.133130 train_ce=0.117078 ap_exact=25.3401% ap_tol1=25.4346% mae=126.92 len_match=2.5000% lr=1.000000e-04
+epoch=34 train_loss=0.139467 test_loss=0.134363 train_mse=0.127958 train_ce=0.115088 ap_exact=24.2854% ap_tol1=24.3652% mae=122.15 len_match=2.3000% lr=1.000000e-04
+epoch=35 train_loss=0.133099 test_loss=0.124695 train_mse=0.122015 train_ce=0.110840 ap_exact=24.5969% ap_tol1=24.6805% mae=122.57 len_match=1.5000% lr=1.000000e-04
+New best model saved at epoch 35 with test_loss=0.124695
+epoch=36 train_loss=0.138487 test_loss=0.117106 train_mse=0.126496 train_ce=0.119907 ap_exact=24.6868% ap_tol1=24.7464% mae=125.21 len_match=1.6000% lr=1.000000e-04
+New best model saved at epoch 36 with test_loss=0.117106
+epoch=37 train_loss=0.134025 test_loss=0.114256 train_mse=0.122150 train_ce=0.118747 ap_exact=24.5553% ap_tol1=24.6140% mae=123.40 len_match=2.4000% lr=1.000000e-04
+New best model saved at epoch 37 with test_loss=0.114256
+epoch=38 train_loss=0.128559 test_loss=0.113356 train_mse=0.116798 train_ce=0.117612 ap_exact=23.8247% ap_tol1=23.8684% mae=121.50 len_match=0.7000% lr=1.000000e-04
+New best model saved at epoch 38 with test_loss=0.113356
+epoch=39 train_loss=0.129127 test_loss=0.115599 train_mse=0.117292 train_ce=0.118350 ap_exact=25.1555% ap_tol1=25.2056% mae=120.00 len_match=2.0000% lr=1.000000e-04
+epoch=40 train_loss=0.123314 test_loss=0.114179 train_mse=0.112031 train_ce=0.112833 ap_exact=26.3045% ap_tol1=26.3540% mae=120.27 len_match=1.6000% lr=1.000000e-04
+epoch=41 train_loss=0.127064 test_loss=0.102743 train_mse=0.115172 train_ce=0.118926 ap_exact=25.1233% ap_tol1=25.1719% mae=121.02 len_match=1.7000% lr=1.000000e-04
+New best model saved at epoch 41 with test_loss=0.102743
+epoch=42 train_loss=0.123151 test_loss=0.106264 train_mse=0.111211 train_ce=0.119402 ap_exact=25.5377% ap_tol1=25.5758% mae=123.33 len_match=2.3000% lr=1.000000e-04
+epoch=43 train_loss=0.121327 test_loss=0.109865 train_mse=0.109734 train_ce=0.115927 ap_exact=26.0457% ap_tol1=26.0880% mae=122.07 len_match=2.4000% lr=1.000000e-04
+epoch=44 train_loss=0.120704 test_loss=0.099685 train_mse=0.109018 train_ce=0.116858 ap_exact=25.1377% ap_tol1=25.1803% mae=123.12 len_match=2.3000% lr=1.000000e-04
+New best model saved at epoch 44 with test_loss=0.099685
+epoch=45 train_loss=0.119510 test_loss=0.112605 train_mse=0.107612 train_ce=0.118986 ap_exact=26.5767% ap_tol1=26.6180% mae=122.52 len_match=2.3000% lr=1.000000e-04
+epoch=46 train_loss=0.119670 test_loss=0.106514 train_mse=0.107663 train_ce=0.120067 ap_exact=25.4898% ap_tol1=25.5272% mae=119.94 len_match=1.6000% lr=1.000000e-04
+epoch=47 train_loss=0.115803 test_loss=0.100540 train_mse=0.104059 train_ce=0.117437 ap_exact=23.1053% ap_tol1=23.1267% mae=121.80 len_match=1.1000% lr=1.000000e-04
+epoch=48 train_loss=0.113093 test_loss=0.106884 train_mse=0.101524 train_ce=0.115690 ap_exact=24.3458% ap_tol1=24.3740% mae=123.82 len_match=1.9000% lr=1.000000e-04
+epoch=49 train_loss=0.111796 test_loss=0.103757 train_mse=0.100138 train_ce=0.116575 ap_exact=25.5481% ap_tol1=25.5730% mae=122.37 len_match=1.4000% lr=1.000000e-04
+epoch=50 train_loss=0.110565 test_loss=0.093737 train_mse=0.098858 train_ce=0.117066 ap_exact=24.3502% ap_tol1=24.3739% mae=122.01 len_match=1.3000% lr=1.000000e-04
+New best model saved at epoch 50 with test_loss=0.093737
+epoch=51 train_loss=0.112580 test_loss=0.098653 train_mse=0.101025 train_ce=0.115551 ap_exact=24.0762% ap_tol1=24.1024% mae=121.28 len_match=1.4000% lr=1.000000e-04
+epoch=52 train_loss=0.111201 test_loss=0.095212 train_mse=0.099184 train_ce=0.120171 ap_exact=23.0943% ap_tol1=23.1174% mae=121.66 len_match=1.2000% lr=1.000000e-04
+epoch=53 train_loss=0.106785 test_loss=0.080118 train_mse=0.095070 train_ce=0.117147 ap_exact=26.0589% ap_tol1=26.0822% mae=123.09 len_match=2.9000% lr=1.000000e-04
+New best model saved at epoch 53 with test_loss=0.080118
+epoch=54 train_loss=0.107975 test_loss=0.101221 train_mse=0.096207 train_ce=0.117680 ap_exact=25.3898% ap_tol1=25.4245% mae=122.94 len_match=1.8000% lr=1.000000e-04
+epoch=55 train_loss=0.105055 test_loss=0.099415 train_mse=0.093850 train_ce=0.112046 ap_exact=25.2549% ap_tol1=25.2829% mae=122.04 len_match=1.9000% lr=1.000000e-04
+epoch=56 train_loss=0.106624 test_loss=0.091773 train_mse=0.094828 train_ce=0.117965 ap_exact=24.7417% ap_tol1=24.7791% mae=122.81 len_match=1.0000% lr=1.000000e-04
+epoch=57 train_loss=0.105016 test_loss=0.094759 train_mse=0.093618 train_ce=0.113977 ap_exact=26.1717% ap_tol1=26.1927% mae=122.21 len_match=1.6000% lr=1.000000e-04
+epoch=58 train_loss=0.107274 test_loss=0.104891 train_mse=0.095641 train_ce=0.116332 ap_exact=25.8833% ap_tol1=25.9060% mae=121.75 len_match=2.2000% lr=1.000000e-04
+epoch=59 train_loss=0.105690 test_loss=0.100350 train_mse=0.094112 train_ce=0.115785 ap_exact=24.1705% ap_tol1=24.1895% mae=120.93 len_match=1.3000% lr=1.000000e-04
+epoch=60 train_loss=0.102704 test_loss=0.097823 train_mse=0.091483 train_ce=0.112210 ap_exact=23.1037% ap_tol1=23.1205% mae=118.86 len_match=0.9000% lr=1.000000e-04
+epoch=61 train_loss=0.103236 test_loss=0.093642 train_mse=0.091739 train_ce=0.114972 ap_exact=23.4078% ap_tol1=23.4224% mae=124.32 len_match=0.9000% lr=1.000000e-04

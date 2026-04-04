@@ -1,0 +1,6 @@
+{
+    "num_seqs": 10000,
+    "ground_truth_seq_length": 100,
+    "miss_process_ratio":[0.1, 0.15, 0.20, 0.25, 0.30],
+    "suprious_process_ratio_min":[0.05, 0.10, 0.15]
+}
