@@ -1,11 +1,60 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.ipynb_checkpoints/
 
-
-dataset/
-dataset_3W_random_len/
+# ---------------------------------------------------------------------------
+# Datasets (data files only — keep .py modules like dataset/Radar_words.py)
+# ---------------------------------------------------------------------------
+dataset/Ground_Truth/
+dataset/Miss/
+dataset/Spurious/
+dataset/Mix/
 dataset_3W/
+dataset_3W_random_len/
+dataset_random_len/
+
+# ---------------------------------------------------------------------------
+# Model checkpoints and training artefacts
+# Matches any directory named CheckPoint, at any depth.
+# ---------------------------------------------------------------------------
+CheckPoint/
+*.pth
+*.ckpt
+*.pt.tmp
+
+# ---------------------------------------------------------------------------
+# Logs / runtime outputs
+# ---------------------------------------------------------------------------
+logs/
+*.log
+batch_progress.json
+batch_runner.log
+
+# ---------------------------------------------------------------------------
+# Generated outputs / scratch
+# ---------------------------------------------------------------------------
+generated_outputs/
+test_results/
+paper_figures/
 tmpvis/
 tmpvis2/
 
+# ---------------------------------------------------------------------------
+# Large binary assets (host via GitHub Releases / external storage instead)
+# ---------------------------------------------------------------------------
+*.xlsx
+*.pdf
+
+# ---------------------------------------------------------------------------
+# Editor / OS
+# ---------------------------------------------------------------------------
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db
