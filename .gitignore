@@ -42,6 +42,7 @@ batch_runner.log
 generated_outputs/
 test_results/
 paper_figures/
+results/
 tmpvis/
 tmpvis2/
 
