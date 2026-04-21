@@ -29,7 +29,7 @@ if ROOT not in sys.path:
     sys.path.insert(0, ROOT)
 
 from pri_tokenizer import PRIQuantizer, QuantizerConfig
-from utlis import get_clean_pri_range, get_pri_range
+from utils import get_clean_pri_range, get_pri_range
 from algorithm import SemanticCodingReconstructor
 
 import math

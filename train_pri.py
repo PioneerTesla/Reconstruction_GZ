@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 from pri_tokenizer import PRIQuantizer, QuantizerConfig
 from pri_dataset import PRISample, PRIDiffuSeqDataset, PRICollator
 from model import PRIDiffuSeq, PRIDiffuSeqConfig, EMAModel
-from utlis import get_clean_pri_range, get_pri_range, create_argparser, load_defaults_config
+from utils import get_clean_pri_range, get_pri_range, create_argparser, load_defaults_config
 from evaluation import (
     parse_target_tokens,
     parse_gt_target_tokens,

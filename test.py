@@ -38,9 +38,9 @@ import numpy as np
 from pri_tokenizer import PRIQuantizer
 from pri_dataset import PRISample, PRIDiffuSeqDataset, PRICollator
 from model import PRIDiffuSeq, PRIDiffuSeqConfig
-from utlis import load_defaults_config
+from utils import load_defaults_config
 from evaluation import parse_target_tokens, parse_gt_target_tokens, extract_target_pri
-from train_miss_pri import (
+from train_pri import (
     set_seed,
     resolve_device,
     normalize_optional_float,

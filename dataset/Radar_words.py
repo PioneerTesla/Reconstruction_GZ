@@ -9,7 +9,7 @@ import random
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))  # 优先搜索根目录
-from utlis import load_defaults_config, create_argparser
+from utils import load_defaults_config, create_argparser
 
 # 每个序列长度为60——80之间，随机生成。
 

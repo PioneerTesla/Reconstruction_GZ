@@ -1,0 +1,12 @@
+{
+  "scene": "Miss",
+  "root": "dataset",
+  "num_test_samples": 6,
+  "exact_acc": 0.4312796208530806,
+  "tol_acc": 0.4312796208530806,
+  "mae": 52.33041779442285,
+  "len_match_rate": 0.0,
+  "per_sample_mean": 0.429317009004128,
+  "per_sample_std": 0.3241005600304045,
+  "time_per_sample": 0.0004983345667521158
+}
