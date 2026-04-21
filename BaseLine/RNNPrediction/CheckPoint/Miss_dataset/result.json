@@ -1,0 +1,12 @@
+{
+  "scene": "Miss",
+  "root": "dataset",
+  "epochs": 2,
+  "num_train": 20,
+  "num_test": 4,
+  "exact_acc": 0.0,
+  "tol_acc": 0.0,
+  "mae": 569.8645477294922,
+  "len_match_rate": 0.0,
+  "train_time_s": 4.389294862747192
+}
