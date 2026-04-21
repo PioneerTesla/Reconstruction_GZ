@@ -45,11 +45,13 @@
 运行时会生成（均被 `.gitignore` 屏蔽）：
 
 ```
-CheckPoint/   # 训练产出的权重、日志、可视化
+CheckPoint/   # 训练产出的权重、日志、可视化原始位置
 logs/         # 每次运行的文本日志
-paper_figures/
 generated_outputs/, test_results/
 ```
+
+用于论文 / 算法分析的结果图会从 `CheckPoint/<exp>/visuals/` 拷贝到版本化目录
+**`docs/figures/`**，见 [`docs/figures/README.md`](docs/figures/README.md)。
 
 ---
 

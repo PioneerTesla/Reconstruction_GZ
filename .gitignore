@@ -38,13 +38,21 @@ batch_runner.log
 
 # ---------------------------------------------------------------------------
 # Generated outputs / scratch
+# NOTE: paper_figures/ and docs/figures/ are KEPT under version control for
+#       algorithm-analysis / paper figures. Do not add them here.
 # ---------------------------------------------------------------------------
 generated_outputs/
 test_results/
-paper_figures/
 results/
 tmpvis/
 tmpvis2/
+
+# Explicitly keep curated figure directories, even if parents get ignored later.
+!paper_figures/
+!paper_figures/**
+!docs/
+!docs/figures/
+!docs/figures/**
 
 # ---------------------------------------------------------------------------
 # Large binary assets (host via GitHub Releases / external storage instead)
