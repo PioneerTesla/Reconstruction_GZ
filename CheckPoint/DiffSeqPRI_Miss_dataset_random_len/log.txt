@@ -16,7 +16,7 @@
     ],
     "epochs": 1000,
     "batch_size": 128,
-    "learning_rate": 0.0001,
+    "learning_rate": 0.0003,
     "spliced_seq_length": 220,
     "noise_schedule": "cosine",
     "device": "cuda:0",
@@ -31,8 +31,1112 @@
     "diff_steps": 50,
     "ddim_steps": 5,
     "ddim_eta": 0.0,
-    "ce_weight": 0.1,
+    "ce_weight": 0.3,
+    "p_full_target": 0.0,
+    "loss_mode": "mse+ce",
     "seed": 42,
     "max_train_samples": null,
     "max_test_samples": null
 }
+quantizer_mode=uniform
+quantizer_bins(requested)=1500
+quantizer_bins(actual)=1500
+quantizer_value_range=[1.000000, 1500.000000]
+quantizer_key_range=[1, 1500]
+vocab_size(with special tokens)=1505
+special_tokens: start=0, end=1, unk=2, pad=3, sep=4
+sampling_method=ddpm
+p_full_target=0.0
+loss_mode=mse+ce
+D:\Anaconda3\envs\DL\lib\site-packages\torch\nn\modules\transformer.py:531: UserWarning: The PyTorch API of nested tensors is in prototype stage and will change in the near future. We recommend specifying layout=torch.jagged when constructing a nested tensor, as this layout receives active development, has better operator coverage, and works with torch.compile. (Triggered internally at C:\actions-runner\_work\pytorch\pytorch\pytorch\aten\src\ATen\NestedTensorImpl.cpp:182.)
+  output = torch._nested_tensor_from_mask(
+epoch=0 train_loss=2.690034 test_loss=1.516260 train_mse=1.112341 train_ce=5.258978 ap_exact=0.0125% ap_tol1=0.0125% mae=414.07 len_match=0.0000% lr=3.000000e-05
+[viz] epoch=0 codebook map saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0000_codebook.png
+d:\研究生工作\科研工作\Reconstruction\Reconstruction_2\visualization.py:233: UserWarning: This figure includes Axes that are not compatible with tight_layout, so results might be incorrect.
+  fig.tight_layout()
+[viz] epoch=0 diffusion denoise saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0000_diffusion_denoise.png
+New best model saved at epoch 0 with test_loss=1.516260
+epoch=1 train_loss=1.278129 test_loss=1.053467 train_mse=0.898763 train_ce=1.264551 ap_exact=0.6640% ap_tol1=0.6671% mae=415.92 len_match=0.0000% lr=4.500000e-05
+New best model saved at epoch 1 with test_loss=1.053467
+epoch=2 train_loss=0.934423 test_loss=0.773591 train_mse=0.751442 train_ce=0.609934 ap_exact=7.5786% ap_tol1=7.6148% mae=287.71 len_match=0.3000% lr=6.000000e-05
+New best model saved at epoch 2 with test_loss=0.773591
+epoch=3 train_loss=0.698691 test_loss=0.604112 train_mse=0.611522 train_ce=0.290562 ap_exact=10.6252% ap_tol1=10.7101% mae=239.60 len_match=0.4000% lr=7.500000e-05
+New best model saved at epoch 3 with test_loss=0.604112
+epoch=4 train_loss=0.556509 test_loss=0.495101 train_mse=0.498791 train_ce=0.192393 ap_exact=13.3685% ap_tol1=13.3943% mae=204.93 len_match=0.4000% lr=9.000000e-05
+New best model saved at epoch 4 with test_loss=0.495101
+epoch=5 train_loss=0.469759 test_loss=0.428343 train_mse=0.422802 train_ce=0.156523 ap_exact=15.1488% ap_tol1=15.1841% mae=171.39 len_match=0.3000% lr=1.050000e-04
+New best model saved at epoch 5 with test_loss=0.428343
+epoch=6 train_loss=0.405085 test_loss=0.377071 train_mse=0.362689 train_ce=0.141319 ap_exact=15.5437% ap_tol1=15.5575% mae=164.57 len_match=0.4000% lr=1.200000e-04
+New best model saved at epoch 6 with test_loss=0.377071
+epoch=7 train_loss=0.373606 test_loss=0.331566 train_mse=0.333120 train_ce=0.134953 ap_exact=15.7456% ap_tol1=15.7534% mae=148.06 len_match=0.2000% lr=1.350000e-04
+New best model saved at epoch 7 with test_loss=0.331566
+epoch=8 train_loss=0.339239 test_loss=0.313832 train_mse=0.301300 train_ce=0.126462 ap_exact=15.6277% ap_tol1=15.6381% mae=152.81 len_match=0.4000% lr=1.500000e-04
+New best model saved at epoch 8 with test_loss=0.313832
+epoch=9 train_loss=0.314478 test_loss=0.294140 train_mse=0.280237 train_ce=0.114137 ap_exact=17.2520% ap_tol1=17.2555% mae=144.19 len_match=0.8000% lr=1.650000e-04
+New best model saved at epoch 9 with test_loss=0.294140
+epoch=10 train_loss=0.295291 test_loss=0.272088 train_mse=0.262067 train_ce=0.110745 ap_exact=20.6122% ap_tol1=20.6223% mae=144.85 len_match=1.4000% lr=1.800000e-04
+New best model saved at epoch 10 with test_loss=0.272088
+epoch=11 train_loss=0.278079 test_loss=0.254056 train_mse=0.247276 train_ce=0.102677 ap_exact=18.0956% ap_tol1=18.1086% mae=150.29 len_match=0.7000% lr=1.950000e-04
+New best model saved at epoch 11 with test_loss=0.254056
+epoch=12 train_loss=0.272929 test_loss=0.243249 train_mse=0.241734 train_ce=0.103983 ap_exact=19.6129% ap_tol1=19.6292% mae=146.97 len_match=1.0000% lr=2.100000e-04
+New best model saved at epoch 12 with test_loss=0.243249
+epoch=13 train_loss=0.255959 test_loss=0.234390 train_mse=0.227267 train_ce=0.095640 ap_exact=19.4504% ap_tol1=19.4594% mae=141.59 len_match=1.0000% lr=2.250000e-04
+New best model saved at epoch 13 with test_loss=0.234390
+epoch=14 train_loss=0.247108 test_loss=0.226156 train_mse=0.218156 train_ce=0.096509 ap_exact=20.2372% ap_tol1=20.2562% mae=142.82 len_match=1.4000% lr=2.400000e-04
+New best model saved at epoch 14 with test_loss=0.226156
+epoch=15 train_loss=0.237237 test_loss=0.226026 train_mse=0.209734 train_ce=0.091677 ap_exact=21.0948% ap_tol1=21.1154% mae=140.50 len_match=1.4000% lr=2.550000e-04
+New best model saved at epoch 15 with test_loss=0.226026
+epoch=16 train_loss=0.230814 test_loss=0.204051 train_mse=0.203848 train_ce=0.089887 ap_exact=18.7028% ap_tol1=18.7271% mae=140.03 len_match=0.5000% lr=2.700000e-04
+New best model saved at epoch 16 with test_loss=0.204051
+epoch=17 train_loss=0.217487 test_loss=0.197577 train_mse=0.192779 train_ce=0.082360 ap_exact=17.8261% ap_tol1=17.8750% mae=149.45 len_match=1.0000% lr=2.850000e-04
+New best model saved at epoch 17 with test_loss=0.197577
+epoch=18 train_loss=0.215130 test_loss=0.185720 train_mse=0.189842 train_ce=0.084294 ap_exact=20.6194% ap_tol1=20.6762% mae=137.74 len_match=1.3000% lr=3.000000e-04
+New best model saved at epoch 18 with test_loss=0.185720
+epoch=19 train_loss=0.208074 test_loss=0.194576 train_mse=0.183525 train_ce=0.081829 ap_exact=19.5937% ap_tol1=19.7132% mae=137.96 len_match=1.2000% lr=3.000000e-04
+epoch=20 train_loss=0.197286 test_loss=0.193200 train_mse=0.173713 train_ce=0.078576 ap_exact=19.3309% ap_tol1=19.4332% mae=132.99 len_match=1.0000% lr=2.999992e-04
+epoch=21 train_loss=0.195123 test_loss=0.178220 train_mse=0.171495 train_ce=0.078760 ap_exact=20.5224% ap_tol1=20.6465% mae=126.13 len_match=1.3000% lr=2.999969e-04
+New best model saved at epoch 21 with test_loss=0.178220
+epoch=22 train_loss=0.184903 test_loss=0.155721 train_mse=0.162357 train_ce=0.075152 ap_exact=21.1926% ap_tol1=21.3407% mae=135.70 len_match=1.6000% lr=2.999931e-04
+New best model saved at epoch 22 with test_loss=0.155721
+epoch=23 train_loss=0.181714 test_loss=0.167589 train_mse=0.158496 train_ce=0.077392 ap_exact=19.1403% ap_tol1=19.2241% mae=135.20 len_match=1.2000% lr=2.999877e-04
+epoch=24 train_loss=0.176181 test_loss=0.151018 train_mse=0.153700 train_ce=0.074936 ap_exact=19.2196% ap_tol1=19.3543% mae=123.37 len_match=0.7000% lr=2.999807e-04
+New best model saved at epoch 24 with test_loss=0.151018
+epoch=25 train_loss=0.172556 test_loss=0.147485 train_mse=0.150031 train_ce=0.075085 ap_exact=20.4120% ap_tol1=20.5195% mae=128.09 len_match=0.9000% lr=2.999723e-04
+New best model saved at epoch 25 with test_loss=0.147485
+epoch=26 train_loss=0.161429 test_loss=0.140228 train_mse=0.140111 train_ce=0.071061 ap_exact=21.0032% ap_tol1=21.0982% mae=121.80 len_match=0.9000% lr=2.999622e-04
+New best model saved at epoch 26 with test_loss=0.140228
+epoch=27 train_loss=0.159287 test_loss=0.144770 train_mse=0.138201 train_ce=0.070288 ap_exact=22.0002% ap_tol1=22.0869% mae=127.31 len_match=1.5000% lr=2.999507e-04
+epoch=28 train_loss=0.156130 test_loss=0.130834 train_mse=0.134945 train_ce=0.070617 ap_exact=18.6913% ap_tol1=18.7742% mae=121.98 len_match=0.6000% lr=2.999376e-04
+New best model saved at epoch 28 with test_loss=0.130834
+epoch=29 train_loss=0.152864 test_loss=0.133861 train_mse=0.131366 train_ce=0.071661 ap_exact=21.8172% ap_tol1=21.8991% mae=126.07 len_match=1.5000% lr=2.999229e-04
+epoch=30 train_loss=0.150186 test_loss=0.134536 train_mse=0.128132 train_ce=0.073516 ap_exact=22.6628% ap_tol1=22.7709% mae=120.83 len_match=1.8000% lr=2.999067e-04
+epoch=31 train_loss=0.145153 test_loss=0.132078 train_mse=0.123664 train_ce=0.071630 ap_exact=21.2090% ap_tol1=21.2698% mae=121.99 len_match=1.1000% lr=2.998890e-04
+epoch=32 train_loss=0.143669 test_loss=0.126967 train_mse=0.121984 train_ce=0.072281 ap_exact=21.1014% ap_tol1=21.1600% mae=121.66 len_match=1.0000% lr=2.998698e-04
+New best model saved at epoch 32 with test_loss=0.126967
+epoch=33 train_loss=0.140222 test_loss=0.135901 train_mse=0.118527 train_ce=0.072315 ap_exact=18.5859% ap_tol1=18.6436% mae=117.66 len_match=0.7000% lr=2.998490e-04
+epoch=34 train_loss=0.134651 test_loss=0.131905 train_mse=0.113698 train_ce=0.069845 ap_exact=21.0810% ap_tol1=21.1436% mae=117.35 len_match=1.1000% lr=2.998266e-04
+epoch=35 train_loss=0.128712 test_loss=0.124219 train_mse=0.108304 train_ce=0.068028 ap_exact=20.0733% ap_tol1=20.1366% mae=122.10 len_match=0.6000% lr=2.998027e-04
+New best model saved at epoch 35 with test_loss=0.124219
+epoch=36 train_loss=0.134856 test_loss=0.113443 train_mse=0.113174 train_ce=0.072274 ap_exact=22.2224% ap_tol1=22.2821% mae=122.64 len_match=1.2000% lr=2.997773e-04
+New best model saved at epoch 36 with test_loss=0.113443
+epoch=37 train_loss=0.129708 test_loss=0.112186 train_mse=0.108777 train_ce=0.069769 ap_exact=21.9499% ap_tol1=22.0024% mae=120.01 len_match=1.3000% lr=2.997503e-04
+New best model saved at epoch 37 with test_loss=0.112186
+epoch=38 train_loss=0.125554 test_loss=0.111701 train_mse=0.104807 train_ce=0.069155 ap_exact=20.1070% ap_tol1=20.1614% mae=119.72 len_match=0.3000% lr=2.997218e-04
+New best model saved at epoch 38 with test_loss=0.111701
+epoch=39 train_loss=0.125034 test_loss=0.114221 train_mse=0.104623 train_ce=0.068038 ap_exact=20.0276% ap_tol1=20.0721% mae=114.74 len_match=0.5000% lr=2.996918e-04
+epoch=40 train_loss=0.119570 test_loss=0.113155 train_mse=0.099925 train_ce=0.065484 ap_exact=20.6907% ap_tol1=20.7434% mae=115.79 len_match=0.4000% lr=2.996602e-04
+epoch=41 train_loss=0.123583 test_loss=0.101630 train_mse=0.102876 train_ce=0.069023 ap_exact=21.6227% ap_tol1=21.6809% mae=114.71 len_match=0.6000% lr=2.996271e-04
+New best model saved at epoch 41 with test_loss=0.101630
+epoch=42 train_loss=0.119898 test_loss=0.106452 train_mse=0.099581 train_ce=0.067723 ap_exact=17.6054% ap_tol1=17.6453% mae=116.62 len_match=0.6000% lr=2.995925e-04
+epoch=43 train_loss=0.116955 test_loss=0.108535 train_mse=0.097745 train_ce=0.064034 ap_exact=21.8679% ap_tol1=21.9133% mae=117.99 len_match=0.6000% lr=2.995563e-04
+epoch=44 train_loss=0.116433 test_loss=0.099952 train_mse=0.096797 train_ce=0.065453 ap_exact=20.6897% ap_tol1=20.7275% mae=118.92 len_match=0.9000% lr=2.995185e-04
+New best model saved at epoch 44 with test_loss=0.099952
+epoch=45 train_loss=0.116301 test_loss=0.111562 train_mse=0.095920 train_ce=0.067935 ap_exact=21.5624% ap_tol1=21.6020% mae=115.59 len_match=0.2000% lr=2.994793e-04
+epoch=46 train_loss=0.115501 test_loss=0.105544 train_mse=0.095402 train_ce=0.066997 ap_exact=22.9717% ap_tol1=23.0274% mae=115.08 len_match=0.7000% lr=2.994385e-04
+epoch=47 train_loss=0.111467 test_loss=0.099251 train_mse=0.092117 train_ce=0.064500 ap_exact=20.2330% ap_tol1=20.2696% mae=116.45 len_match=0.2000% lr=2.993961e-04
+New best model saved at epoch 47 with test_loss=0.099251
+epoch=48 train_loss=0.108403 test_loss=0.106190 train_mse=0.089135 train_ce=0.064227 ap_exact=25.0142% ap_tol1=25.0603% mae=116.31 len_match=1.6000% lr=2.993523e-04
+epoch=49 train_loss=0.107218 test_loss=0.102034 train_mse=0.088028 train_ce=0.063967 ap_exact=23.3052% ap_tol1=23.3505% mae=114.27 len_match=0.7000% lr=2.993069e-04
+epoch=50 train_loss=0.104904 test_loss=0.089266 train_mse=0.085833 train_ce=0.063571 ap_exact=20.3644% ap_tol1=20.4115% mae=113.79 len_match=0.3000% lr=2.992599e-04
+New best model saved at epoch 50 with test_loss=0.089266
+epoch=51 train_loss=0.104846 test_loss=0.094113 train_mse=0.086405 train_ce=0.061470 ap_exact=22.3030% ap_tol1=22.3462% mae=113.22 len_match=0.3000% lr=2.992115e-04
+epoch=52 train_loss=0.103626 test_loss=0.087746 train_mse=0.084639 train_ce=0.063290 ap_exact=23.6766% ap_tol1=23.7123% mae=115.06 len_match=0.7000% lr=2.991614e-04
+New best model saved at epoch 52 with test_loss=0.087746
+epoch=53 train_loss=0.098726 test_loss=0.075357 train_mse=0.080372 train_ce=0.061181 ap_exact=21.9409% ap_tol1=21.9705% mae=116.11 len_match=0.4000% lr=2.991099e-04
+New best model saved at epoch 53 with test_loss=0.075357
+epoch=54 train_loss=0.098853 test_loss=0.093556 train_mse=0.080473 train_ce=0.061268 ap_exact=25.4377% ap_tol1=25.4902% mae=113.62 len_match=1.0000% lr=2.990568e-04
+epoch=55 train_loss=0.094545 test_loss=0.091520 train_mse=0.077527 train_ce=0.056728 ap_exact=23.7294% ap_tol1=23.7593% mae=113.81 len_match=0.7000% lr=2.990022e-04
+epoch=56 train_loss=0.097028 test_loss=0.083529 train_mse=0.078586 train_ce=0.061473 ap_exact=22.1180% ap_tol1=22.1504% mae=113.60 len_match=0.1000% lr=2.989461e-04
+epoch=57 train_loss=0.094611 test_loss=0.084199 train_mse=0.076946 train_ce=0.058882 ap_exact=24.7312% ap_tol1=24.7586% mae=113.20 len_match=0.4000% lr=2.988884e-04
+epoch=58 train_loss=0.095026 test_loss=0.093166 train_mse=0.077147 train_ce=0.059597 ap_exact=24.7001% ap_tol1=24.7386% mae=112.91 len_match=0.5000% lr=2.988292e-04
+epoch=59 train_loss=0.094057 test_loss=0.091332 train_mse=0.076013 train_ce=0.060148 ap_exact=24.6388% ap_tol1=24.6690% mae=110.56 len_match=0.8000% lr=2.987685e-04
+epoch=60 train_loss=0.090476 test_loss=0.088403 train_mse=0.073486 train_ce=0.056634 ap_exact=23.9033% ap_tol1=23.9416% mae=112.38 len_match=0.1000% lr=2.987062e-04
+epoch=61 train_loss=0.090548 test_loss=0.083356 train_mse=0.073315 train_ce=0.057443 ap_exact=24.2372% ap_tol1=24.2585% mae=114.35 len_match=0.0000% lr=2.986425e-04
+epoch=62 train_loss=0.088515 test_loss=0.072450 train_mse=0.071230 train_ce=0.057618 ap_exact=24.6432% ap_tol1=24.6756% mae=111.65 len_match=0.3000% lr=2.985772e-04
+New best model saved at epoch 62 with test_loss=0.072450
+epoch=63 train_loss=0.090602 test_loss=0.080720 train_mse=0.073249 train_ce=0.057844 ap_exact=23.7997% ap_tol1=23.8420% mae=112.02 len_match=0.0000% lr=2.985103e-04
+epoch=64 train_loss=0.086623 test_loss=0.076532 train_mse=0.069592 train_ce=0.056768 ap_exact=23.6412% ap_tol1=23.6758% mae=111.95 len_match=0.4000% lr=2.984420e-04
+epoch=65 train_loss=0.088736 test_loss=0.076421 train_mse=0.071000 train_ce=0.059118 ap_exact=23.9616% ap_tol1=23.9821% mae=110.69 len_match=0.2000% lr=2.983721e-04
+epoch=66 train_loss=0.087629 test_loss=0.077035 train_mse=0.070437 train_ce=0.057309 ap_exact=25.4183% ap_tol1=25.4503% mae=110.54 len_match=0.4000% lr=2.983006e-04
+epoch=67 train_loss=0.082056 test_loss=0.077298 train_mse=0.065425 train_ce=0.055438 ap_exact=25.4532% ap_tol1=25.4925% mae=110.62 len_match=0.7000% lr=2.982277e-04
+epoch=68 train_loss=0.083119 test_loss=0.077804 train_mse=0.066318 train_ce=0.056005 ap_exact=23.9979% ap_tol1=24.0285% mae=111.02 len_match=0.4000% lr=2.981533e-04
+epoch=69 train_loss=0.083632 test_loss=0.075069 train_mse=0.066610 train_ce=0.056741 ap_exact=26.1675% ap_tol1=26.2099% mae=111.52 len_match=0.2000% lr=2.980773e-04
+epoch=70 train_loss=0.080583 test_loss=0.081105 train_mse=0.064122 train_ce=0.054870 ap_exact=23.5849% ap_tol1=23.6194% mae=111.24 len_match=0.1000% lr=2.979998e-04
+epoch=71 train_loss=0.081022 test_loss=0.079668 train_mse=0.064231 train_ce=0.055968 ap_exact=23.8507% ap_tol1=23.9084% mae=110.53 len_match=0.2000% lr=2.979207e-04
+epoch=72 train_loss=0.077998 test_loss=0.078638 train_mse=0.062176 train_ce=0.052742 ap_exact=23.6734% ap_tol1=23.7370% mae=110.21 len_match=0.0000% lr=2.978402e-04
+epoch=73 train_loss=0.077427 test_loss=0.074147 train_mse=0.061187 train_ce=0.054131 ap_exact=25.4431% ap_tol1=25.5256% mae=109.21 len_match=0.3000% lr=2.977581e-04
+epoch=74 train_loss=0.077942 test_loss=0.078757 train_mse=0.061360 train_ce=0.055274 ap_exact=23.9816% ap_tol1=24.0289% mae=109.86 len_match=0.2000% lr=2.976745e-04
+epoch=75 train_loss=0.074666 test_loss=0.071943 train_mse=0.058533 train_ce=0.053780 ap_exact=25.6722% ap_tol1=25.7498% mae=109.50 len_match=0.4000% lr=2.975894e-04
+New best model saved at epoch 75 with test_loss=0.071943
+epoch=76 train_loss=0.073785 test_loss=0.065645 train_mse=0.057972 train_ce=0.052709 ap_exact=26.3301% ap_tol1=26.4006% mae=109.27 len_match=0.2000% lr=2.975028e-04
+New best model saved at epoch 76 with test_loss=0.065645
+epoch=77 train_loss=0.074467 test_loss=0.064910 train_mse=0.058526 train_ce=0.053135 ap_exact=25.8494% ap_tol1=25.9052% mae=109.08 len_match=0.1000% lr=2.974147e-04
+New best model saved at epoch 77 with test_loss=0.064910
+epoch=78 train_loss=0.072468 test_loss=0.068715 train_mse=0.056626 train_ce=0.052805 ap_exact=25.7842% ap_tol1=25.8521% mae=107.44 len_match=0.3000% lr=2.973250e-04
+epoch=79 train_loss=0.075414 test_loss=0.069180 train_mse=0.058616 train_ce=0.055995 ap_exact=27.9344% ap_tol1=28.0225% mae=106.23 len_match=0.4000% lr=2.972339e-04
+epoch=80 train_loss=0.072796 test_loss=0.067549 train_mse=0.056811 train_ce=0.053282 ap_exact=25.4431% ap_tol1=25.5423% mae=105.29 len_match=0.1000% lr=2.971412e-04
+epoch=81 train_loss=0.073393 test_loss=0.062627 train_mse=0.056774 train_ce=0.055396 ap_exact=23.9970% ap_tol1=24.0644% mae=106.53 len_match=0.3000% lr=2.970470e-04
+New best model saved at epoch 81 with test_loss=0.062627
+epoch=82 train_loss=0.070955 test_loss=0.068417 train_mse=0.055081 train_ce=0.052912 ap_exact=29.3108% ap_tol1=29.3893% mae=106.49 len_match=0.1000% lr=2.969513e-04
+epoch=83 train_loss=0.072219 test_loss=0.068464 train_mse=0.055638 train_ce=0.055269 ap_exact=30.9324% ap_tol1=31.0177% mae=104.66 len_match=0.2000% lr=2.968541e-04
+epoch=84 train_loss=0.068866 test_loss=0.060029 train_mse=0.053232 train_ce=0.052113 ap_exact=31.0359% ap_tol1=31.1298% mae=103.79 len_match=0.4000% lr=2.967554e-04
+New best model saved at epoch 84 with test_loss=0.060029
+epoch=85 train_loss=0.068613 test_loss=0.065372 train_mse=0.052756 train_ce=0.052857 ap_exact=32.2783% ap_tol1=32.3900% mae=102.31 len_match=0.4000% lr=2.966552e-04
+epoch=86 train_loss=0.068264 test_loss=0.065475 train_mse=0.052038 train_ce=0.054085 ap_exact=33.5103% ap_tol1=33.5980% mae=101.22 len_match=0.3000% lr=2.965534e-04
+epoch=87 train_loss=0.068376 test_loss=0.062835 train_mse=0.052415 train_ce=0.053205 ap_exact=35.0001% ap_tol1=35.0931% mae=100.67 len_match=0.6000% lr=2.964502e-04
+epoch=88 train_loss=0.065553 test_loss=0.060294 train_mse=0.049783 train_ce=0.052567 ap_exact=34.2659% ap_tol1=34.3589% mae=100.34 len_match=0.1000% lr=2.963454e-04
+epoch=89 train_loss=0.065173 test_loss=0.062106 train_mse=0.049546 train_ce=0.052088 ap_exact=34.7786% ap_tol1=34.8708% mae=101.49 len_match=0.1000% lr=2.962392e-04
+epoch=90 train_loss=0.063616 test_loss=0.064831 train_mse=0.047961 train_ce=0.052182 ap_exact=34.6237% ap_tol1=34.7317% mae=99.82 len_match=0.2000% lr=2.961314e-04
+epoch=91 train_loss=0.065584 test_loss=0.057342 train_mse=0.049373 train_ce=0.054037 ap_exact=34.9295% ap_tol1=35.0254% mae=100.22 len_match=0.2000% lr=2.960222e-04
+New best model saved at epoch 91 with test_loss=0.057342
+epoch=92 train_loss=0.060994 test_loss=0.058612 train_mse=0.045690 train_ce=0.051013 ap_exact=35.1928% ap_tol1=35.2984% mae=99.93 len_match=0.0000% lr=2.959114e-04
+epoch=93 train_loss=0.060918 test_loss=0.060647 train_mse=0.045841 train_ce=0.050259 ap_exact=34.8796% ap_tol1=34.9935% mae=100.38 len_match=0.0000% lr=2.957992e-04
+epoch=94 train_loss=0.061606 test_loss=0.055650 train_mse=0.045916 train_ce=0.052302 ap_exact=34.8955% ap_tol1=34.9783% mae=100.70 len_match=0.1000% lr=2.956854e-04
+New best model saved at epoch 94 with test_loss=0.055650
+epoch=95 train_loss=0.060113 test_loss=0.060199 train_mse=0.044593 train_ce=0.051736 ap_exact=34.4682% ap_tol1=34.5579% mae=100.95 len_match=0.1000% lr=2.955702e-04
+epoch=96 train_loss=0.061149 test_loss=0.056933 train_mse=0.045302 train_ce=0.052823 ap_exact=35.1903% ap_tol1=35.2662% mae=100.08 len_match=0.2000% lr=2.954534e-04
+epoch=97 train_loss=0.059235 test_loss=0.060383 train_mse=0.043777 train_ce=0.051528 ap_exact=35.0894% ap_tol1=35.1711% mae=100.39 len_match=0.0000% lr=2.953352e-04
+epoch=98 train_loss=0.059416 test_loss=0.053417 train_mse=0.043843 train_ce=0.051909 ap_exact=34.9720% ap_tol1=35.0325% mae=103.16 len_match=0.2000% lr=2.952155e-04
+New best model saved at epoch 98 with test_loss=0.053417
+epoch=99 train_loss=0.058570 test_loss=0.049798 train_mse=0.043248 train_ce=0.051073 ap_exact=35.5414% ap_tol1=35.6308% mae=100.94 len_match=0.4000% lr=2.950942e-04
+New best model saved at epoch 99 with test_loss=0.049798
+epoch=100 train_loss=0.059268 test_loss=0.054656 train_mse=0.043657 train_ce=0.052036 ap_exact=35.3934% ap_tol1=35.5018% mae=99.68 len_match=0.5000% lr=2.949715e-04
+epoch=101 train_loss=0.057561 test_loss=0.053196 train_mse=0.042290 train_ce=0.050904 ap_exact=35.3330% ap_tol1=35.4171% mae=101.10 len_match=0.1000% lr=2.948473e-04
+epoch=102 train_loss=0.057611 test_loss=0.051271 train_mse=0.042081 train_ce=0.051769 ap_exact=35.4867% ap_tol1=35.5681% mae=100.61 len_match=0.1000% lr=2.947216e-04
+epoch=103 train_loss=0.058033 test_loss=0.053370 train_mse=0.042291 train_ce=0.052473 ap_exact=35.3450% ap_tol1=35.4540% mae=100.20 len_match=0.2000% lr=2.945944e-04
+epoch=104 train_loss=0.057298 test_loss=0.057695 train_mse=0.041742 train_ce=0.051855 ap_exact=35.1152% ap_tol1=35.2030% mae=99.84 len_match=0.2000% lr=2.944658e-04
+epoch=105 train_loss=0.054646 test_loss=0.051419 train_mse=0.039188 train_ce=0.051527 ap_exact=35.2583% ap_tol1=35.3329% mae=100.19 len_match=0.2000% lr=2.943356e-04
+epoch=106 train_loss=0.054953 test_loss=0.051172 train_mse=0.039745 train_ce=0.050691 ap_exact=35.2322% ap_tol1=35.3111% mae=100.84 len_match=0.1000% lr=2.942040e-04
+epoch=107 train_loss=0.056707 test_loss=0.054344 train_mse=0.040720 train_ce=0.053293 ap_exact=35.1122% ap_tol1=35.1968% mae=99.89 len_match=0.4000% lr=2.940709e-04
+epoch=108 train_loss=0.055553 test_loss=0.049757 train_mse=0.040021 train_ce=0.051773 ap_exact=35.1693% ap_tol1=35.2532% mae=100.93 len_match=0.1000% lr=2.939363e-04
+New best model saved at epoch 108 with test_loss=0.049757
+epoch=109 train_loss=0.055627 test_loss=0.052933 train_mse=0.039679 train_ce=0.053160 ap_exact=34.9964% ap_tol1=35.1083% mae=99.99 len_match=0.1000% lr=2.938002e-04
+epoch=110 train_loss=0.053509 test_loss=0.048090 train_mse=0.038099 train_ce=0.051367 ap_exact=35.4922% ap_tol1=35.5727% mae=100.92 len_match=0.1000% lr=2.936626e-04
+New best model saved at epoch 110 with test_loss=0.048090
+epoch=111 train_loss=0.053976 test_loss=0.056702 train_mse=0.038099 train_ce=0.052923 ap_exact=35.4570% ap_tol1=35.5298% mae=100.66 len_match=0.1000% lr=2.935236e-04
+epoch=112 train_loss=0.053546 test_loss=0.050710 train_mse=0.037846 train_ce=0.052331 ap_exact=34.7372% ap_tol1=34.8220% mae=102.79 len_match=0.0000% lr=2.933831e-04
+epoch=113 train_loss=0.054226 test_loss=0.047048 train_mse=0.037990 train_ce=0.054120 ap_exact=35.0082% ap_tol1=35.1134% mae=101.46 len_match=0.4000% lr=2.932411e-04
+New best model saved at epoch 113 with test_loss=0.047048
+epoch=114 train_loss=0.052256 test_loss=0.052179 train_mse=0.036751 train_ce=0.051686 ap_exact=35.0281% ap_tol1=35.1150% mae=100.88 len_match=0.3000% lr=2.930977e-04
+epoch=115 train_loss=0.052847 test_loss=0.049443 train_mse=0.037065 train_ce=0.052607 ap_exact=35.2615% ap_tol1=35.3381% mae=101.18 len_match=0.5000% lr=2.929527e-04
+epoch=116 train_loss=0.052349 test_loss=0.046760 train_mse=0.036472 train_ce=0.052922 ap_exact=35.0426% ap_tol1=35.1236% mae=101.09 len_match=0.3000% lr=2.928063e-04
+New best model saved at epoch 116 with test_loss=0.046760
+epoch=117 train_loss=0.051565 test_loss=0.048833 train_mse=0.035776 train_ce=0.052629 ap_exact=36.1958% ap_tol1=36.2656% mae=103.88 len_match=0.3000% lr=2.926585e-04
+epoch=118 train_loss=0.053883 test_loss=0.048104 train_mse=0.037308 train_ce=0.055251 ap_exact=35.6898% ap_tol1=35.7741% mae=102.36 len_match=0.3000% lr=2.925092e-04
+epoch=119 train_loss=0.052496 test_loss=0.052081 train_mse=0.036312 train_ce=0.053947 ap_exact=35.3057% ap_tol1=35.3785% mae=103.91 len_match=0.6000% lr=2.923584e-04
+epoch=120 train_loss=0.051179 test_loss=0.045078 train_mse=0.035429 train_ce=0.052500 ap_exact=35.2177% ap_tol1=35.2792% mae=105.12 len_match=0.4000% lr=2.922061e-04
+New best model saved at epoch 120 with test_loss=0.045078
+epoch=121 train_loss=0.050180 test_loss=0.049321 train_mse=0.034413 train_ce=0.052555 ap_exact=35.4453% ap_tol1=35.5211% mae=100.99 len_match=0.4000% lr=2.920524e-04
+epoch=122 train_loss=0.050806 test_loss=0.052721 train_mse=0.034757 train_ce=0.053495 ap_exact=35.4661% ap_tol1=35.5340% mae=102.59 len_match=0.6000% lr=2.918972e-04
+epoch=123 train_loss=0.052248 test_loss=0.049002 train_mse=0.035699 train_ce=0.055161 ap_exact=35.5520% ap_tol1=35.6363% mae=102.60 len_match=0.3000% lr=2.917406e-04
+epoch=124 train_loss=0.048784 test_loss=0.042876 train_mse=0.032941 train_ce=0.052810 ap_exact=35.2254% ap_tol1=35.2971% mae=102.78 len_match=0.4000% lr=2.915825e-04
+New best model saved at epoch 124 with test_loss=0.042876
+epoch=125 train_loss=0.050022 test_loss=0.047199 train_mse=0.034042 train_ce=0.053267 ap_exact=35.3168% ap_tol1=35.3773% mae=103.84 len_match=0.4000% lr=2.914230e-04
+epoch=126 train_loss=0.049694 test_loss=0.046032 train_mse=0.033693 train_ce=0.053337 ap_exact=35.1136% ap_tol1=35.1871% mae=104.43 len_match=0.3000% lr=2.912620e-04
+epoch=127 train_loss=0.048878 test_loss=0.047067 train_mse=0.032997 train_ce=0.052935 ap_exact=35.5020% ap_tol1=35.5555% mae=102.25 len_match=0.3000% lr=2.910995e-04
+epoch=128 train_loss=0.048992 test_loss=0.042278 train_mse=0.032804 train_ce=0.053961 ap_exact=35.2174% ap_tol1=35.2941% mae=105.66 len_match=0.5000% lr=2.909356e-04
+New best model saved at epoch 128 with test_loss=0.042278
+epoch=129 train_loss=0.047999 test_loss=0.049735 train_mse=0.031886 train_ce=0.053708 ap_exact=35.4529% ap_tol1=35.4953% mae=104.25 len_match=0.7000% lr=2.907703e-04
+epoch=130 train_loss=0.047667 test_loss=0.051354 train_mse=0.031706 train_ce=0.053203 ap_exact=35.2034% ap_tol1=35.2599% mae=105.06 len_match=0.6000% lr=2.906035e-04
+epoch=131 train_loss=0.047813 test_loss=0.043966 train_mse=0.031828 train_ce=0.053283 ap_exact=35.3270% ap_tol1=35.3914% mae=103.85 len_match=0.5000% lr=2.904352e-04
+epoch=132 train_loss=0.046403 test_loss=0.046441 train_mse=0.030820 train_ce=0.051943 ap_exact=35.8958% ap_tol1=35.9403% mae=104.39 len_match=0.5000% lr=2.902655e-04
+epoch=133 train_loss=0.048691 test_loss=0.045614 train_mse=0.032414 train_ce=0.054257 ap_exact=35.6127% ap_tol1=35.6633% mae=106.44 len_match=0.4000% lr=2.900944e-04
+epoch=134 train_loss=0.046162 test_loss=0.048406 train_mse=0.030539 train_ce=0.052075 ap_exact=35.5063% ap_tol1=35.5488% mae=105.73 len_match=0.6000% lr=2.899219e-04
+epoch=135 train_loss=0.048154 test_loss=0.046998 train_mse=0.031771 train_ce=0.054611 ap_exact=35.2516% ap_tol1=35.3273% mae=103.27 len_match=0.4000% lr=2.897479e-04
+epoch=136 train_loss=0.049523 test_loss=0.047044 train_mse=0.032413 train_ce=0.057034 ap_exact=35.4423% ap_tol1=35.4928% mae=102.95 len_match=0.4000% lr=2.895724e-04
+epoch=137 train_loss=0.048583 test_loss=0.045012 train_mse=0.031783 train_ce=0.056000 ap_exact=35.4776% ap_tol1=35.5139% mae=106.29 len_match=0.5000% lr=2.893956e-04
+epoch=138 train_loss=0.046170 test_loss=0.043581 train_mse=0.030006 train_ce=0.053880 ap_exact=35.8604% ap_tol1=35.9119% mae=103.52 len_match=0.5000% lr=2.892172e-04
+epoch=139 train_loss=0.046807 test_loss=0.044416 train_mse=0.030320 train_ce=0.054955 ap_exact=35.6029% ap_tol1=35.6352% mae=105.59 len_match=0.5000% lr=2.890375e-04
+epoch=140 train_loss=0.048389 test_loss=0.041670 train_mse=0.031427 train_ce=0.056541 ap_exact=35.8216% ap_tol1=35.8549% mae=104.77 len_match=0.5000% lr=2.888564e-04
+New best model saved at epoch 140 with test_loss=0.041670
+epoch=141 train_loss=0.045893 test_loss=0.044701 train_mse=0.029914 train_ce=0.053262 ap_exact=35.8008% ap_tol1=35.8693% mae=104.21 len_match=0.5000% lr=2.886738e-04
+epoch=142 train_loss=0.048402 test_loss=0.043916 train_mse=0.031134 train_ce=0.057562 ap_exact=35.7342% ap_tol1=35.7746% mae=105.44 len_match=0.5000% lr=2.884897e-04
+epoch=143 train_loss=0.046612 test_loss=0.044413 train_mse=0.030112 train_ce=0.055002 ap_exact=35.6776% ap_tol1=35.7100% mae=106.07 len_match=0.4000% lr=2.883043e-04
+epoch=144 train_loss=0.046759 test_loss=0.048385 train_mse=0.030296 train_ce=0.054875 ap_exact=35.7673% ap_tol1=35.8046% mae=104.33 len_match=0.7000% lr=2.881174e-04
+epoch=145 train_loss=0.045247 test_loss=0.042126 train_mse=0.029001 train_ce=0.054152 ap_exact=35.6685% ap_tol1=35.7028% mae=106.64 len_match=0.6000% lr=2.879292e-04
+epoch=146 train_loss=0.044298 test_loss=0.042163 train_mse=0.028290 train_ce=0.053358 ap_exact=35.9801% ap_tol1=36.0164% mae=104.06 len_match=0.7000% lr=2.877395e-04
+epoch=147 train_loss=0.043866 test_loss=0.040549 train_mse=0.027721 train_ce=0.053817 ap_exact=36.0083% ap_tol1=36.0386% mae=102.80 len_match=0.7000% lr=2.875484e-04
+New best model saved at epoch 147 with test_loss=0.040549
+epoch=148 train_loss=0.045783 test_loss=0.044229 train_mse=0.029136 train_ce=0.055489 ap_exact=35.7549% ap_tol1=35.7791% mae=103.06 len_match=0.7000% lr=2.873558e-04
+epoch=149 train_loss=0.044309 test_loss=0.044732 train_mse=0.027828 train_ce=0.054937 ap_exact=35.9570% ap_tol1=35.9802% mae=105.43 len_match=0.7000% lr=2.871619e-04
+epoch=150 train_loss=0.044137 test_loss=0.039473 train_mse=0.027802 train_ce=0.054453 ap_exact=35.4112% ap_tol1=35.4405% mae=103.52 len_match=0.2000% lr=2.869665e-04
+New best model saved at epoch 150 with test_loss=0.039473
+epoch=151 train_loss=0.044151 test_loss=0.040528 train_mse=0.027984 train_ce=0.053891 ap_exact=36.0894% ap_tol1=36.1207% mae=101.99 len_match=0.2000% lr=2.867698e-04
+epoch=152 train_loss=0.044870 test_loss=0.049483 train_mse=0.028320 train_ce=0.055166 ap_exact=36.0744% ap_tol1=36.0976% mae=102.54 len_match=0.2000% lr=2.865716e-04
+epoch=153 train_loss=0.042613 test_loss=0.046014 train_mse=0.026968 train_ce=0.052152 ap_exact=35.9293% ap_tol1=35.9494% mae=106.72 len_match=0.3000% lr=2.863721e-04
+epoch=154 train_loss=0.045827 test_loss=0.049322 train_mse=0.028873 train_ce=0.056513 ap_exact=36.1322% ap_tol1=36.1635% mae=102.81 len_match=0.5000% lr=2.861711e-04
+epoch=155 train_loss=0.045471 test_loss=0.038015 train_mse=0.028468 train_ce=0.056680 ap_exact=36.0114% ap_tol1=36.0205% mae=106.44 len_match=0.7000% lr=2.859687e-04
+New best model saved at epoch 155 with test_loss=0.038015
+epoch=156 train_loss=0.043079 test_loss=0.041837 train_mse=0.026773 train_ce=0.054352 ap_exact=36.0465% ap_tol1=36.0717% mae=104.28 len_match=0.7000% lr=2.857650e-04
+epoch=157 train_loss=0.044108 test_loss=0.041551 train_mse=0.027524 train_ce=0.055281 ap_exact=35.8256% ap_tol1=35.8367% mae=106.58 len_match=0.4000% lr=2.855598e-04
+epoch=158 train_loss=0.042942 test_loss=0.044584 train_mse=0.026745 train_ce=0.053987 ap_exact=35.8671% ap_tol1=35.8812% mae=106.29 len_match=0.5000% lr=2.853533e-04
+epoch=159 train_loss=0.043856 test_loss=0.041582 train_mse=0.027323 train_ce=0.055112 ap_exact=36.0242% ap_tol1=36.0665% mae=101.62 len_match=0.7000% lr=2.851453e-04
+epoch=160 train_loss=0.043281 test_loss=0.037967 train_mse=0.026778 train_ce=0.055009 ap_exact=36.1812% ap_tol1=36.1983% mae=106.47 len_match=0.6000% lr=2.849360e-04
+New best model saved at epoch 160 with test_loss=0.037967
+epoch=161 train_loss=0.043105 test_loss=0.040680 train_mse=0.026481 train_ce=0.055414 ap_exact=35.8750% ap_tol1=35.8921% mae=102.71 len_match=0.5000% lr=2.847253e-04
+epoch=162 train_loss=0.043255 test_loss=0.043482 train_mse=0.026589 train_ce=0.055553 ap_exact=36.0481% ap_tol1=36.0582% mae=104.49 len_match=0.7000% lr=2.845132e-04
+epoch=163 train_loss=0.043233 test_loss=0.039789 train_mse=0.026591 train_ce=0.055476 ap_exact=36.0965% ap_tol1=36.1045% mae=106.54 len_match=0.7000% lr=2.842997e-04
+epoch=164 train_loss=0.044485 test_loss=0.041821 train_mse=0.027327 train_ce=0.057195 ap_exact=36.5401% ap_tol1=36.5471% mae=101.26 len_match=0.7000% lr=2.840848e-04
+epoch=165 train_loss=0.042771 test_loss=0.041578 train_mse=0.026242 train_ce=0.055097 ap_exact=36.1534% ap_tol1=36.1634% mae=104.77 len_match=0.7000% lr=2.838686e-04
+epoch=166 train_loss=0.042422 test_loss=0.039078 train_mse=0.025788 train_ce=0.055448 ap_exact=36.2770% ap_tol1=36.2881% mae=102.14 len_match=0.4000% lr=2.836510e-04
+epoch=167 train_loss=0.042209 test_loss=0.041462 train_mse=0.025813 train_ce=0.054656 ap_exact=36.3978% ap_tol1=36.4048% mae=103.77 len_match=0.8000% lr=2.834320e-04
+epoch=168 train_loss=0.041924 test_loss=0.036835 train_mse=0.025542 train_ce=0.054606 ap_exact=36.5347% ap_tol1=36.5468% mae=103.66 len_match=0.6000% lr=2.832116e-04
+New best model saved at epoch 168 with test_loss=0.036835
+epoch=169 train_loss=0.042737 test_loss=0.040209 train_mse=0.026069 train_ce=0.055561 ap_exact=36.5272% ap_tol1=36.5373% mae=101.53 len_match=0.7000% lr=2.829899e-04
+epoch=170 train_loss=0.042433 test_loss=0.040560 train_mse=0.025856 train_ce=0.055258 ap_exact=36.3728% ap_tol1=36.3829% mae=103.11 len_match=0.5000% lr=2.827668e-04
+epoch=171 train_loss=0.042551 test_loss=0.043518 train_mse=0.025825 train_ce=0.055756 ap_exact=36.0643% ap_tol1=36.0744% mae=103.01 len_match=0.5000% lr=2.825423e-04
+epoch=172 train_loss=0.041964 test_loss=0.040567 train_mse=0.025195 train_ce=0.055894 ap_exact=36.6096% ap_tol1=36.6228% mae=101.32 len_match=0.7000% lr=2.823165e-04
+epoch=173 train_loss=0.040802 test_loss=0.042072 train_mse=0.024644 train_ce=0.053861 ap_exact=36.3841% ap_tol1=36.3901% mae=102.71 len_match=0.6000% lr=2.820893e-04
+epoch=174 train_loss=0.041219 test_loss=0.042972 train_mse=0.024819 train_ce=0.054667 ap_exact=36.6169% ap_tol1=36.6280% mae=101.75 len_match=0.6000% lr=2.818608e-04
+epoch=175 train_loss=0.040767 test_loss=0.037207 train_mse=0.024543 train_ce=0.054082 ap_exact=36.5754% ap_tol1=36.5804% mae=100.09 len_match=0.6000% lr=2.816309e-04
+epoch=176 train_loss=0.041936 test_loss=0.038718 train_mse=0.025497 train_ce=0.054798 ap_exact=36.4179% ap_tol1=36.4260% mae=102.11 len_match=0.7000% lr=2.813996e-04
+epoch=177 train_loss=0.040241 test_loss=0.042417 train_mse=0.023992 train_ce=0.054163 ap_exact=36.8526% ap_tol1=36.8576% mae=100.34 len_match=0.5000% lr=2.811670e-04
+epoch=178 train_loss=0.041342 test_loss=0.040398 train_mse=0.024916 train_ce=0.054754 ap_exact=36.6629% ap_tol1=36.6710% mae=100.25 len_match=0.7000% lr=2.809331e-04
+epoch=179 train_loss=0.040380 test_loss=0.037479 train_mse=0.024075 train_ce=0.054349 ap_exact=36.9164% ap_tol1=36.9234% mae=100.57 len_match=0.5000% lr=2.806978e-04
+epoch=180 train_loss=0.041103 test_loss=0.035907 train_mse=0.024578 train_ce=0.055081 ap_exact=36.9146% ap_tol1=36.9227% mae=99.24 len_match=0.6000% lr=2.804612e-04
+New best model saved at epoch 180 with test_loss=0.035907
+epoch=181 train_loss=0.040074 test_loss=0.036831 train_mse=0.023689 train_ce=0.054616 ap_exact=37.0626% ap_tol1=37.0656% mae=99.63 len_match=0.7000% lr=2.802232e-04
+epoch=182 train_loss=0.038343 test_loss=0.040051 train_mse=0.023002 train_ce=0.051137 ap_exact=36.9576% ap_tol1=36.9606% mae=99.37 len_match=0.6000% lr=2.799839e-04
+epoch=183 train_loss=0.039571 test_loss=0.036179 train_mse=0.023575 train_ce=0.053320 ap_exact=36.9945% ap_tol1=36.9986% mae=99.01 len_match=0.4000% lr=2.797432e-04
+epoch=184 train_loss=0.040931 test_loss=0.042049 train_mse=0.024310 train_ce=0.055404 ap_exact=36.8493% ap_tol1=36.8543% mae=99.60 len_match=0.7000% lr=2.795012e-04
+epoch=185 train_loss=0.040031 test_loss=0.037625 train_mse=0.023601 train_ce=0.054768 ap_exact=36.8784% ap_tol1=36.8815% mae=99.13 len_match=0.5000% lr=2.792579e-04
+epoch=186 train_loss=0.039698 test_loss=0.038136 train_mse=0.023518 train_ce=0.053933 ap_exact=37.6150% ap_tol1=37.6190% mae=96.08 len_match=0.5000% lr=2.790133e-04
+epoch=187 train_loss=0.038824 test_loss=0.038030 train_mse=0.023094 train_ce=0.052435 ap_exact=37.1886% ap_tol1=37.1916% mae=97.45 len_match=0.5000% lr=2.787673e-04
+epoch=188 train_loss=0.039934 test_loss=0.038646 train_mse=0.023705 train_ce=0.054096 ap_exact=37.3849% ap_tol1=37.3899% mae=97.42 len_match=0.5000% lr=2.785200e-04
+epoch=189 train_loss=0.040679 test_loss=0.040689 train_mse=0.024164 train_ce=0.055049 ap_exact=37.3574% ap_tol1=37.3614% mae=97.75 len_match=0.5000% lr=2.782714e-04
+epoch=190 train_loss=0.037794 test_loss=0.039446 train_mse=0.022358 train_ce=0.051454 ap_exact=37.6052% ap_tol1=37.6092% mae=95.86 len_match=0.6000% lr=2.780215e-04
+epoch=191 train_loss=0.038164 test_loss=0.037825 train_mse=0.022401 train_ce=0.052543 ap_exact=37.2986% ap_tol1=37.3047% mae=97.12 len_match=0.5000% lr=2.777702e-04
+epoch=192 train_loss=0.039360 test_loss=0.037278 train_mse=0.023263 train_ce=0.053655 ap_exact=37.7675% ap_tol1=37.7726% mae=94.04 len_match=0.4000% lr=2.775177e-04
+epoch=193 train_loss=0.040335 test_loss=0.040724 train_mse=0.023779 train_ce=0.055186 ap_exact=37.6808% ap_tol1=37.6828% mae=96.92 len_match=0.5000% lr=2.772638e-04
+epoch=194 train_loss=0.039128 test_loss=0.043140 train_mse=0.023025 train_ce=0.053675 ap_exact=37.2919% ap_tol1=37.2989% mae=97.97 len_match=0.7000% lr=2.770086e-04
+epoch=195 train_loss=0.038744 test_loss=0.036432 train_mse=0.022704 train_ce=0.053466 ap_exact=37.6773% ap_tol1=37.6824% mae=96.32 len_match=0.4000% lr=2.767521e-04
+epoch=196 train_loss=0.039491 test_loss=0.032919 train_mse=0.023009 train_ce=0.054941 ap_exact=37.5115% ap_tol1=37.5145% mae=96.89 len_match=0.4000% lr=2.764944e-04
+New best model saved at epoch 196 with test_loss=0.032919
+epoch=197 train_loss=0.038910 test_loss=0.038250 train_mse=0.022868 train_ce=0.053475 ap_exact=37.8072% ap_tol1=37.8112% mae=95.38 len_match=0.5000% lr=2.762353e-04
+epoch=198 train_loss=0.039114 test_loss=0.040976 train_mse=0.022678 train_ce=0.054787 ap_exact=37.9475% ap_tol1=37.9515% mae=93.88 len_match=0.5000% lr=2.759749e-04
+epoch=199 train_loss=0.038370 test_loss=0.044738 train_mse=0.022543 train_ce=0.052758 ap_exact=37.9083% ap_tol1=37.9124% mae=95.75 len_match=0.6000% lr=2.757132e-04
+epoch=200 train_loss=0.038381 test_loss=0.040741 train_mse=0.022302 train_ce=0.053598 ap_exact=37.6602% ap_tol1=37.6622% mae=96.45 len_match=0.5000% lr=2.754502e-04
+epoch=201 train_loss=0.037545 test_loss=0.036864 train_mse=0.021819 train_ce=0.052423 ap_exact=37.9510% ap_tol1=37.9551% mae=93.40 len_match=0.5000% lr=2.751860e-04
+epoch=202 train_loss=0.038371 test_loss=0.034960 train_mse=0.022262 train_ce=0.053696 ap_exact=38.2593% ap_tol1=38.2603% mae=92.99 len_match=0.6000% lr=2.749204e-04
+epoch=203 train_loss=0.036732 test_loss=0.035306 train_mse=0.021249 train_ce=0.051609 ap_exact=38.0494% ap_tol1=38.0544% mae=95.26 len_match=0.4000% lr=2.746536e-04
+epoch=204 train_loss=0.037809 test_loss=0.036200 train_mse=0.021909 train_ce=0.053002 ap_exact=37.9428% ap_tol1=37.9498% mae=93.85 len_match=0.6000% lr=2.743855e-04
+epoch=205 train_loss=0.038695 test_loss=0.032844 train_mse=0.022546 train_ce=0.053829 ap_exact=38.2384% ap_tol1=38.2404% mae=93.03 len_match=0.6000% lr=2.741161e-04
+New best model saved at epoch 205 with test_loss=0.032844
+epoch=206 train_loss=0.037057 test_loss=0.034624 train_mse=0.021231 train_ce=0.052752 ap_exact=38.2902% ap_tol1=38.2973% mae=92.59 len_match=0.6000% lr=2.738455e-04
+epoch=207 train_loss=0.038946 test_loss=0.035467 train_mse=0.022592 train_ce=0.054515 ap_exact=38.4814% ap_tol1=38.4834% mae=91.96 len_match=0.7000% lr=2.735735e-04
+epoch=208 train_loss=0.036997 test_loss=0.039631 train_mse=0.021429 train_ce=0.051894 ap_exact=38.2901% ap_tol1=38.2911% mae=94.44 len_match=0.7000% lr=2.733003e-04
+epoch=209 train_loss=0.037020 test_loss=0.041291 train_mse=0.021288 train_ce=0.052442 ap_exact=38.7482% ap_tol1=38.7533% mae=91.02 len_match=0.4000% lr=2.730258e-04
+epoch=210 train_loss=0.035596 test_loss=0.037714 train_mse=0.020575 train_ce=0.050070 ap_exact=38.4809% ap_tol1=38.4840% mae=93.05 len_match=0.6000% lr=2.727501e-04
+epoch=211 train_loss=0.037758 test_loss=0.035116 train_mse=0.021687 train_ce=0.053567 ap_exact=38.5070% ap_tol1=38.5120% mae=92.96 len_match=0.5000% lr=2.724731e-04
+epoch=212 train_loss=0.036442 test_loss=0.034226 train_mse=0.020950 train_ce=0.051640 ap_exact=38.6771% ap_tol1=38.6841% mae=91.20 len_match=0.2000% lr=2.721948e-04
+epoch=213 train_loss=0.035549 test_loss=0.034559 train_mse=0.020469 train_ce=0.050269 ap_exact=38.6704% ap_tol1=38.6724% mae=92.34 len_match=0.4000% lr=2.719153e-04
+epoch=214 train_loss=0.037366 test_loss=0.033638 train_mse=0.021520 train_ce=0.052822 ap_exact=39.0337% ap_tol1=39.0387% mae=90.59 len_match=0.6000% lr=2.716346e-04
+epoch=215 train_loss=0.036166 test_loss=0.036508 train_mse=0.020799 train_ce=0.051225 ap_exact=38.8657% ap_tol1=38.8687% mae=91.09 len_match=0.6000% lr=2.713525e-04
+epoch=216 train_loss=0.035316 test_loss=0.033356 train_mse=0.020262 train_ce=0.050178 ap_exact=38.5875% ap_tol1=38.5885% mae=91.96 len_match=0.5000% lr=2.710693e-04
+epoch=217 train_loss=0.035341 test_loss=0.035340 train_mse=0.020304 train_ce=0.050126 ap_exact=38.8658% ap_tol1=38.8688% mae=90.27 len_match=0.6000% lr=2.707848e-04
+epoch=218 train_loss=0.037598 test_loss=0.037191 train_mse=0.021319 train_ce=0.054265 ap_exact=38.6228% ap_tol1=38.6308% mae=91.40 len_match=0.6000% lr=2.704990e-04
+epoch=219 train_loss=0.035768 test_loss=0.037439 train_mse=0.020340 train_ce=0.051424 ap_exact=39.3809% ap_tol1=39.3839% mae=88.30 len_match=0.7000% lr=2.702120e-04
+epoch=220 train_loss=0.035409 test_loss=0.039346 train_mse=0.020437 train_ce=0.049906 ap_exact=39.0184% ap_tol1=39.0235% mae=90.96 len_match=0.5000% lr=2.699238e-04
+epoch=221 train_loss=0.034898 test_loss=0.033567 train_mse=0.020032 train_ce=0.049552 ap_exact=39.1837% ap_tol1=39.1887% mae=89.01 len_match=0.5000% lr=2.696344e-04
+epoch=222 train_loss=0.035134 test_loss=0.034671 train_mse=0.019811 train_ce=0.051076 ap_exact=39.4305% ap_tol1=39.4345% mae=88.53 len_match=0.5000% lr=2.693437e-04
+epoch=223 train_loss=0.034490 test_loss=0.037561 train_mse=0.019514 train_ce=0.049920 ap_exact=39.0234% ap_tol1=39.0265% mae=89.06 len_match=0.5000% lr=2.690518e-04
+epoch=224 train_loss=0.035572 test_loss=0.032774 train_mse=0.020142 train_ce=0.051432 ap_exact=39.3116% ap_tol1=39.3136% mae=87.81 len_match=0.5000% lr=2.687586e-04
+New best model saved at epoch 224 with test_loss=0.032774
+epoch=225 train_loss=0.036719 test_loss=0.035703 train_mse=0.020735 train_ce=0.053279 ap_exact=38.9920% ap_tol1=38.9980% mae=89.79 len_match=0.5000% lr=2.684643e-04
+epoch=226 train_loss=0.037451 test_loss=0.036258 train_mse=0.021096 train_ce=0.054517 ap_exact=38.8099% ap_tol1=38.8119% mae=89.60 len_match=0.6000% lr=2.681687e-04
+epoch=227 train_loss=0.034498 test_loss=0.034228 train_mse=0.019478 train_ce=0.050067 ap_exact=39.2049% ap_tol1=39.2099% mae=88.16 len_match=0.6000% lr=2.678719e-04
+epoch=228 train_loss=0.034800 test_loss=0.033120 train_mse=0.019697 train_ce=0.050344 ap_exact=39.5147% ap_tol1=39.5157% mae=87.18 len_match=0.5000% lr=2.675739e-04
+epoch=229 train_loss=0.033720 test_loss=0.035090 train_mse=0.019094 train_ce=0.048752 ap_exact=39.4721% ap_tol1=39.4751% mae=88.13 len_match=0.6000% lr=2.672747e-04
+epoch=230 train_loss=0.034090 test_loss=0.032368 train_mse=0.019212 train_ce=0.049595 ap_exact=39.6928% ap_tol1=39.6999% mae=86.84 len_match=0.4000% lr=2.669743e-04
+New best model saved at epoch 230 with test_loss=0.032368
+epoch=231 train_loss=0.035218 test_loss=0.035727 train_mse=0.019998 train_ce=0.050732 ap_exact=39.6030% ap_tol1=39.6070% mae=86.55 len_match=0.5000% lr=2.666727e-04
+epoch=232 train_loss=0.034748 test_loss=0.033155 train_mse=0.019753 train_ce=0.049985 ap_exact=39.4891% ap_tol1=39.4941% mae=87.89 len_match=0.5000% lr=2.663699e-04
+epoch=233 train_loss=0.033471 test_loss=0.033505 train_mse=0.018692 train_ce=0.049263 ap_exact=39.6415% ap_tol1=39.6425% mae=87.87 len_match=0.5000% lr=2.660659e-04
+epoch=234 train_loss=0.034302 test_loss=0.030720 train_mse=0.019424 train_ce=0.049591 ap_exact=39.9389% ap_tol1=39.9420% mae=85.71 len_match=0.5000% lr=2.657607e-04
+New best model saved at epoch 234 with test_loss=0.030720
+epoch=235 train_loss=0.034219 test_loss=0.029845 train_mse=0.019265 train_ce=0.049844 ap_exact=39.4934% ap_tol1=39.4994% mae=88.88 len_match=0.3000% lr=2.654543e-04
+New best model saved at epoch 235 with test_loss=0.029845
+epoch=236 train_loss=0.033022 test_loss=0.033801 train_mse=0.018653 train_ce=0.047896 ap_exact=40.1068% ap_tol1=40.1139% mae=84.92 len_match=0.5000% lr=2.651467e-04
+epoch=237 train_loss=0.033599 test_loss=0.031930 train_mse=0.018892 train_ce=0.049024 ap_exact=39.7114% ap_tol1=39.7185% mae=86.68 len_match=0.6000% lr=2.648380e-04
+epoch=238 train_loss=0.033301 test_loss=0.030628 train_mse=0.018789 train_ce=0.048372 ap_exact=39.6753% ap_tol1=39.6774% mae=86.46 len_match=0.5000% lr=2.645280e-04
+epoch=239 train_loss=0.032829 test_loss=0.033188 train_mse=0.018722 train_ce=0.047026 ap_exact=39.9067% ap_tol1=39.9168% mae=86.21 len_match=0.4000% lr=2.642169e-04
+epoch=240 train_loss=0.033985 test_loss=0.034206 train_mse=0.019399 train_ce=0.048620 ap_exact=39.7324% ap_tol1=39.7384% mae=87.92 len_match=0.5000% lr=2.639046e-04
+epoch=241 train_loss=0.031757 test_loss=0.032026 train_mse=0.018023 train_ce=0.045782 ap_exact=39.6834% ap_tol1=39.6874% mae=86.97 len_match=0.5000% lr=2.635911e-04
+epoch=242 train_loss=0.033776 test_loss=0.034152 train_mse=0.019039 train_ce=0.049120 ap_exact=39.7535% ap_tol1=39.7586% mae=86.63 len_match=0.5000% lr=2.632765e-04
+epoch=243 train_loss=0.032631 test_loss=0.033907 train_mse=0.018620 train_ce=0.046703 ap_exact=39.8642% ap_tol1=39.8652% mae=86.75 len_match=0.5000% lr=2.629607e-04
+epoch=244 train_loss=0.032480 test_loss=0.033886 train_mse=0.018370 train_ce=0.047033 ap_exact=39.8287% ap_tol1=39.8317% mae=85.58 len_match=0.5000% lr=2.626438e-04
+epoch=245 train_loss=0.032259 test_loss=0.031077 train_mse=0.018163 train_ce=0.046987 ap_exact=39.3672% ap_tol1=39.3682% mae=87.76 len_match=0.5000% lr=2.623257e-04
+epoch=246 train_loss=0.032435 test_loss=0.032790 train_mse=0.018353 train_ce=0.046939 ap_exact=39.4863% ap_tol1=39.4903% mae=88.39 len_match=0.5000% lr=2.620064e-04
+epoch=247 train_loss=0.031931 test_loss=0.035623 train_mse=0.017979 train_ce=0.046507 ap_exact=39.9419% ap_tol1=39.9450% mae=85.94 len_match=0.6000% lr=2.616860e-04
+epoch=248 train_loss=0.033007 test_loss=0.030591 train_mse=0.018654 train_ce=0.047845 ap_exact=39.5141% ap_tol1=39.5242% mae=86.90 len_match=0.5000% lr=2.613644e-04
+epoch=249 train_loss=0.031961 test_loss=0.030924 train_mse=0.018221 train_ce=0.045800 ap_exact=39.3437% ap_tol1=39.3467% mae=88.70 len_match=0.4000% lr=2.610417e-04
+epoch=250 train_loss=0.031191 test_loss=0.031132 train_mse=0.017659 train_ce=0.045107 ap_exact=39.7977% ap_tol1=39.8027% mae=86.71 len_match=0.5000% lr=2.607178e-04
+epoch=251 train_loss=0.030615 test_loss=0.032568 train_mse=0.017219 train_ce=0.044653 ap_exact=39.4664% ap_tol1=39.4684% mae=87.45 len_match=0.5000% lr=2.603929e-04
+epoch=252 train_loss=0.031414 test_loss=0.035367 train_mse=0.017794 train_ce=0.045402 ap_exact=39.5498% ap_tol1=39.5538% mae=88.42 len_match=0.5000% lr=2.600667e-04
+epoch=253 train_loss=0.031254 test_loss=0.032881 train_mse=0.017450 train_ce=0.046012 ap_exact=39.3404% ap_tol1=39.3475% mae=87.54 len_match=0.6000% lr=2.597395e-04
+epoch=254 train_loss=0.031728 test_loss=0.029032 train_mse=0.017878 train_ce=0.046165 ap_exact=39.2997% ap_tol1=39.3028% mae=88.44 len_match=0.4000% lr=2.594111e-04
+New best model saved at epoch 254 with test_loss=0.029032
+epoch=255 train_loss=0.030833 test_loss=0.034659 train_mse=0.017468 train_ce=0.044551 ap_exact=39.4266% ap_tol1=39.4286% mae=87.95 len_match=0.5000% lr=2.590816e-04
+epoch=256 train_loss=0.030608 test_loss=0.031150 train_mse=0.017199 train_ce=0.044694 ap_exact=39.2842% ap_tol1=39.2893% mae=89.44 len_match=0.4000% lr=2.587510e-04
+epoch=257 train_loss=0.030665 test_loss=0.031640 train_mse=0.017207 train_ce=0.044859 ap_exact=39.7118% ap_tol1=39.7199% mae=86.07 len_match=0.4000% lr=2.584192e-04
+epoch=258 train_loss=0.029991 test_loss=0.029830 train_mse=0.016726 train_ce=0.044217 ap_exact=39.6659% ap_tol1=39.6689% mae=87.00 len_match=0.6000% lr=2.580864e-04
+epoch=259 train_loss=0.029485 test_loss=0.031574 train_mse=0.016562 train_ce=0.043076 ap_exact=39.7237% ap_tol1=39.7288% mae=86.53 len_match=0.5000% lr=2.577524e-04
+epoch=260 train_loss=0.029593 test_loss=0.030726 train_mse=0.016727 train_ce=0.042890 ap_exact=39.8801% ap_tol1=39.8821% mae=84.98 len_match=0.5000% lr=2.574173e-04
+epoch=261 train_loss=0.030184 test_loss=0.032993 train_mse=0.017068 train_ce=0.043719 ap_exact=40.2370% ap_tol1=40.2390% mae=83.81 len_match=0.6000% lr=2.570811e-04
+epoch=262 train_loss=0.029526 test_loss=0.029689 train_mse=0.016555 train_ce=0.043236 ap_exact=39.6872% ap_tol1=39.6882% mae=86.81 len_match=0.5000% lr=2.567439e-04
+epoch=263 train_loss=0.029196 test_loss=0.031187 train_mse=0.016480 train_ce=0.042388 ap_exact=39.9837% ap_tol1=39.9948% mae=85.80 len_match=0.5000% lr=2.564055e-04
+epoch=264 train_loss=0.029553 test_loss=0.030090 train_mse=0.016710 train_ce=0.042810 ap_exact=39.6137% ap_tol1=39.6217% mae=87.39 len_match=0.5000% lr=2.560660e-04
+epoch=265 train_loss=0.030231 test_loss=0.032352 train_mse=0.017030 train_ce=0.044003 ap_exact=39.6689% ap_tol1=39.6739% mae=86.45 len_match=0.5000% lr=2.557255e-04
+epoch=266 train_loss=0.030490 test_loss=0.029202 train_mse=0.017154 train_ce=0.044456 ap_exact=39.4581% ap_tol1=39.4611% mae=87.59 len_match=0.5000% lr=2.553838e-04
+epoch=267 train_loss=0.028460 test_loss=0.028491 train_mse=0.016032 train_ce=0.041426 ap_exact=39.9522% ap_tol1=39.9583% mae=84.09 len_match=0.5000% lr=2.550411e-04
+New best model saved at epoch 267 with test_loss=0.028491
+epoch=268 train_loss=0.028667 test_loss=0.030233 train_mse=0.016125 train_ce=0.041805 ap_exact=39.2900% ap_tol1=39.2941% mae=87.45 len_match=0.5000% lr=2.546973e-04
+epoch=269 train_loss=0.029180 test_loss=0.026884 train_mse=0.016208 train_ce=0.043240 ap_exact=39.4678% ap_tol1=39.4748% mae=87.89 len_match=0.5000% lr=2.543524e-04
+New best model saved at epoch 269 with test_loss=0.026884
+epoch=270 train_loss=0.028013 test_loss=0.027662 train_mse=0.015818 train_ce=0.040650 ap_exact=39.2166% ap_tol1=39.2176% mae=88.67 len_match=0.5000% lr=2.540064e-04
+epoch=271 train_loss=0.028169 test_loss=0.028484 train_mse=0.015740 train_ce=0.041429 ap_exact=39.4836% ap_tol1=39.4937% mae=85.55 len_match=0.6000% lr=2.536594e-04
+epoch=272 train_loss=0.028883 test_loss=0.029880 train_mse=0.016263 train_ce=0.042065 ap_exact=39.9152% ap_tol1=39.9162% mae=86.19 len_match=0.5000% lr=2.533113e-04
+epoch=273 train_loss=0.028675 test_loss=0.028343 train_mse=0.015989 train_ce=0.042283 ap_exact=39.6824% ap_tol1=39.6844% mae=86.70 len_match=0.5000% lr=2.529622e-04
+epoch=274 train_loss=0.028738 test_loss=0.027325 train_mse=0.015987 train_ce=0.042504 ap_exact=39.4728% ap_tol1=39.4759% mae=86.49 len_match=0.5000% lr=2.526119e-04
+epoch=275 train_loss=0.028092 test_loss=0.028554 train_mse=0.015603 train_ce=0.041631 ap_exact=39.8376% ap_tol1=39.8456% mae=84.66 len_match=0.5000% lr=2.522607e-04
+epoch=276 train_loss=0.028061 test_loss=0.028731 train_mse=0.015729 train_ce=0.041107 ap_exact=39.4770% ap_tol1=39.4831% mae=87.66 len_match=0.5000% lr=2.519084e-04
+epoch=277 train_loss=0.026870 test_loss=0.029245 train_mse=0.015003 train_ce=0.039555 ap_exact=39.4297% ap_tol1=39.4317% mae=87.54 len_match=0.5000% lr=2.515550e-04
+epoch=278 train_loss=0.026614 test_loss=0.029329 train_mse=0.014876 train_ce=0.039127 ap_exact=39.4476% ap_tol1=39.4547% mae=87.44 len_match=0.5000% lr=2.512006e-04
+epoch=279 train_loss=0.027667 test_loss=0.026940 train_mse=0.015509 train_ce=0.040524 ap_exact=39.1621% ap_tol1=39.1692% mae=87.36 len_match=0.5000% lr=2.508451e-04
+epoch=280 train_loss=0.027888 test_loss=0.027286 train_mse=0.015563 train_ce=0.041083 ap_exact=39.6723% ap_tol1=39.6794% mae=87.02 len_match=0.5000% lr=2.504886e-04
+epoch=281 train_loss=0.027046 test_loss=0.027099 train_mse=0.014998 train_ce=0.040158 ap_exact=39.2983% ap_tol1=39.3033% mae=87.62 len_match=0.6000% lr=2.501311e-04
+epoch=282 train_loss=0.026320 test_loss=0.026991 train_mse=0.014559 train_ce=0.039204 ap_exact=39.2945% ap_tol1=39.2995% mae=88.49 len_match=0.5000% lr=2.497726e-04
+epoch=283 train_loss=0.026834 test_loss=0.027889 train_mse=0.015050 train_ce=0.039280 ap_exact=39.3640% ap_tol1=39.3660% mae=89.46 len_match=0.5000% lr=2.494130e-04
+epoch=284 train_loss=0.026631 test_loss=0.029957 train_mse=0.014943 train_ce=0.038959 ap_exact=39.7886% ap_tol1=39.7977% mae=85.67 len_match=0.5000% lr=2.490524e-04
+epoch=285 train_loss=0.026281 test_loss=0.029206 train_mse=0.014551 train_ce=0.039100 ap_exact=39.2445% ap_tol1=39.2475% mae=89.20 len_match=0.5000% lr=2.486908e-04
+epoch=286 train_loss=0.026680 test_loss=0.027052 train_mse=0.014774 train_ce=0.039687 ap_exact=39.9569% ap_tol1=39.9599% mae=84.28 len_match=0.5000% lr=2.483282e-04
+epoch=287 train_loss=0.027605 test_loss=0.029365 train_mse=0.015403 train_ce=0.040672 ap_exact=39.7600% ap_tol1=39.7681% mae=86.26 len_match=0.5000% lr=2.479645e-04
+epoch=288 train_loss=0.026664 test_loss=0.028576 train_mse=0.014807 train_ce=0.039522 ap_exact=39.4501% ap_tol1=39.4521% mae=87.48 len_match=0.5000% lr=2.475999e-04
+epoch=289 train_loss=0.026465 test_loss=0.030087 train_mse=0.014708 train_ce=0.039187 ap_exact=39.6546% ap_tol1=39.6586% mae=86.08 len_match=0.5000% lr=2.472343e-04
+epoch=290 train_loss=0.026446 test_loss=0.027929 train_mse=0.014596 train_ce=0.039498 ap_exact=39.4879% ap_tol1=39.4919% mae=87.27 len_match=0.5000% lr=2.468676e-04
+epoch=291 train_loss=0.026307 test_loss=0.023935 train_mse=0.014628 train_ce=0.038933 ap_exact=39.3181% ap_tol1=39.3231% mae=87.98 len_match=0.5000% lr=2.465000e-04
+New best model saved at epoch 291 with test_loss=0.023935
+epoch=292 train_loss=0.026071 test_loss=0.028136 train_mse=0.014625 train_ce=0.038152 ap_exact=39.3646% ap_tol1=39.3736% mae=88.59 len_match=0.5000% lr=2.461313e-04
+epoch=293 train_loss=0.025451 test_loss=0.028845 train_mse=0.014090 train_ce=0.037869 ap_exact=39.8275% ap_tol1=39.8355% mae=84.50 len_match=0.6000% lr=2.457617e-04
+epoch=294 train_loss=0.026481 test_loss=0.027289 train_mse=0.014708 train_ce=0.039244 ap_exact=39.3631% ap_tol1=39.3672% mae=88.42 len_match=0.5000% lr=2.453911e-04
+epoch=295 train_loss=0.025917 test_loss=0.028327 train_mse=0.014370 train_ce=0.038487 ap_exact=39.7092% ap_tol1=39.7122% mae=86.27 len_match=0.5000% lr=2.450195e-04
+epoch=296 train_loss=0.025607 test_loss=0.028101 train_mse=0.014126 train_ce=0.038271 ap_exact=39.8133% ap_tol1=39.8193% mae=86.18 len_match=0.5000% lr=2.446470e-04
+epoch=297 train_loss=0.026060 test_loss=0.026056 train_mse=0.014396 train_ce=0.038882 ap_exact=39.6305% ap_tol1=39.6386% mae=85.70 len_match=0.5000% lr=2.442734e-04
+epoch=298 train_loss=0.025031 test_loss=0.028533 train_mse=0.014033 train_ce=0.036658 ap_exact=39.5786% ap_tol1=39.5846% mae=86.56 len_match=0.5000% lr=2.438989e-04
+epoch=299 train_loss=0.025646 test_loss=0.026994 train_mse=0.014199 train_ce=0.038156 ap_exact=39.7902% ap_tol1=39.7953% mae=85.32 len_match=0.5000% lr=2.435235e-04
+epoch=300 train_loss=0.024661 test_loss=0.024708 train_mse=0.013653 train_ce=0.036692 ap_exact=39.7822% ap_tol1=39.7892% mae=86.07 len_match=0.5000% lr=2.431470e-04
+epoch=301 train_loss=0.025001 test_loss=0.028135 train_mse=0.013776 train_ce=0.037415 ap_exact=39.9482% ap_tol1=39.9553% mae=85.83 len_match=0.5000% lr=2.427697e-04
+epoch=302 train_loss=0.024209 test_loss=0.023829 train_mse=0.013572 train_ce=0.035456 ap_exact=39.6270% ap_tol1=39.6351% mae=88.36 len_match=0.5000% lr=2.423913e-04
+New best model saved at epoch 302 with test_loss=0.023829
+epoch=303 train_loss=0.025217 test_loss=0.026473 train_mse=0.013954 train_ce=0.037545 ap_exact=39.4829% ap_tol1=39.4829% mae=86.47 len_match=0.5000% lr=2.420120e-04
+epoch=304 train_loss=0.025018 test_loss=0.029505 train_mse=0.013958 train_ce=0.036866 ap_exact=39.9172% ap_tol1=39.9252% mae=85.77 len_match=0.5000% lr=2.416318e-04
+epoch=305 train_loss=0.024750 test_loss=0.024327 train_mse=0.013643 train_ce=0.037025 ap_exact=39.6340% ap_tol1=39.6381% mae=86.22 len_match=0.5000% lr=2.412506e-04
+epoch=306 train_loss=0.024561 test_loss=0.025656 train_mse=0.013568 train_ce=0.036643 ap_exact=39.8829% ap_tol1=39.8880% mae=86.16 len_match=0.5000% lr=2.408685e-04
+epoch=307 train_loss=0.024743 test_loss=0.027417 train_mse=0.013804 train_ce=0.036462 ap_exact=39.8372% ap_tol1=39.8402% mae=86.97 len_match=0.7000% lr=2.404855e-04
+epoch=308 train_loss=0.023672 test_loss=0.024677 train_mse=0.013063 train_ce=0.035365 ap_exact=39.5931% ap_tol1=39.6022% mae=86.66 len_match=0.5000% lr=2.401015e-04
+epoch=309 train_loss=0.024522 test_loss=0.026410 train_mse=0.013545 train_ce=0.036589 ap_exact=39.4073% ap_tol1=39.4114% mae=87.90 len_match=0.5000% lr=2.397166e-04
+epoch=310 train_loss=0.023993 test_loss=0.027267 train_mse=0.013354 train_ce=0.035464 ap_exact=39.6363% ap_tol1=39.6484% mae=87.59 len_match=0.5000% lr=2.393308e-04
+epoch=311 train_loss=0.023553 test_loss=0.025455 train_mse=0.012969 train_ce=0.035282 ap_exact=40.0391% ap_tol1=40.0431% mae=84.49 len_match=0.5000% lr=2.389440e-04
+epoch=312 train_loss=0.023509 test_loss=0.023986 train_mse=0.012956 train_ce=0.035179 ap_exact=40.1594% ap_tol1=40.1624% mae=83.82 len_match=0.5000% lr=2.385564e-04
+epoch=313 train_loss=0.023584 test_loss=0.025500 train_mse=0.013068 train_ce=0.035052 ap_exact=40.0935% ap_tol1=40.1006% mae=84.98 len_match=0.5000% lr=2.381678e-04
+epoch=314 train_loss=0.023393 test_loss=0.024964 train_mse=0.012869 train_ce=0.035080 ap_exact=39.4315% ap_tol1=39.4345% mae=88.68 len_match=0.5000% lr=2.377783e-04
+epoch=315 train_loss=0.023183 test_loss=0.026036 train_mse=0.012824 train_ce=0.034530 ap_exact=39.7634% ap_tol1=39.7674% mae=87.22 len_match=0.5000% lr=2.373879e-04
+epoch=316 train_loss=0.023517 test_loss=0.022027 train_mse=0.012862 train_ce=0.035516 ap_exact=40.1517% ap_tol1=40.1548% mae=84.83 len_match=0.5000% lr=2.369967e-04
+New best model saved at epoch 316 with test_loss=0.022027
+epoch=317 train_loss=0.023314 test_loss=0.025212 train_mse=0.012866 train_ce=0.034825 ap_exact=40.1795% ap_tol1=40.1846% mae=85.30 len_match=0.5000% lr=2.366045e-04
+epoch=318 train_loss=0.022487 test_loss=0.025158 train_mse=0.012446 train_ce=0.033470 ap_exact=39.9746% ap_tol1=39.9827% mae=85.21 len_match=0.5000% lr=2.362114e-04
+epoch=319 train_loss=0.022279 test_loss=0.025689 train_mse=0.012407 train_ce=0.032909 ap_exact=40.0169% ap_tol1=40.0210% mae=85.46 len_match=0.5000% lr=2.358175e-04
+epoch=320 train_loss=0.023685 test_loss=0.027105 train_mse=0.013030 train_ce=0.035518 ap_exact=40.0586% ap_tol1=40.0637% mae=84.27 len_match=0.5000% lr=2.354227e-04
+epoch=321 train_loss=0.022198 test_loss=0.025587 train_mse=0.012165 train_ce=0.033443 ap_exact=40.1467% ap_tol1=40.1538% mae=84.75 len_match=0.5000% lr=2.350270e-04
+epoch=322 train_loss=0.023076 test_loss=0.027164 train_mse=0.012801 train_ce=0.034252 ap_exact=40.1042% ap_tol1=40.1082% mae=84.81 len_match=0.5000% lr=2.346304e-04
+epoch=323 train_loss=0.021805 test_loss=0.027023 train_mse=0.011922 train_ce=0.032943 ap_exact=39.9988% ap_tol1=40.0038% mae=86.01 len_match=0.5000% lr=2.342329e-04
+epoch=324 train_loss=0.022082 test_loss=0.022802 train_mse=0.012082 train_ce=0.033334 ap_exact=40.1187% ap_tol1=40.1217% mae=84.94 len_match=0.5000% lr=2.338346e-04
+epoch=325 train_loss=0.021590 test_loss=0.026891 train_mse=0.011787 train_ce=0.032677 ap_exact=40.2307% ap_tol1=40.2348% mae=83.70 len_match=0.5000% lr=2.334355e-04
+epoch=326 train_loss=0.021953 test_loss=0.024056 train_mse=0.012086 train_ce=0.032891 ap_exact=39.9071% ap_tol1=39.9142% mae=86.52 len_match=0.5000% lr=2.330354e-04
+epoch=327 train_loss=0.022154 test_loss=0.027990 train_mse=0.012278 train_ce=0.032918 ap_exact=39.6776% ap_tol1=39.6806% mae=86.30 len_match=0.5000% lr=2.326345e-04
+epoch=328 train_loss=0.021566 test_loss=0.024973 train_mse=0.011854 train_ce=0.032374 ap_exact=39.4452% ap_tol1=39.4492% mae=88.11 len_match=0.5000% lr=2.322328e-04
+epoch=329 train_loss=0.022160 test_loss=0.027223 train_mse=0.012185 train_ce=0.033250 ap_exact=40.4403% ap_tol1=40.4444% mae=83.10 len_match=0.5000% lr=2.318302e-04
+epoch=330 train_loss=0.021374 test_loss=0.024331 train_mse=0.011779 train_ce=0.031982 ap_exact=39.7580% ap_tol1=39.7610% mae=86.04 len_match=0.5000% lr=2.314268e-04
+epoch=331 train_loss=0.021686 test_loss=0.022584 train_mse=0.011981 train_ce=0.032348 ap_exact=39.7287% ap_tol1=39.7348% mae=85.45 len_match=0.5000% lr=2.310226e-04
+epoch=332 train_loss=0.021290 test_loss=0.026094 train_mse=0.011699 train_ce=0.031969 ap_exact=40.3964% ap_tol1=40.3974% mae=83.77 len_match=0.5000% lr=2.306175e-04
+epoch=333 train_loss=0.021240 test_loss=0.023558 train_mse=0.011692 train_ce=0.031827 ap_exact=40.1368% ap_tol1=40.1419% mae=85.38 len_match=0.4000% lr=2.302116e-04
+epoch=334 train_loss=0.021051 test_loss=0.024675 train_mse=0.011632 train_ce=0.031398 ap_exact=40.2694% ap_tol1=40.2725% mae=82.99 len_match=0.5000% lr=2.298048e-04
+epoch=335 train_loss=0.021861 test_loss=0.024153 train_mse=0.012030 train_ce=0.032771 ap_exact=40.6104% ap_tol1=40.6114% mae=83.28 len_match=0.5000% lr=2.293972e-04
+epoch=336 train_loss=0.021194 test_loss=0.027071 train_mse=0.011734 train_ce=0.031535 ap_exact=39.8398% ap_tol1=39.8438% mae=87.22 len_match=0.5000% lr=2.289889e-04
+epoch=337 train_loss=0.020155 test_loss=0.024104 train_mse=0.011120 train_ce=0.030117 ap_exact=39.8900% ap_tol1=39.8930% mae=84.94 len_match=0.5000% lr=2.285797e-04
+epoch=338 train_loss=0.021248 test_loss=0.019969 train_mse=0.011693 train_ce=0.031853 ap_exact=40.3789% ap_tol1=40.3819% mae=83.85 len_match=0.5000% lr=2.281697e-04
+New best model saved at epoch 338 with test_loss=0.019969
+epoch=339 train_loss=0.020439 test_loss=0.022336 train_mse=0.011236 train_ce=0.030679 ap_exact=40.5919% ap_tol1=40.5929% mae=83.15 len_match=0.5000% lr=2.277589e-04
+epoch=340 train_loss=0.020667 test_loss=0.025175 train_mse=0.011291 train_ce=0.031254 ap_exact=40.9394% ap_tol1=40.9444% mae=82.13 len_match=0.5000% lr=2.273473e-04
+epoch=341 train_loss=0.020215 test_loss=0.027426 train_mse=0.011145 train_ce=0.030231 ap_exact=39.4703% ap_tol1=39.4744% mae=88.16 len_match=0.5000% lr=2.269349e-04
+epoch=342 train_loss=0.021071 test_loss=0.025571 train_mse=0.011313 train_ce=0.032526 ap_exact=40.3410% ap_tol1=40.3450% mae=83.13 len_match=0.5000% lr=2.265217e-04
+epoch=343 train_loss=0.020564 test_loss=0.022366 train_mse=0.011350 train_ce=0.030713 ap_exact=40.4496% ap_tol1=40.4536% mae=83.61 len_match=0.5000% lr=2.261077e-04
+epoch=344 train_loss=0.020854 test_loss=0.023422 train_mse=0.011519 train_ce=0.031115 ap_exact=40.4780% ap_tol1=40.4831% mae=83.86 len_match=0.5000% lr=2.256930e-04
+epoch=345 train_loss=0.020341 test_loss=0.023318 train_mse=0.011117 train_ce=0.030749 ap_exact=40.1433% ap_tol1=40.1524% mae=84.52 len_match=0.5000% lr=2.252775e-04
+epoch=346 train_loss=0.019906 test_loss=0.023072 train_mse=0.010867 train_ce=0.030130 ap_exact=40.2003% ap_tol1=40.2043% mae=84.38 len_match=0.5000% lr=2.248611e-04
+epoch=347 train_loss=0.019516 test_loss=0.021897 train_mse=0.010695 train_ce=0.029406 ap_exact=40.6516% ap_tol1=40.6576% mae=82.00 len_match=0.5000% lr=2.244441e-04
+epoch=348 train_loss=0.020309 test_loss=0.022307 train_mse=0.011092 train_ce=0.030723 ap_exact=40.5745% ap_tol1=40.5816% mae=82.77 len_match=0.5000% lr=2.240262e-04
+epoch=349 train_loss=0.020082 test_loss=0.021202 train_mse=0.011000 train_ce=0.030273 ap_exact=40.7912% ap_tol1=40.7992% mae=82.10 len_match=0.5000% lr=2.236076e-04
+epoch=350 train_loss=0.020136 test_loss=0.021050 train_mse=0.010967 train_ce=0.030563 ap_exact=39.9176% ap_tol1=39.9186% mae=87.79 len_match=0.5000% lr=2.231883e-04
+epoch=351 train_loss=0.019081 test_loss=0.021031 train_mse=0.010423 train_ce=0.028857 ap_exact=39.7585% ap_tol1=39.7626% mae=86.81 len_match=0.5000% lr=2.227682e-04
+epoch=352 train_loss=0.019594 test_loss=0.023805 train_mse=0.010864 train_ce=0.029100 ap_exact=40.5845% ap_tol1=40.5865% mae=83.71 len_match=0.5000% lr=2.223473e-04
+epoch=353 train_loss=0.018956 test_loss=0.022266 train_mse=0.010343 train_ce=0.028710 ap_exact=39.7398% ap_tol1=39.7418% mae=87.32 len_match=0.5000% lr=2.219257e-04
+epoch=354 train_loss=0.019810 test_loss=0.021670 train_mse=0.010708 train_ce=0.030339 ap_exact=40.3346% ap_tol1=40.3346% mae=83.35 len_match=0.5000% lr=2.215034e-04
+epoch=355 train_loss=0.019636 test_loss=0.023393 train_mse=0.010699 train_ce=0.029792 ap_exact=40.3655% ap_tol1=40.3706% mae=83.39 len_match=0.5000% lr=2.210803e-04
+epoch=356 train_loss=0.019385 test_loss=0.023501 train_mse=0.010630 train_ce=0.029186 ap_exact=40.4703% ap_tol1=40.4744% mae=83.21 len_match=0.5000% lr=2.206565e-04
+epoch=357 train_loss=0.019837 test_loss=0.022290 train_mse=0.010907 train_ce=0.029766 ap_exact=40.5850% ap_tol1=40.5860% mae=83.18 len_match=0.5000% lr=2.202320e-04
+epoch=358 train_loss=0.019323 test_loss=0.022650 train_mse=0.010590 train_ce=0.029111 ap_exact=40.3897% ap_tol1=40.3937% mae=84.11 len_match=0.5000% lr=2.198067e-04
+epoch=359 train_loss=0.019197 test_loss=0.021559 train_mse=0.010386 train_ce=0.029370 ap_exact=40.9337% ap_tol1=40.9357% mae=80.74 len_match=0.5000% lr=2.193807e-04
+epoch=360 train_loss=0.019412 test_loss=0.023186 train_mse=0.010542 train_ce=0.029569 ap_exact=40.8309% ap_tol1=40.8349% mae=81.25 len_match=0.5000% lr=2.189541e-04
+epoch=361 train_loss=0.019197 test_loss=0.024804 train_mse=0.010435 train_ce=0.029208 ap_exact=40.7090% ap_tol1=40.7130% mae=83.56 len_match=0.5000% lr=2.185267e-04
+epoch=362 train_loss=0.019385 test_loss=0.023951 train_mse=0.010543 train_ce=0.029474 ap_exact=40.3646% ap_tol1=40.3686% mae=84.14 len_match=0.5000% lr=2.180986e-04
+epoch=363 train_loss=0.018351 test_loss=0.022463 train_mse=0.009987 train_ce=0.027878 ap_exact=40.7305% ap_tol1=40.7325% mae=82.73 len_match=0.5000% lr=2.176698e-04
+epoch=364 train_loss=0.018215 test_loss=0.023111 train_mse=0.009937 train_ce=0.027592 ap_exact=40.2974% ap_tol1=40.3015% mae=84.43 len_match=0.5000% lr=2.172403e-04
+epoch=365 train_loss=0.018640 test_loss=0.024257 train_mse=0.010182 train_ce=0.028195 ap_exact=40.3412% ap_tol1=40.3452% mae=83.20 len_match=0.5000% lr=2.168101e-04
+epoch=366 train_loss=0.018798 test_loss=0.021245 train_mse=0.010272 train_ce=0.028419 ap_exact=40.4424% ap_tol1=40.4474% mae=83.14 len_match=0.5000% lr=2.163792e-04
+epoch=367 train_loss=0.018754 test_loss=0.026114 train_mse=0.010284 train_ce=0.028234 ap_exact=40.1675% ap_tol1=40.1705% mae=83.68 len_match=0.5000% lr=2.159477e-04
+epoch=368 train_loss=0.018668 test_loss=0.020662 train_mse=0.010182 train_ce=0.028286 ap_exact=41.0674% ap_tol1=41.0734% mae=81.07 len_match=0.5000% lr=2.155155e-04
+epoch=369 train_loss=0.017619 test_loss=0.022003 train_mse=0.009590 train_ce=0.026763 ap_exact=40.8081% ap_tol1=40.8102% mae=81.99 len_match=0.5000% lr=2.150826e-04
+epoch=370 train_loss=0.018419 test_loss=0.021995 train_mse=0.010122 train_ce=0.027656 ap_exact=40.2930% ap_tol1=40.3001% mae=83.37 len_match=0.5000% lr=2.146490e-04
+epoch=371 train_loss=0.018050 test_loss=0.022010 train_mse=0.009790 train_ce=0.027531 ap_exact=40.2669% ap_tol1=40.2719% mae=84.27 len_match=0.5000% lr=2.142148e-04
+epoch=372 train_loss=0.018179 test_loss=0.020878 train_mse=0.009907 train_ce=0.027572 ap_exact=40.3539% ap_tol1=40.3589% mae=84.40 len_match=0.5000% lr=2.137799e-04
+epoch=373 train_loss=0.018434 test_loss=0.022196 train_mse=0.009953 train_ce=0.028271 ap_exact=40.2889% ap_tol1=40.2949% mae=83.16 len_match=0.5000% lr=2.133443e-04
+epoch=374 train_loss=0.017787 test_loss=0.021593 train_mse=0.009736 train_ce=0.026838 ap_exact=40.4271% ap_tol1=40.4321% mae=83.78 len_match=0.5000% lr=2.129081e-04
+epoch=375 train_loss=0.017827 test_loss=0.021453 train_mse=0.009644 train_ce=0.027277 ap_exact=40.3323% ap_tol1=40.3374% mae=84.21 len_match=0.5000% lr=2.124713e-04
+epoch=376 train_loss=0.018088 test_loss=0.024015 train_mse=0.009780 train_ce=0.027692 ap_exact=40.6584% ap_tol1=40.6624% mae=81.34 len_match=0.5000% lr=2.120338e-04
+epoch=377 train_loss=0.018239 test_loss=0.021616 train_mse=0.009858 train_ce=0.027937 ap_exact=40.4670% ap_tol1=40.4730% mae=83.25 len_match=0.6000% lr=2.115956e-04
+epoch=378 train_loss=0.017638 test_loss=0.020269 train_mse=0.009534 train_ce=0.027015 ap_exact=40.8964% ap_tol1=40.9024% mae=81.01 len_match=0.5000% lr=2.111569e-04
+epoch=379 train_loss=0.017564 test_loss=0.020922 train_mse=0.009535 train_ce=0.026762 ap_exact=40.7971% ap_tol1=40.8021% mae=80.74 len_match=0.5000% lr=2.107175e-04
+epoch=380 train_loss=0.017345 test_loss=0.021117 train_mse=0.009388 train_ce=0.026524 ap_exact=40.2013% ap_tol1=40.2044% mae=84.64 len_match=0.5000% lr=2.102775e-04
+epoch=381 train_loss=0.017175 test_loss=0.023974 train_mse=0.009404 train_ce=0.025904 ap_exact=40.3453% ap_tol1=40.3474% mae=83.99 len_match=0.5000% lr=2.098369e-04
+epoch=382 train_loss=0.017539 test_loss=0.021685 train_mse=0.009494 train_ce=0.026815 ap_exact=41.3447% ap_tol1=41.3507% mae=79.54 len_match=0.5000% lr=2.093956e-04
+epoch=383 train_loss=0.017481 test_loss=0.023116 train_mse=0.009424 train_ce=0.026857 ap_exact=40.6899% ap_tol1=40.6969% mae=81.43 len_match=0.6000% lr=2.089538e-04
+epoch=384 train_loss=0.016648 test_loss=0.024474 train_mse=0.009053 train_ce=0.025316 ap_exact=41.2849% ap_tol1=41.2889% mae=77.76 len_match=0.5000% lr=2.085113e-04
+epoch=385 train_loss=0.017203 test_loss=0.021736 train_mse=0.009261 train_ce=0.026473 ap_exact=41.3571% ap_tol1=41.3601% mae=78.24 len_match=0.6000% lr=2.080682e-04
+epoch=386 train_loss=0.017235 test_loss=0.021934 train_mse=0.009475 train_ce=0.025867 ap_exact=40.7990% ap_tol1=40.8081% mae=82.02 len_match=0.5000% lr=2.076246e-04
+epoch=387 train_loss=0.017515 test_loss=0.018775 train_mse=0.009513 train_ce=0.026676 ap_exact=40.6530% ap_tol1=40.6571% mae=81.51 len_match=0.5000% lr=2.071803e-04
+New best model saved at epoch 387 with test_loss=0.018775
+epoch=388 train_loss=0.017288 test_loss=0.023067 train_mse=0.009313 train_ce=0.026583 ap_exact=39.9276% ap_tol1=39.9337% mae=86.21 len_match=0.6000% lr=2.067355e-04
+epoch=389 train_loss=0.017294 test_loss=0.022938 train_mse=0.009346 train_ce=0.026493 ap_exact=40.6115% ap_tol1=40.6155% mae=82.90 len_match=0.5000% lr=2.062901e-04
+epoch=390 train_loss=0.016823 test_loss=0.021246 train_mse=0.009139 train_ce=0.025616 ap_exact=40.6036% ap_tol1=40.6126% mae=82.60 len_match=0.5000% lr=2.058440e-04
+epoch=391 train_loss=0.016332 test_loss=0.020839 train_mse=0.008825 train_ce=0.025023 ap_exact=40.9564% ap_tol1=40.9615% mae=80.96 len_match=0.5000% lr=2.053975e-04
+epoch=392 train_loss=0.016629 test_loss=0.021122 train_mse=0.009032 train_ce=0.025323 ap_exact=41.0297% ap_tol1=41.0348% mae=80.60 len_match=0.5000% lr=2.049503e-04
+epoch=393 train_loss=0.016268 test_loss=0.020979 train_mse=0.008808 train_ce=0.024866 ap_exact=40.3034% ap_tol1=40.3075% mae=82.93 len_match=0.5000% lr=2.045026e-04
+epoch=394 train_loss=0.017067 test_loss=0.020168 train_mse=0.009326 train_ce=0.025806 ap_exact=40.3653% ap_tol1=40.3723% mae=83.70 len_match=0.5000% lr=2.040543e-04
+epoch=395 train_loss=0.016247 test_loss=0.022382 train_mse=0.008833 train_ce=0.024711 ap_exact=40.6579% ap_tol1=40.6609% mae=82.57 len_match=0.5000% lr=2.036055e-04
+epoch=396 train_loss=0.016863 test_loss=0.019741 train_mse=0.009200 train_ce=0.025541 ap_exact=41.0319% ap_tol1=41.0400% mae=80.98 len_match=0.5000% lr=2.031561e-04
+epoch=397 train_loss=0.017307 test_loss=0.022006 train_mse=0.009229 train_ce=0.026927 ap_exact=40.9489% ap_tol1=40.9580% mae=80.84 len_match=0.5000% lr=2.027062e-04
+epoch=398 train_loss=0.015836 test_loss=0.022693 train_mse=0.008623 train_ce=0.024046 ap_exact=40.5500% ap_tol1=40.5551% mae=82.67 len_match=0.5000% lr=2.022558e-04
+epoch=399 train_loss=0.015736 test_loss=0.017764 train_mse=0.008595 train_ce=0.023804 ap_exact=40.1601% ap_tol1=40.1681% mae=84.18 len_match=0.5000% lr=2.018048e-04
+New best model saved at epoch 399 with test_loss=0.017764
+epoch=400 train_loss=0.016227 test_loss=0.022366 train_mse=0.008792 train_ce=0.024782 ap_exact=40.4703% ap_tol1=40.4744% mae=81.90 len_match=0.5000% lr=2.013532e-04
+epoch=401 train_loss=0.015709 test_loss=0.021035 train_mse=0.008407 train_ce=0.024342 ap_exact=41.1570% ap_tol1=41.1580% mae=80.44 len_match=0.5000% lr=2.009012e-04
+epoch=402 train_loss=0.016677 test_loss=0.021669 train_mse=0.008925 train_ce=0.025839 ap_exact=40.5909% ap_tol1=40.5980% mae=82.10 len_match=0.5000% lr=2.004486e-04
+epoch=403 train_loss=0.016661 test_loss=0.022363 train_mse=0.008946 train_ce=0.025714 ap_exact=40.5845% ap_tol1=40.5855% mae=82.19 len_match=0.5000% lr=1.999955e-04
+epoch=404 train_loss=0.015972 test_loss=0.019822 train_mse=0.008660 train_ce=0.024374 ap_exact=40.7463% ap_tol1=40.7584% mae=81.17 len_match=0.5000% lr=1.995419e-04
+epoch=405 train_loss=0.016160 test_loss=0.018048 train_mse=0.008701 train_ce=0.024864 ap_exact=40.7356% ap_tol1=40.7416% mae=81.92 len_match=0.5000% lr=1.990877e-04
+epoch=406 train_loss=0.015391 test_loss=0.018826 train_mse=0.008308 train_ce=0.023609 ap_exact=40.7235% ap_tol1=40.7255% mae=83.04 len_match=0.5000% lr=1.986331e-04
+epoch=407 train_loss=0.015736 test_loss=0.021989 train_mse=0.008441 train_ce=0.024315 ap_exact=40.4171% ap_tol1=40.4211% mae=83.96 len_match=0.6000% lr=1.981780e-04
+epoch=408 train_loss=0.015610 test_loss=0.022817 train_mse=0.008400 train_ce=0.024034 ap_exact=40.4867% ap_tol1=40.4928% mae=82.82 len_match=0.5000% lr=1.977223e-04
+epoch=409 train_loss=0.015340 test_loss=0.023229 train_mse=0.008188 train_ce=0.023840 ap_exact=40.4772% ap_tol1=40.4813% mae=83.53 len_match=0.6000% lr=1.972662e-04
+epoch=410 train_loss=0.016349 test_loss=0.022718 train_mse=0.008905 train_ce=0.024815 ap_exact=39.7426% ap_tol1=39.7487% mae=86.73 len_match=0.5000% lr=1.968096e-04
+epoch=411 train_loss=0.015599 test_loss=0.019062 train_mse=0.008386 train_ce=0.024043 ap_exact=40.6420% ap_tol1=40.6481% mae=82.28 len_match=0.5000% lr=1.963525e-04
+epoch=412 train_loss=0.015590 test_loss=0.020302 train_mse=0.008445 train_ce=0.023816 ap_exact=41.2889% ap_tol1=41.2939% mae=79.69 len_match=0.5000% lr=1.958950e-04
+epoch=413 train_loss=0.015297 test_loss=0.018005 train_mse=0.008255 train_ce=0.023472 ap_exact=40.4909% ap_tol1=40.4939% mae=81.26 len_match=0.5000% lr=1.954370e-04
+epoch=414 train_loss=0.015640 test_loss=0.018569 train_mse=0.008349 train_ce=0.024306 ap_exact=41.1662% ap_tol1=41.1732% mae=79.63 len_match=0.5000% lr=1.949785e-04
+epoch=415 train_loss=0.015685 test_loss=0.025004 train_mse=0.008465 train_ce=0.024067 ap_exact=41.0534% ap_tol1=41.0564% mae=80.69 len_match=0.5000% lr=1.945195e-04
+epoch=416 train_loss=0.015404 test_loss=0.020919 train_mse=0.008328 train_ce=0.023587 ap_exact=40.3521% ap_tol1=40.3531% mae=82.69 len_match=0.5000% lr=1.940601e-04
+epoch=417 train_loss=0.014574 test_loss=0.020569 train_mse=0.007808 train_ce=0.022554 ap_exact=40.7821% ap_tol1=40.7852% mae=81.48 len_match=0.5000% lr=1.936002e-04
+epoch=418 train_loss=0.014596 test_loss=0.018530 train_mse=0.007877 train_ce=0.022394 ap_exact=40.0256% ap_tol1=40.0276% mae=85.87 len_match=0.5000% lr=1.931399e-04
+epoch=419 train_loss=0.015219 test_loss=0.021086 train_mse=0.008272 train_ce=0.023157 ap_exact=41.1147% ap_tol1=41.1187% mae=80.19 len_match=0.5000% lr=1.926791e-04
+epoch=420 train_loss=0.015617 test_loss=0.022198 train_mse=0.008414 train_ce=0.024007 ap_exact=40.8113% ap_tol1=40.8204% mae=82.78 len_match=0.5000% lr=1.922179e-04
+epoch=421 train_loss=0.015034 test_loss=0.022996 train_mse=0.008012 train_ce=0.023408 ap_exact=41.3058% ap_tol1=41.3078% mae=79.99 len_match=0.5000% lr=1.917563e-04
+epoch=422 train_loss=0.014705 test_loss=0.020205 train_mse=0.007973 train_ce=0.022440 ap_exact=40.4283% ap_tol1=40.4364% mae=81.43 len_match=0.5000% lr=1.912942e-04
+epoch=423 train_loss=0.015111 test_loss=0.021275 train_mse=0.008174 train_ce=0.023122 ap_exact=40.3904% ap_tol1=40.3954% mae=83.75 len_match=0.5000% lr=1.908318e-04
+epoch=424 train_loss=0.014248 test_loss=0.019593 train_mse=0.007781 train_ce=0.021556 ap_exact=40.9383% ap_tol1=40.9464% mae=80.49 len_match=0.5000% lr=1.903688e-04
+epoch=425 train_loss=0.014412 test_loss=0.021736 train_mse=0.007774 train_ce=0.022125 ap_exact=40.9626% ap_tol1=40.9687% mae=80.54 len_match=0.5000% lr=1.899055e-04
+epoch=426 train_loss=0.014094 test_loss=0.021254 train_mse=0.007574 train_ce=0.021735 ap_exact=40.7186% ap_tol1=40.7206% mae=81.00 len_match=0.5000% lr=1.894418e-04
+epoch=427 train_loss=0.014629 test_loss=0.020076 train_mse=0.007921 train_ce=0.022360 ap_exact=40.9293% ap_tol1=40.9353% mae=81.16 len_match=0.5000% lr=1.889777e-04
+epoch=428 train_loss=0.014304 test_loss=0.019225 train_mse=0.007709 train_ce=0.021984 ap_exact=40.8549% ap_tol1=40.8609% mae=79.15 len_match=0.5000% lr=1.885131e-04
+epoch=429 train_loss=0.014495 test_loss=0.021178 train_mse=0.007895 train_ce=0.022001 ap_exact=40.9563% ap_tol1=40.9603% mae=80.69 len_match=0.4000% lr=1.880482e-04
+epoch=430 train_loss=0.014787 test_loss=0.021936 train_mse=0.007891 train_ce=0.022989 ap_exact=41.0974% ap_tol1=41.1034% mae=80.04 len_match=0.5000% lr=1.875829e-04
+epoch=431 train_loss=0.014245 test_loss=0.020156 train_mse=0.007719 train_ce=0.021753 ap_exact=40.9898% ap_tol1=41.0009% mae=81.79 len_match=0.5000% lr=1.871172e-04
+epoch=432 train_loss=0.014137 test_loss=0.019332 train_mse=0.007635 train_ce=0.021673 ap_exact=40.5897% ap_tol1=40.5927% mae=82.34 len_match=0.5000% lr=1.866511e-04
+epoch=433 train_loss=0.013765 test_loss=0.021145 train_mse=0.007450 train_ce=0.021053 ap_exact=41.1136% ap_tol1=41.1146% mae=81.09 len_match=0.5000% lr=1.861846e-04
+epoch=434 train_loss=0.013998 test_loss=0.022548 train_mse=0.007436 train_ce=0.021876 ap_exact=41.0293% ap_tol1=41.0373% mae=79.27 len_match=0.5000% lr=1.857178e-04
+epoch=435 train_loss=0.013766 test_loss=0.021198 train_mse=0.007508 train_ce=0.020859 ap_exact=40.7871% ap_tol1=40.7881% mae=80.06 len_match=0.5000% lr=1.852505e-04
+epoch=436 train_loss=0.013755 test_loss=0.021621 train_mse=0.007413 train_ce=0.021139 ap_exact=41.1980% ap_tol1=41.2030% mae=79.65 len_match=0.5000% lr=1.847830e-04
+epoch=437 train_loss=0.014012 test_loss=0.021195 train_mse=0.007624 train_ce=0.021294 ap_exact=40.9398% ap_tol1=40.9479% mae=80.45 len_match=0.5000% lr=1.843150e-04
+epoch=438 train_loss=0.013896 test_loss=0.019210 train_mse=0.007524 train_ce=0.021240 ap_exact=40.5004% ap_tol1=40.5085% mae=82.27 len_match=0.5000% lr=1.838468e-04
+epoch=439 train_loss=0.013702 test_loss=0.019537 train_mse=0.007380 train_ce=0.021073 ap_exact=40.4421% ap_tol1=40.4462% mae=82.13 len_match=0.4000% lr=1.833781e-04
+epoch=440 train_loss=0.014032 test_loss=0.020306 train_mse=0.007466 train_ce=0.021885 ap_exact=39.9950% ap_tol1=39.9990% mae=83.82 len_match=0.5000% lr=1.829092e-04
+epoch=441 train_loss=0.013501 test_loss=0.017977 train_mse=0.007294 train_ce=0.020689 ap_exact=41.2724% ap_tol1=41.2795% mae=78.97 len_match=0.5000% lr=1.824399e-04
+epoch=442 train_loss=0.013469 test_loss=0.019283 train_mse=0.007441 train_ce=0.020095 ap_exact=40.6877% ap_tol1=40.6938% mae=81.42 len_match=0.5000% lr=1.819702e-04
+epoch=443 train_loss=0.013877 test_loss=0.023031 train_mse=0.007537 train_ce=0.021136 ap_exact=40.8182% ap_tol1=40.8212% mae=81.02 len_match=0.5000% lr=1.815002e-04
+epoch=444 train_loss=0.013735 test_loss=0.016823 train_mse=0.007431 train_ce=0.021013 ap_exact=40.3012% ap_tol1=40.3122% mae=83.06 len_match=0.5000% lr=1.810300e-04
+New best model saved at epoch 444 with test_loss=0.016823
+epoch=445 train_loss=0.013939 test_loss=0.020497 train_mse=0.007470 train_ce=0.021565 ap_exact=41.4294% ap_tol1=41.4365% mae=78.48 len_match=0.5000% lr=1.805593e-04
+epoch=446 train_loss=0.013458 test_loss=0.020847 train_mse=0.007289 train_ce=0.020565 ap_exact=41.3504% ap_tol1=41.3554% mae=78.87 len_match=0.5000% lr=1.800884e-04
+epoch=447 train_loss=0.013387 test_loss=0.020694 train_mse=0.007201 train_ce=0.020620 ap_exact=40.8314% ap_tol1=40.8354% mae=80.68 len_match=0.5000% lr=1.796172e-04
+epoch=448 train_loss=0.013273 test_loss=0.021325 train_mse=0.007072 train_ce=0.020671 ap_exact=40.9328% ap_tol1=40.9369% mae=79.82 len_match=0.5000% lr=1.791456e-04
+epoch=449 train_loss=0.012957 test_loss=0.020106 train_mse=0.007013 train_ce=0.019815 ap_exact=40.4690% ap_tol1=40.4761% mae=81.48 len_match=0.5000% lr=1.786738e-04
+epoch=450 train_loss=0.013227 test_loss=0.019138 train_mse=0.007078 train_ce=0.020496 ap_exact=40.7528% ap_tol1=40.7578% mae=81.49 len_match=0.5000% lr=1.782017e-04
+epoch=451 train_loss=0.013311 test_loss=0.019543 train_mse=0.007097 train_ce=0.020712 ap_exact=40.7977% ap_tol1=40.8057% mae=81.27 len_match=0.5000% lr=1.777292e-04
+epoch=452 train_loss=0.012928 test_loss=0.017985 train_mse=0.007004 train_ce=0.019746 ap_exact=40.4291% ap_tol1=40.4371% mae=81.10 len_match=0.5000% lr=1.772565e-04
+epoch=453 train_loss=0.013237 test_loss=0.019732 train_mse=0.007139 train_ce=0.020328 ap_exact=41.4368% ap_tol1=41.4428% mae=77.80 len_match=0.5000% lr=1.767835e-04
+epoch=454 train_loss=0.013147 test_loss=0.021316 train_mse=0.007158 train_ce=0.019964 ap_exact=40.8032% ap_tol1=40.8083% mae=79.82 len_match=0.5000% lr=1.763103e-04
+epoch=455 train_loss=0.012616 test_loss=0.020346 train_mse=0.006795 train_ce=0.019403 ap_exact=41.0208% ap_tol1=41.0289% mae=79.26 len_match=0.5000% lr=1.758367e-04
+epoch=456 train_loss=0.013332 test_loss=0.019052 train_mse=0.007155 train_ce=0.020589 ap_exact=41.2640% ap_tol1=41.2681% mae=78.35 len_match=0.6000% lr=1.753629e-04
+epoch=457 train_loss=0.013028 test_loss=0.019342 train_mse=0.007039 train_ce=0.019965 ap_exact=41.1053% ap_tol1=41.1143% mae=79.26 len_match=0.5000% lr=1.748889e-04
+epoch=458 train_loss=0.012595 test_loss=0.019110 train_mse=0.006816 train_ce=0.019262 ap_exact=41.0052% ap_tol1=41.0082% mae=79.30 len_match=0.5000% lr=1.744146e-04
+epoch=459 train_loss=0.012632 test_loss=0.019392 train_mse=0.006761 train_ce=0.019569 ap_exact=41.4033% ap_tol1=41.4074% mae=77.73 len_match=0.5000% lr=1.739400e-04
+epoch=460 train_loss=0.012933 test_loss=0.019708 train_mse=0.006960 train_ce=0.019912 ap_exact=40.9727% ap_tol1=40.9817% mae=79.77 len_match=0.5000% lr=1.734652e-04
+epoch=461 train_loss=0.013203 test_loss=0.022552 train_mse=0.007071 train_ce=0.020440 ap_exact=40.6918% ap_tol1=40.6958% mae=80.15 len_match=0.5000% lr=1.729901e-04
+epoch=462 train_loss=0.012698 test_loss=0.019237 train_mse=0.006818 train_ce=0.019601 ap_exact=40.6069% ap_tol1=40.6120% mae=79.87 len_match=0.5000% lr=1.725148e-04
+epoch=463 train_loss=0.013008 test_loss=0.017381 train_mse=0.006938 train_ce=0.020235 ap_exact=41.1183% ap_tol1=41.1223% mae=78.91 len_match=0.5000% lr=1.720393e-04
+epoch=464 train_loss=0.012846 test_loss=0.018624 train_mse=0.006915 train_ce=0.019769 ap_exact=40.4432% ap_tol1=40.4483% mae=80.78 len_match=0.5000% lr=1.715635e-04
+epoch=465 train_loss=0.012548 test_loss=0.019188 train_mse=0.006795 train_ce=0.019178 ap_exact=40.7396% ap_tol1=40.7437% mae=80.42 len_match=0.5000% lr=1.710876e-04
+epoch=466 train_loss=0.012423 test_loss=0.017821 train_mse=0.006653 train_ce=0.019233 ap_exact=40.0685% ap_tol1=40.0726% mae=83.33 len_match=0.5000% lr=1.706114e-04
+epoch=467 train_loss=0.012832 test_loss=0.018325 train_mse=0.006900 train_ce=0.019772 ap_exact=40.8054% ap_tol1=40.8095% mae=80.98 len_match=0.5000% lr=1.701350e-04
+epoch=468 train_loss=0.012511 test_loss=0.022590 train_mse=0.006755 train_ce=0.019186 ap_exact=41.2072% ap_tol1=41.2122% mae=79.14 len_match=0.5000% lr=1.696584e-04
+epoch=469 train_loss=0.012569 test_loss=0.018701 train_mse=0.006784 train_ce=0.019284 ap_exact=40.9459% ap_tol1=40.9499% mae=80.49 len_match=0.5000% lr=1.691816e-04
+epoch=470 train_loss=0.012635 test_loss=0.020238 train_mse=0.006794 train_ce=0.019470 ap_exact=40.9143% ap_tol1=40.9173% mae=80.01 len_match=0.5000% lr=1.687046e-04
+epoch=471 train_loss=0.012046 test_loss=0.019125 train_mse=0.006438 train_ce=0.018691 ap_exact=40.6453% ap_tol1=40.6474% mae=80.45 len_match=0.5000% lr=1.682274e-04
+epoch=472 train_loss=0.012432 test_loss=0.021595 train_mse=0.006707 train_ce=0.019082 ap_exact=40.2083% ap_tol1=40.2103% mae=82.83 len_match=0.5000% lr=1.677500e-04
+epoch=473 train_loss=0.012506 test_loss=0.019951 train_mse=0.006705 train_ce=0.019336 ap_exact=40.4591% ap_tol1=40.4642% mae=82.34 len_match=0.5000% lr=1.672724e-04
+epoch=474 train_loss=0.012296 test_loss=0.021411 train_mse=0.006567 train_ce=0.019097 ap_exact=41.0363% ap_tol1=41.0434% mae=81.08 len_match=0.5000% lr=1.667947e-04
+epoch=475 train_loss=0.012250 test_loss=0.018732 train_mse=0.006610 train_ce=0.018801 ap_exact=40.4017% ap_tol1=40.4047% mae=83.69 len_match=0.5000% lr=1.663168e-04
+epoch=476 train_loss=0.012066 test_loss=0.020781 train_mse=0.006500 train_ce=0.018553 ap_exact=40.7236% ap_tol1=40.7306% mae=81.29 len_match=0.5000% lr=1.658387e-04
+epoch=477 train_loss=0.011935 test_loss=0.020833 train_mse=0.006441 train_ce=0.018314 ap_exact=40.6582% ap_tol1=40.6643% mae=81.32 len_match=0.5000% lr=1.653604e-04
+epoch=478 train_loss=0.012496 test_loss=0.020400 train_mse=0.006780 train_ce=0.019054 ap_exact=41.1854% ap_tol1=41.1905% mae=78.71 len_match=0.5000% lr=1.648820e-04
+epoch=479 train_loss=0.011783 test_loss=0.017379 train_mse=0.006218 train_ce=0.018550 ap_exact=41.0016% ap_tol1=41.0137% mae=78.51 len_match=0.5000% lr=1.644035e-04
+epoch=480 train_loss=0.012782 test_loss=0.021051 train_mse=0.006660 train_ce=0.020407 ap_exact=40.7122% ap_tol1=40.7183% mae=80.86 len_match=0.5000% lr=1.639247e-04
+epoch=481 train_loss=0.012250 test_loss=0.020889 train_mse=0.006491 train_ce=0.019196 ap_exact=41.1142% ap_tol1=41.1182% mae=80.47 len_match=0.5000% lr=1.634459e-04
+epoch=482 train_loss=0.012115 test_loss=0.018036 train_mse=0.006507 train_ce=0.018695 ap_exact=40.9761% ap_tol1=40.9801% mae=79.84 len_match=0.5000% lr=1.629669e-04
+epoch=483 train_loss=0.011939 test_loss=0.021436 train_mse=0.006423 train_ce=0.018385 ap_exact=41.1760% ap_tol1=41.1851% mae=78.66 len_match=0.5000% lr=1.624878e-04
+epoch=484 train_loss=0.011793 test_loss=0.021761 train_mse=0.006325 train_ce=0.018224 ap_exact=40.1606% ap_tol1=40.1687% mae=84.14 len_match=0.5000% lr=1.620085e-04
+epoch=485 train_loss=0.011529 test_loss=0.020240 train_mse=0.006114 train_ce=0.018048 ap_exact=41.1133% ap_tol1=41.1193% mae=79.94 len_match=0.5000% lr=1.615292e-04
+epoch=486 train_loss=0.011637 test_loss=0.020447 train_mse=0.006238 train_ce=0.017998 ap_exact=40.4073% ap_tol1=40.4144% mae=82.36 len_match=0.5000% lr=1.610497e-04
+epoch=487 train_loss=0.011185 test_loss=0.019470 train_mse=0.005963 train_ce=0.017409 ap_exact=40.9626% ap_tol1=40.9686% mae=79.97 len_match=0.5000% lr=1.605701e-04
+epoch=488 train_loss=0.011660 test_loss=0.017942 train_mse=0.006281 train_ce=0.017931 ap_exact=41.1203% ap_tol1=41.1263% mae=79.27 len_match=0.5000% lr=1.600904e-04
+epoch=489 train_loss=0.011144 test_loss=0.020881 train_mse=0.005998 train_ce=0.017155 ap_exact=40.7062% ap_tol1=40.7102% mae=80.79 len_match=0.5000% lr=1.596105e-04
+epoch=490 train_loss=0.011084 test_loss=0.018692 train_mse=0.006024 train_ce=0.016867 ap_exact=41.2324% ap_tol1=41.2334% mae=77.93 len_match=0.5000% lr=1.591306e-04
+epoch=491 train_loss=0.011319 test_loss=0.017866 train_mse=0.006069 train_ce=0.017498 ap_exact=40.8787% ap_tol1=40.8827% mae=80.14 len_match=0.5000% lr=1.586506e-04
+epoch=492 train_loss=0.011257 test_loss=0.021026 train_mse=0.006040 train_ce=0.017390 ap_exact=40.9184% ap_tol1=40.9225% mae=79.44 len_match=0.5000% lr=1.581705e-04
+epoch=493 train_loss=0.011834 test_loss=0.019099 train_mse=0.006333 train_ce=0.018336 ap_exact=40.5702% ap_tol1=40.5722% mae=81.56 len_match=0.5000% lr=1.576903e-04
+epoch=494 train_loss=0.011497 test_loss=0.021095 train_mse=0.006114 train_ce=0.017941 ap_exact=40.9189% ap_tol1=40.9260% mae=80.71 len_match=0.7000% lr=1.572101e-04
+epoch=495 train_loss=0.011155 test_loss=0.019625 train_mse=0.005936 train_ce=0.017399 ap_exact=40.7115% ap_tol1=40.7155% mae=82.66 len_match=0.6000% lr=1.567297e-04
+epoch=496 train_loss=0.011194 test_loss=0.017897 train_mse=0.005973 train_ce=0.017403 ap_exact=40.6966% ap_tol1=40.7067% mae=82.06 len_match=0.5000% lr=1.562493e-04
+epoch=497 train_loss=0.011712 test_loss=0.020648 train_mse=0.006297 train_ce=0.018051 ap_exact=40.4733% ap_tol1=40.4773% mae=82.34 len_match=0.7000% lr=1.557688e-04
+epoch=498 train_loss=0.011413 test_loss=0.019663 train_mse=0.006222 train_ce=0.017304 ap_exact=40.4424% ap_tol1=40.4474% mae=81.69 len_match=0.5000% lr=1.552883e-04
+epoch=499 train_loss=0.011417 test_loss=0.019680 train_mse=0.006132 train_ce=0.017615 ap_exact=41.6890% ap_tol1=41.6930% mae=77.16 len_match=0.5000% lr=1.548077e-04
+epoch=500 train_loss=0.011344 test_loss=0.021110 train_mse=0.006026 train_ce=0.017726 ap_exact=40.9461% ap_tol1=40.9541% mae=80.33 len_match=0.5000% lr=1.543271e-04
+[viz] epoch=500 codebook map saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0500_codebook.png
+[viz] epoch=500 diffusion denoise saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0500_diffusion_denoise.png
+epoch=501 train_loss=0.011215 test_loss=0.021081 train_mse=0.006096 train_ce=0.017062 ap_exact=41.4299% ap_tol1=41.4370% mae=78.43 len_match=0.5000% lr=1.538464e-04
+epoch=502 train_loss=0.011458 test_loss=0.018436 train_mse=0.006102 train_ce=0.017853 ap_exact=40.8959% ap_tol1=40.9010% mae=80.81 len_match=0.5000% lr=1.533657e-04
+epoch=503 train_loss=0.011340 test_loss=0.020388 train_mse=0.006181 train_ce=0.017198 ap_exact=41.0407% ap_tol1=41.0447% mae=80.02 len_match=0.5000% lr=1.528850e-04
+epoch=504 train_loss=0.010713 test_loss=0.019847 train_mse=0.005695 train_ce=0.016727 ap_exact=41.5231% ap_tol1=41.5271% mae=77.80 len_match=0.5000% lr=1.524042e-04
+epoch=505 train_loss=0.011123 test_loss=0.023097 train_mse=0.005927 train_ce=0.017322 ap_exact=41.5494% ap_tol1=41.5565% mae=78.61 len_match=0.5000% lr=1.519234e-04
+epoch=506 train_loss=0.010966 test_loss=0.022733 train_mse=0.005878 train_ce=0.016962 ap_exact=40.7691% ap_tol1=40.7751% mae=79.22 len_match=0.5000% lr=1.514425e-04
+epoch=507 train_loss=0.011249 test_loss=0.021298 train_mse=0.006030 train_ce=0.017395 ap_exact=41.1570% ap_tol1=41.1601% mae=78.88 len_match=0.5000% lr=1.509617e-04
+epoch=508 train_loss=0.010616 test_loss=0.022116 train_mse=0.005696 train_ce=0.016400 ap_exact=41.2969% ap_tol1=41.3019% mae=78.23 len_match=0.5000% lr=1.504809e-04
+epoch=509 train_loss=0.010737 test_loss=0.019204 train_mse=0.005752 train_ce=0.016616 ap_exact=40.7812% ap_tol1=40.7843% mae=81.36 len_match=0.5000% lr=1.500000e-04
+epoch=510 train_loss=0.010398 test_loss=0.021248 train_mse=0.005577 train_ce=0.016069 ap_exact=40.6605% ap_tol1=40.6625% mae=82.52 len_match=0.5000% lr=1.495191e-04
+epoch=511 train_loss=0.010807 test_loss=0.020218 train_mse=0.005771 train_ce=0.016787 ap_exact=41.0229% ap_tol1=41.0300% mae=78.44 len_match=0.5000% lr=1.490383e-04
+epoch=512 train_loss=0.011076 test_loss=0.018915 train_mse=0.005908 train_ce=0.017228 ap_exact=41.3561% ap_tol1=41.3601% mae=78.56 len_match=0.5000% lr=1.485575e-04
+epoch=513 train_loss=0.011036 test_loss=0.022784 train_mse=0.005962 train_ce=0.016911 ap_exact=40.7428% ap_tol1=40.7468% mae=80.16 len_match=0.5000% lr=1.480766e-04
+epoch=514 train_loss=0.010391 test_loss=0.020779 train_mse=0.005614 train_ce=0.015922 ap_exact=40.2506% ap_tol1=40.2546% mae=82.83 len_match=0.5000% lr=1.475958e-04
+epoch=515 train_loss=0.010620 test_loss=0.021969 train_mse=0.005682 train_ce=0.016459 ap_exact=39.9184% ap_tol1=39.9224% mae=83.45 len_match=0.5000% lr=1.471150e-04
+epoch=516 train_loss=0.010667 test_loss=0.020553 train_mse=0.005724 train_ce=0.016479 ap_exact=40.3584% ap_tol1=40.3614% mae=82.54 len_match=0.5000% lr=1.466343e-04
+epoch=517 train_loss=0.010286 test_loss=0.022363 train_mse=0.005512 train_ce=0.015916 ap_exact=40.6336% ap_tol1=40.6406% mae=81.04 len_match=0.5000% lr=1.461536e-04
+epoch=518 train_loss=0.010534 test_loss=0.017247 train_mse=0.005676 train_ce=0.016193 ap_exact=40.7029% ap_tol1=40.7079% mae=81.19 len_match=0.5000% lr=1.456729e-04
+epoch=519 train_loss=0.010736 test_loss=0.018967 train_mse=0.005673 train_ce=0.016879 ap_exact=40.5662% ap_tol1=40.5712% mae=80.05 len_match=0.5000% lr=1.451923e-04
+epoch=520 train_loss=0.010286 test_loss=0.020291 train_mse=0.005526 train_ce=0.015868 ap_exact=40.0432% ap_tol1=40.0502% mae=81.76 len_match=0.5000% lr=1.447117e-04
+epoch=521 train_loss=0.010648 test_loss=0.020734 train_mse=0.005710 train_ce=0.016460 ap_exact=40.2344% ap_tol1=40.2415% mae=83.60 len_match=0.5000% lr=1.442312e-04
+epoch=522 train_loss=0.010183 test_loss=0.020882 train_mse=0.005456 train_ce=0.015754 ap_exact=41.0393% ap_tol1=41.0433% mae=81.33 len_match=0.5000% lr=1.437507e-04
+epoch=523 train_loss=0.010366 test_loss=0.019928 train_mse=0.005533 train_ce=0.016111 ap_exact=39.6973% ap_tol1=39.7033% mae=86.16 len_match=0.5000% lr=1.432703e-04
+epoch=524 train_loss=0.010622 test_loss=0.020387 train_mse=0.005610 train_ce=0.016709 ap_exact=41.2708% ap_tol1=41.2749% mae=78.11 len_match=0.5000% lr=1.427899e-04
+epoch=525 train_loss=0.010089 test_loss=0.022224 train_mse=0.005495 train_ce=0.015313 ap_exact=40.3817% ap_tol1=40.3837% mae=83.44 len_match=0.5000% lr=1.423097e-04
+epoch=526 train_loss=0.010307 test_loss=0.020013 train_mse=0.005484 train_ce=0.016076 ap_exact=40.3501% ap_tol1=40.3541% mae=82.71 len_match=0.5000% lr=1.418295e-04
+epoch=527 train_loss=0.010299 test_loss=0.022088 train_mse=0.005517 train_ce=0.015939 ap_exact=40.3958% ap_tol1=40.3998% mae=82.57 len_match=0.5000% lr=1.413494e-04
+epoch=528 train_loss=0.010698 test_loss=0.020953 train_mse=0.005746 train_ce=0.016505 ap_exact=40.5026% ap_tol1=40.5097% mae=81.82 len_match=0.5000% lr=1.408694e-04
+epoch=529 train_loss=0.010569 test_loss=0.019466 train_mse=0.005626 train_ce=0.016475 ap_exact=39.8847% ap_tol1=39.8907% mae=81.85 len_match=0.5000% lr=1.403895e-04
+epoch=530 train_loss=0.010181 test_loss=0.020071 train_mse=0.005468 train_ce=0.015710 ap_exact=40.1766% ap_tol1=40.1786% mae=82.83 len_match=0.5000% lr=1.399096e-04
+epoch=531 train_loss=0.009982 test_loss=0.020309 train_mse=0.005308 train_ce=0.015579 ap_exact=40.8413% ap_tol1=40.8523% mae=79.76 len_match=0.5000% lr=1.394299e-04
+epoch=532 train_loss=0.009909 test_loss=0.017495 train_mse=0.005308 train_ce=0.015337 ap_exact=40.1479% ap_tol1=40.1530% mae=82.33 len_match=0.5000% lr=1.389503e-04
+epoch=533 train_loss=0.009891 test_loss=0.020881 train_mse=0.005284 train_ce=0.015354 ap_exact=41.1275% ap_tol1=41.1346% mae=79.05 len_match=0.5000% lr=1.384708e-04
+epoch=534 train_loss=0.009966 test_loss=0.018691 train_mse=0.005352 train_ce=0.015380 ap_exact=40.9335% ap_tol1=40.9395% mae=80.28 len_match=0.5000% lr=1.379915e-04
+epoch=535 train_loss=0.010132 test_loss=0.021286 train_mse=0.005434 train_ce=0.015660 ap_exact=41.0011% ap_tol1=41.0061% mae=80.26 len_match=0.5000% lr=1.375122e-04
+epoch=536 train_loss=0.010477 test_loss=0.017754 train_mse=0.005528 train_ce=0.016496 ap_exact=40.5272% ap_tol1=40.5283% mae=81.36 len_match=0.5000% lr=1.370331e-04
+epoch=537 train_loss=0.010242 test_loss=0.020147 train_mse=0.005446 train_ce=0.015986 ap_exact=39.9139% ap_tol1=39.9260% mae=82.92 len_match=0.5000% lr=1.365541e-04
+epoch=538 train_loss=0.010015 test_loss=0.019881 train_mse=0.005370 train_ce=0.015483 ap_exact=41.0193% ap_tol1=41.0243% mae=79.49 len_match=0.5000% lr=1.360753e-04
+epoch=539 train_loss=0.009557 test_loss=0.018817 train_mse=0.005071 train_ce=0.014953 ap_exact=41.2523% ap_tol1=41.2573% mae=77.49 len_match=0.5000% lr=1.355965e-04
+epoch=540 train_loss=0.009927 test_loss=0.019163 train_mse=0.005321 train_ce=0.015353 ap_exact=40.6875% ap_tol1=40.6926% mae=79.64 len_match=0.5000% lr=1.351180e-04
+epoch=541 train_loss=0.010002 test_loss=0.021129 train_mse=0.005365 train_ce=0.015455 ap_exact=41.2542% ap_tol1=41.2613% mae=77.62 len_match=0.5000% lr=1.346396e-04
+epoch=542 train_loss=0.009987 test_loss=0.022937 train_mse=0.005277 train_ce=0.015701 ap_exact=40.8700% ap_tol1=40.8740% mae=80.80 len_match=0.5000% lr=1.341613e-04
+epoch=543 train_loss=0.009634 test_loss=0.025267 train_mse=0.005201 train_ce=0.014775 ap_exact=41.8065% ap_tol1=41.8125% mae=76.25 len_match=0.5000% lr=1.336832e-04
+epoch=544 train_loss=0.009952 test_loss=0.021630 train_mse=0.005310 train_ce=0.015471 ap_exact=40.8894% ap_tol1=40.8934% mae=79.60 len_match=0.5000% lr=1.332053e-04
+epoch=545 train_loss=0.009719 test_loss=0.022528 train_mse=0.005255 train_ce=0.014882 ap_exact=41.2078% ap_tol1=41.2159% mae=78.00 len_match=0.5000% lr=1.327276e-04
+epoch=546 train_loss=0.009745 test_loss=0.022890 train_mse=0.005175 train_ce=0.015234 ap_exact=40.4855% ap_tol1=40.4885% mae=81.35 len_match=0.5000% lr=1.322500e-04
+epoch=547 train_loss=0.009447 test_loss=0.017953 train_mse=0.005081 train_ce=0.014555 ap_exact=40.9790% ap_tol1=40.9831% mae=79.86 len_match=0.5000% lr=1.317726e-04
+epoch=548 train_loss=0.009436 test_loss=0.021774 train_mse=0.005016 train_ce=0.014733 ap_exact=40.6080% ap_tol1=40.6121% mae=81.37 len_match=0.5000% lr=1.312954e-04
+epoch=549 train_loss=0.009503 test_loss=0.021267 train_mse=0.005139 train_ce=0.014546 ap_exact=40.6633% ap_tol1=40.6673% mae=81.82 len_match=0.5000% lr=1.308184e-04
+epoch=550 train_loss=0.009731 test_loss=0.020896 train_mse=0.005228 train_ce=0.015009 ap_exact=40.5669% ap_tol1=40.5700% mae=82.00 len_match=0.5000% lr=1.303416e-04
+epoch=551 train_loss=0.009609 test_loss=0.019432 train_mse=0.005128 train_ce=0.014938 ap_exact=40.5313% ap_tol1=40.5343% mae=81.44 len_match=0.5000% lr=1.298650e-04
+epoch=552 train_loss=0.009258 test_loss=0.021308 train_mse=0.004902 train_ce=0.014519 ap_exact=40.8589% ap_tol1=40.8630% mae=81.30 len_match=0.5000% lr=1.293886e-04
+epoch=553 train_loss=0.009728 test_loss=0.020842 train_mse=0.005265 train_ce=0.014877 ap_exact=40.6194% ap_tol1=40.6214% mae=81.15 len_match=0.5000% lr=1.289124e-04
+epoch=554 train_loss=0.009481 test_loss=0.021119 train_mse=0.005102 train_ce=0.014598 ap_exact=40.8256% ap_tol1=40.8306% mae=81.10 len_match=0.5000% lr=1.284365e-04
+epoch=555 train_loss=0.009253 test_loss=0.023311 train_mse=0.004999 train_ce=0.014182 ap_exact=40.7672% ap_tol1=40.7712% mae=81.38 len_match=0.5000% lr=1.279607e-04
+epoch=556 train_loss=0.009611 test_loss=0.021680 train_mse=0.005134 train_ce=0.014923 ap_exact=41.3990% ap_tol1=41.4021% mae=78.23 len_match=0.5000% lr=1.274852e-04
+epoch=557 train_loss=0.009554 test_loss=0.021831 train_mse=0.005131 train_ce=0.014743 ap_exact=40.7636% ap_tol1=40.7656% mae=81.42 len_match=0.5000% lr=1.270099e-04
+epoch=558 train_loss=0.009170 test_loss=0.021353 train_mse=0.004877 train_ce=0.014308 ap_exact=41.0352% ap_tol1=41.0403% mae=80.01 len_match=0.5000% lr=1.265348e-04
+epoch=559 train_loss=0.009021 test_loss=0.022343 train_mse=0.004872 train_ce=0.013830 ap_exact=41.1036% ap_tol1=41.1096% mae=79.25 len_match=0.5000% lr=1.260600e-04
+epoch=560 train_loss=0.009455 test_loss=0.019094 train_mse=0.005135 train_ce=0.014402 ap_exact=40.2461% ap_tol1=40.2511% mae=83.17 len_match=0.5000% lr=1.255854e-04
+epoch=561 train_loss=0.009146 test_loss=0.023073 train_mse=0.004856 train_ce=0.014301 ap_exact=41.2402% ap_tol1=41.2452% mae=79.43 len_match=0.5000% lr=1.251111e-04
+epoch=562 train_loss=0.008920 test_loss=0.021031 train_mse=0.004741 train_ce=0.013931 ap_exact=40.7809% ap_tol1=40.7839% mae=79.72 len_match=0.5000% lr=1.246371e-04
+epoch=563 train_loss=0.009109 test_loss=0.018990 train_mse=0.004881 train_ce=0.014091 ap_exact=40.4534% ap_tol1=40.4554% mae=81.46 len_match=0.5000% lr=1.241633e-04
+epoch=564 train_loss=0.008841 test_loss=0.022789 train_mse=0.004735 train_ce=0.013686 ap_exact=40.7792% ap_tol1=40.7833% mae=80.35 len_match=0.5000% lr=1.236897e-04
+epoch=565 train_loss=0.009063 test_loss=0.022492 train_mse=0.004857 train_ce=0.014018 ap_exact=40.6216% ap_tol1=40.6266% mae=81.45 len_match=0.5000% lr=1.232165e-04
+epoch=566 train_loss=0.009134 test_loss=0.020156 train_mse=0.004923 train_ce=0.014035 ap_exact=40.0510% ap_tol1=40.0571% mae=83.08 len_match=0.5000% lr=1.227435e-04
+epoch=567 train_loss=0.009030 test_loss=0.021114 train_mse=0.004806 train_ce=0.014081 ap_exact=40.8999% ap_tol1=40.8999% mae=79.52 len_match=0.5000% lr=1.222708e-04
+epoch=568 train_loss=0.009043 test_loss=0.024083 train_mse=0.004833 train_ce=0.014031 ap_exact=40.8975% ap_tol1=40.9005% mae=79.66 len_match=0.5000% lr=1.217983e-04
+epoch=569 train_loss=0.009139 test_loss=0.024850 train_mse=0.004886 train_ce=0.014174 ap_exact=41.0005% ap_tol1=41.0076% mae=80.56 len_match=0.5000% lr=1.213262e-04
+epoch=570 train_loss=0.008947 test_loss=0.022344 train_mse=0.004802 train_ce=0.013819 ap_exact=40.3148% ap_tol1=40.3209% mae=83.17 len_match=0.5000% lr=1.208544e-04
+epoch=571 train_loss=0.009271 test_loss=0.020130 train_mse=0.005010 train_ce=0.014202 ap_exact=40.2715% ap_tol1=40.2776% mae=83.16 len_match=0.5000% lr=1.203828e-04
+epoch=572 train_loss=0.009161 test_loss=0.021394 train_mse=0.004870 train_ce=0.014301 ap_exact=40.1334% ap_tol1=40.1395% mae=83.48 len_match=0.5000% lr=1.199116e-04
+epoch=573 train_loss=0.009156 test_loss=0.020405 train_mse=0.004880 train_ce=0.014256 ap_exact=39.9262% ap_tol1=39.9323% mae=84.03 len_match=0.5000% lr=1.194407e-04
+epoch=574 train_loss=0.009220 test_loss=0.020720 train_mse=0.004915 train_ce=0.014349 ap_exact=40.5029% ap_tol1=40.5110% mae=81.97 len_match=0.5000% lr=1.189700e-04
+epoch=575 train_loss=0.008610 test_loss=0.023583 train_mse=0.004627 train_ce=0.013276 ap_exact=40.3304% ap_tol1=40.3344% mae=83.41 len_match=0.5000% lr=1.184998e-04
+epoch=576 train_loss=0.008689 test_loss=0.024083 train_mse=0.004612 train_ce=0.013589 ap_exact=40.2359% ap_tol1=40.2409% mae=82.42 len_match=0.6000% lr=1.180298e-04
+epoch=577 train_loss=0.009000 test_loss=0.020199 train_mse=0.004755 train_ce=0.014151 ap_exact=40.3415% ap_tol1=40.3455% mae=81.06 len_match=0.5000% lr=1.175601e-04
+epoch=578 train_loss=0.008632 test_loss=0.020342 train_mse=0.004610 train_ce=0.013408 ap_exact=40.9585% ap_tol1=40.9605% mae=79.82 len_match=0.5000% lr=1.170908e-04
+epoch=579 train_loss=0.008493 test_loss=0.024129 train_mse=0.004601 train_ce=0.012975 ap_exact=41.0379% ap_tol1=41.0440% mae=79.99 len_match=0.5000% lr=1.166219e-04
+epoch=580 train_loss=0.008869 test_loss=0.021560 train_mse=0.004760 train_ce=0.013699 ap_exact=40.9723% ap_tol1=40.9753% mae=79.30 len_match=0.5000% lr=1.161532e-04
+epoch=581 train_loss=0.008967 test_loss=0.023098 train_mse=0.004783 train_ce=0.013947 ap_exact=40.4536% ap_tol1=40.4616% mae=81.49 len_match=0.5000% lr=1.156850e-04
+epoch=582 train_loss=0.008383 test_loss=0.022084 train_mse=0.004464 train_ce=0.013063 ap_exact=40.6518% ap_tol1=40.6589% mae=80.29 len_match=0.5000% lr=1.152170e-04
+epoch=583 train_loss=0.008765 test_loss=0.021008 train_mse=0.004666 train_ce=0.013665 ap_exact=40.6814% ap_tol1=40.6844% mae=80.56 len_match=0.5000% lr=1.147495e-04
+epoch=584 train_loss=0.009041 test_loss=0.021403 train_mse=0.004845 train_ce=0.013987 ap_exact=40.8750% ap_tol1=40.8760% mae=79.37 len_match=0.5000% lr=1.142822e-04
+epoch=585 train_loss=0.008498 test_loss=0.022607 train_mse=0.004517 train_ce=0.013270 ap_exact=40.7351% ap_tol1=40.7371% mae=80.02 len_match=0.5000% lr=1.138154e-04
+epoch=586 train_loss=0.008882 test_loss=0.021996 train_mse=0.004745 train_ce=0.013789 ap_exact=40.6961% ap_tol1=40.7022% mae=81.06 len_match=0.5000% lr=1.133489e-04
+epoch=587 train_loss=0.008777 test_loss=0.023504 train_mse=0.004631 train_ce=0.013821 ap_exact=40.8850% ap_tol1=40.8870% mae=79.85 len_match=0.5000% lr=1.128828e-04
+epoch=588 train_loss=0.008762 test_loss=0.021455 train_mse=0.004716 train_ce=0.013487 ap_exact=40.6286% ap_tol1=40.6326% mae=82.45 len_match=0.5000% lr=1.124171e-04
+epoch=589 train_loss=0.008687 test_loss=0.024138 train_mse=0.004622 train_ce=0.013548 ap_exact=39.9811% ap_tol1=39.9851% mae=83.85 len_match=0.5000% lr=1.119518e-04
+epoch=590 train_loss=0.008557 test_loss=0.020858 train_mse=0.004545 train_ce=0.013371 ap_exact=40.6079% ap_tol1=40.6109% mae=81.80 len_match=0.5000% lr=1.114869e-04
+epoch=591 train_loss=0.008606 test_loss=0.023231 train_mse=0.004617 train_ce=0.013297 ap_exact=40.6512% ap_tol1=40.6532% mae=80.53 len_match=0.5000% lr=1.110223e-04
+epoch=592 train_loss=0.008782 test_loss=0.022167 train_mse=0.004670 train_ce=0.013706 ap_exact=40.4643% ap_tol1=40.4694% mae=83.36 len_match=0.5000% lr=1.105582e-04
+epoch=593 train_loss=0.008208 test_loss=0.020424 train_mse=0.004410 train_ce=0.012660 ap_exact=40.6403% ap_tol1=40.6463% mae=82.66 len_match=0.5000% lr=1.100945e-04
+epoch=594 train_loss=0.008425 test_loss=0.020665 train_mse=0.004517 train_ce=0.013028 ap_exact=40.0917% ap_tol1=40.0978% mae=83.87 len_match=0.5000% lr=1.096312e-04
+epoch=595 train_loss=0.008467 test_loss=0.021385 train_mse=0.004503 train_ce=0.013212 ap_exact=40.5123% ap_tol1=40.5174% mae=83.41 len_match=0.5000% lr=1.091682e-04
+epoch=596 train_loss=0.008622 test_loss=0.022873 train_mse=0.004646 train_ce=0.013254 ap_exact=40.1893% ap_tol1=40.1963% mae=83.29 len_match=0.5000% lr=1.087058e-04
+epoch=597 train_loss=0.008756 test_loss=0.019827 train_mse=0.004652 train_ce=0.013680 ap_exact=39.9845% ap_tol1=39.9905% mae=85.32 len_match=0.5000% lr=1.082437e-04
+epoch=598 train_loss=0.007941 test_loss=0.022848 train_mse=0.004257 train_ce=0.012278 ap_exact=40.4820% ap_tol1=40.4870% mae=82.07 len_match=0.5000% lr=1.077821e-04
+epoch=599 train_loss=0.008323 test_loss=0.024039 train_mse=0.004478 train_ce=0.012818 ap_exact=40.1010% ap_tol1=40.1050% mae=83.26 len_match=0.5000% lr=1.073209e-04
+epoch=600 train_loss=0.008657 test_loss=0.023782 train_mse=0.004561 train_ce=0.013653 ap_exact=40.1034% ap_tol1=40.1105% mae=82.76 len_match=0.5000% lr=1.068601e-04
+epoch=601 train_loss=0.007992 test_loss=0.019667 train_mse=0.004282 train_ce=0.012367 ap_exact=39.8307% ap_tol1=39.8377% mae=84.62 len_match=0.5000% lr=1.063998e-04
+epoch=602 train_loss=0.007942 test_loss=0.023298 train_mse=0.004243 train_ce=0.012332 ap_exact=39.9089% ap_tol1=39.9169% mae=83.47 len_match=0.5000% lr=1.059399e-04
+epoch=603 train_loss=0.008259 test_loss=0.019641 train_mse=0.004449 train_ce=0.012699 ap_exact=40.4030% ap_tol1=40.4080% mae=80.79 len_match=0.5000% lr=1.054805e-04
+epoch=604 train_loss=0.007924 test_loss=0.023629 train_mse=0.004244 train_ce=0.012265 ap_exact=40.8652% ap_tol1=40.8702% mae=81.11 len_match=0.5000% lr=1.050215e-04
+epoch=605 train_loss=0.008122 test_loss=0.021914 train_mse=0.004385 train_ce=0.012454 ap_exact=40.5365% ap_tol1=40.5386% mae=81.43 len_match=0.5000% lr=1.045630e-04
+epoch=606 train_loss=0.008174 test_loss=0.023425 train_mse=0.004356 train_ce=0.012726 ap_exact=40.0827% ap_tol1=40.0877% mae=82.29 len_match=0.5000% lr=1.041050e-04
+epoch=607 train_loss=0.007869 test_loss=0.021324 train_mse=0.004234 train_ce=0.012117 ap_exact=39.8117% ap_tol1=39.8177% mae=83.48 len_match=0.5000% lr=1.036475e-04
+epoch=608 train_loss=0.007969 test_loss=0.021909 train_mse=0.004188 train_ce=0.012602 ap_exact=40.0962% ap_tol1=40.1022% mae=83.22 len_match=0.5000% lr=1.031904e-04
+epoch=609 train_loss=0.007998 test_loss=0.022197 train_mse=0.004326 train_ce=0.012240 ap_exact=41.0038% ap_tol1=41.0128% mae=79.61 len_match=0.5000% lr=1.027338e-04
+epoch=610 train_loss=0.007925 test_loss=0.025943 train_mse=0.004248 train_ce=0.012258 ap_exact=40.7824% ap_tol1=40.7904% mae=80.68 len_match=0.5000% lr=1.022777e-04
+epoch=611 train_loss=0.008198 test_loss=0.023745 train_mse=0.004374 train_ce=0.012747 ap_exact=39.8224% ap_tol1=39.8275% mae=83.39 len_match=0.5000% lr=1.018220e-04
+epoch=612 train_loss=0.007688 test_loss=0.019764 train_mse=0.004150 train_ce=0.011791 ap_exact=40.3292% ap_tol1=40.3352% mae=81.92 len_match=0.5000% lr=1.013669e-04
+epoch=613 train_loss=0.007736 test_loss=0.023813 train_mse=0.004119 train_ce=0.012056 ap_exact=40.0939% ap_tol1=40.0970% mae=83.21 len_match=0.5000% lr=1.009123e-04
+epoch=614 train_loss=0.007603 test_loss=0.023016 train_mse=0.004085 train_ce=0.011728 ap_exact=40.1155% ap_tol1=40.1195% mae=81.51 len_match=0.5000% lr=1.004581e-04
+epoch=615 train_loss=0.007934 test_loss=0.023730 train_mse=0.004286 train_ce=0.012159 ap_exact=40.2234% ap_tol1=40.2284% mae=82.48 len_match=0.5000% lr=1.000045e-04
+epoch=616 train_loss=0.007877 test_loss=0.022176 train_mse=0.004217 train_ce=0.012200 ap_exact=39.7444% ap_tol1=39.7474% mae=85.48 len_match=0.5000% lr=9.955142e-05
+epoch=617 train_loss=0.008036 test_loss=0.021727 train_mse=0.004267 train_ce=0.012565 ap_exact=40.0915% ap_tol1=40.0945% mae=82.51 len_match=0.5000% lr=9.909884e-05
+epoch=618 train_loss=0.007663 test_loss=0.020935 train_mse=0.004085 train_ce=0.011927 ap_exact=39.7200% ap_tol1=39.7250% mae=84.95 len_match=0.5000% lr=9.864678e-05
+epoch=619 train_loss=0.007872 test_loss=0.022450 train_mse=0.004180 train_ce=0.012306 ap_exact=39.9117% ap_tol1=39.9167% mae=84.18 len_match=0.5000% lr=9.819524e-05
+epoch=620 train_loss=0.008073 test_loss=0.023992 train_mse=0.004262 train_ce=0.012703 ap_exact=40.5416% ap_tol1=40.5447% mae=81.77 len_match=0.5000% lr=9.774424e-05
+epoch=621 train_loss=0.007591 test_loss=0.022140 train_mse=0.004098 train_ce=0.011642 ap_exact=39.7958% ap_tol1=39.7998% mae=82.97 len_match=0.5000% lr=9.729378e-05
+epoch=622 train_loss=0.007700 test_loss=0.023366 train_mse=0.004175 train_ce=0.011751 ap_exact=40.4829% ap_tol1=40.4869% mae=80.30 len_match=0.5000% lr=9.684385e-05
+epoch=623 train_loss=0.007925 test_loss=0.025051 train_mse=0.004165 train_ce=0.012534 ap_exact=39.6849% ap_tol1=39.6889% mae=83.90 len_match=0.5000% lr=9.639448e-05
+epoch=624 train_loss=0.007650 test_loss=0.020812 train_mse=0.004075 train_ce=0.011917 ap_exact=40.5289% ap_tol1=40.5330% mae=81.98 len_match=0.5000% lr=9.594565e-05
+epoch=625 train_loss=0.007825 test_loss=0.022955 train_mse=0.004171 train_ce=0.012182 ap_exact=40.6442% ap_tol1=40.6482% mae=81.20 len_match=0.5000% lr=9.549738e-05
+epoch=626 train_loss=0.007899 test_loss=0.024985 train_mse=0.004191 train_ce=0.012360 ap_exact=40.5682% ap_tol1=40.5712% mae=81.34 len_match=0.5000% lr=9.504967e-05
+epoch=627 train_loss=0.007373 test_loss=0.022856 train_mse=0.003884 train_ce=0.011629 ap_exact=40.5542% ap_tol1=40.5573% mae=81.93 len_match=0.5000% lr=9.460253e-05
+epoch=628 train_loss=0.007639 test_loss=0.024168 train_mse=0.004105 train_ce=0.011780 ap_exact=40.6752% ap_tol1=40.6812% mae=80.38 len_match=0.5000% lr=9.415595e-05
+epoch=629 train_loss=0.007832 test_loss=0.022047 train_mse=0.004126 train_ce=0.012353 ap_exact=40.7971% ap_tol1=40.8021% mae=80.54 len_match=0.5000% lr=9.370995e-05
+epoch=630 train_loss=0.007444 test_loss=0.022119 train_mse=0.003986 train_ce=0.011526 ap_exact=41.0708% ap_tol1=41.0738% mae=80.23 len_match=0.5000% lr=9.326453e-05
+epoch=631 train_loss=0.007380 test_loss=0.024858 train_mse=0.004013 train_ce=0.011226 ap_exact=40.8896% ap_tol1=40.8947% mae=80.43 len_match=0.5000% lr=9.281969e-05
+epoch=632 train_loss=0.006941 test_loss=0.020233 train_mse=0.003727 train_ce=0.010713 ap_exact=40.4551% ap_tol1=40.4602% mae=82.25 len_match=0.5000% lr=9.237543e-05
+epoch=633 train_loss=0.007763 test_loss=0.021048 train_mse=0.004125 train_ce=0.012127 ap_exact=40.4120% ap_tol1=40.4181% mae=82.09 len_match=0.6000% lr=9.193177e-05
+epoch=634 train_loss=0.007393 test_loss=0.026552 train_mse=0.003916 train_ce=0.011592 ap_exact=40.6018% ap_tol1=40.6109% mae=80.33 len_match=0.6000% lr=9.148871e-05
+epoch=635 train_loss=0.007556 test_loss=0.025539 train_mse=0.004011 train_ce=0.011814 ap_exact=39.7076% ap_tol1=39.7127% mae=85.61 len_match=0.5000% lr=9.104625e-05
+epoch=636 train_loss=0.007638 test_loss=0.026816 train_mse=0.004109 train_ce=0.011762 ap_exact=40.7122% ap_tol1=40.7172% mae=80.16 len_match=0.5000% lr=9.060439e-05
+epoch=637 train_loss=0.007474 test_loss=0.022441 train_mse=0.003980 train_ce=0.011646 ap_exact=39.9470% ap_tol1=39.9520% mae=84.14 len_match=0.5000% lr=9.016314e-05
+epoch=638 train_loss=0.007198 test_loss=0.020159 train_mse=0.003863 train_ce=0.011117 ap_exact=40.5092% ap_tol1=40.5122% mae=80.99 len_match=0.5000% lr=8.972251e-05
+epoch=639 train_loss=0.007261 test_loss=0.021267 train_mse=0.003928 train_ce=0.011111 ap_exact=40.1838% ap_tol1=40.1909% mae=83.03 len_match=0.5000% lr=8.928250e-05
+epoch=640 train_loss=0.007064 test_loss=0.022688 train_mse=0.003812 train_ce=0.010840 ap_exact=40.2936% ap_tol1=40.2957% mae=82.08 len_match=0.5000% lr=8.884311e-05
+epoch=641 train_loss=0.007345 test_loss=0.022285 train_mse=0.003952 train_ce=0.011310 ap_exact=40.3813% ap_tol1=40.3863% mae=82.48 len_match=0.5000% lr=8.840435e-05
+epoch=642 train_loss=0.007317 test_loss=0.023600 train_mse=0.003900 train_ce=0.011390 ap_exact=40.6335% ap_tol1=40.6375% mae=81.04 len_match=0.5000% lr=8.796622e-05
+epoch=643 train_loss=0.007603 test_loss=0.024015 train_mse=0.004034 train_ce=0.011894 ap_exact=40.2118% ap_tol1=40.2209% mae=81.09 len_match=0.5000% lr=8.752874e-05
+epoch=644 train_loss=0.007014 test_loss=0.025730 train_mse=0.003766 train_ce=0.010825 ap_exact=40.3321% ap_tol1=40.3362% mae=81.09 len_match=0.5000% lr=8.709189e-05
+epoch=645 train_loss=0.006992 test_loss=0.025288 train_mse=0.003710 train_ce=0.010940 ap_exact=40.3497% ap_tol1=40.3527% mae=81.75 len_match=0.5000% lr=8.665569e-05
+epoch=646 train_loss=0.007104 test_loss=0.023441 train_mse=0.003794 train_ce=0.011031 ap_exact=40.1165% ap_tol1=40.1225% mae=83.53 len_match=0.5000% lr=8.622014e-05
+epoch=647 train_loss=0.007363 test_loss=0.023493 train_mse=0.003974 train_ce=0.011296 ap_exact=40.4162% ap_tol1=40.4223% mae=81.67 len_match=0.5000% lr=8.578524e-05
+epoch=648 train_loss=0.007104 test_loss=0.023619 train_mse=0.003740 train_ce=0.011213 ap_exact=40.6091% ap_tol1=40.6171% mae=81.48 len_match=0.5000% lr=8.535101e-05
+epoch=649 train_loss=0.007133 test_loss=0.024006 train_mse=0.003829 train_ce=0.011011 ap_exact=40.0548% ap_tol1=40.0639% mae=84.27 len_match=0.5000% lr=8.491744e-05
+epoch=650 train_loss=0.007225 test_loss=0.020622 train_mse=0.003843 train_ce=0.011272 ap_exact=40.0580% ap_tol1=40.0651% mae=83.60 len_match=0.5000% lr=8.448454e-05
+epoch=651 train_loss=0.007064 test_loss=0.022370 train_mse=0.003760 train_ce=0.011015 ap_exact=40.2108% ap_tol1=40.2128% mae=83.94 len_match=0.5000% lr=8.405231e-05
+epoch=652 train_loss=0.007168 test_loss=0.022278 train_mse=0.003865 train_ce=0.011012 ap_exact=40.2937% ap_tol1=40.2977% mae=82.78 len_match=0.5000% lr=8.362076e-05
+epoch=653 train_loss=0.007319 test_loss=0.020922 train_mse=0.003901 train_ce=0.011391 ap_exact=40.2391% ap_tol1=40.2411% mae=83.15 len_match=0.5000% lr=8.318989e-05
+epoch=654 train_loss=0.006774 test_loss=0.020518 train_mse=0.003603 train_ce=0.010568 ap_exact=40.4261% ap_tol1=40.4332% mae=81.32 len_match=0.5000% lr=8.275971e-05
+epoch=655 train_loss=0.007185 test_loss=0.027271 train_mse=0.003869 train_ce=0.011053 ap_exact=40.3195% ap_tol1=40.3235% mae=82.28 len_match=0.5000% lr=8.233022e-05
+epoch=656 train_loss=0.007093 test_loss=0.025535 train_mse=0.003862 train_ce=0.010769 ap_exact=40.4408% ap_tol1=40.4458% mae=81.74 len_match=0.5000% lr=8.190143e-05
+epoch=657 train_loss=0.007201 test_loss=0.025911 train_mse=0.003899 train_ce=0.011007 ap_exact=40.6597% ap_tol1=40.6607% mae=80.64 len_match=0.5000% lr=8.147333e-05
+epoch=658 train_loss=0.006904 test_loss=0.022505 train_mse=0.003729 train_ce=0.010581 ap_exact=40.5522% ap_tol1=40.5542% mae=81.06 len_match=0.5000% lr=8.104594e-05
+epoch=659 train_loss=0.006906 test_loss=0.025972 train_mse=0.003698 train_ce=0.010692 ap_exact=40.1584% ap_tol1=40.1625% mae=82.43 len_match=0.5000% lr=8.061926e-05
+epoch=660 train_loss=0.007266 test_loss=0.024083 train_mse=0.003895 train_ce=0.011237 ap_exact=40.3334% ap_tol1=40.3384% mae=82.05 len_match=0.5000% lr=8.019329e-05
+epoch=661 train_loss=0.007008 test_loss=0.024719 train_mse=0.003802 train_ce=0.010686 ap_exact=40.3763% ap_tol1=40.3834% mae=82.67 len_match=0.5000% lr=7.976804e-05
+epoch=662 train_loss=0.007093 test_loss=0.021644 train_mse=0.003778 train_ce=0.011050 ap_exact=40.4477% ap_tol1=40.4547% mae=82.48 len_match=0.5000% lr=7.934350e-05
+epoch=663 train_loss=0.006859 test_loss=0.024653 train_mse=0.003640 train_ce=0.010728 ap_exact=40.0208% ap_tol1=40.0238% mae=83.03 len_match=0.5000% lr=7.891970e-05
+epoch=664 train_loss=0.006670 test_loss=0.025187 train_mse=0.003606 train_ce=0.010212 ap_exact=40.3767% ap_tol1=40.3818% mae=81.10 len_match=0.5000% lr=7.849663e-05
+epoch=665 train_loss=0.006890 test_loss=0.021238 train_mse=0.003745 train_ce=0.010483 ap_exact=39.7640% ap_tol1=39.7710% mae=84.44 len_match=0.5000% lr=7.807429e-05
+epoch=666 train_loss=0.006697 test_loss=0.021564 train_mse=0.003639 train_ce=0.010195 ap_exact=40.1379% ap_tol1=40.1419% mae=83.39 len_match=0.5000% lr=7.765269e-05
+epoch=667 train_loss=0.006780 test_loss=0.023972 train_mse=0.003589 train_ce=0.010636 ap_exact=40.2147% ap_tol1=40.2227% mae=82.26 len_match=0.5000% lr=7.723183e-05
+epoch=668 train_loss=0.006891 test_loss=0.024911 train_mse=0.003717 train_ce=0.010581 ap_exact=40.5480% ap_tol1=40.5521% mae=80.96 len_match=0.5000% lr=7.681172e-05
+epoch=669 train_loss=0.006825 test_loss=0.022182 train_mse=0.003587 train_ce=0.010793 ap_exact=40.3397% ap_tol1=40.3417% mae=81.35 len_match=0.5000% lr=7.639237e-05
+epoch=670 train_loss=0.006831 test_loss=0.022953 train_mse=0.003661 train_ce=0.010565 ap_exact=40.1500% ap_tol1=40.1540% mae=81.37 len_match=0.5000% lr=7.597377e-05
+epoch=671 train_loss=0.006667 test_loss=0.023584 train_mse=0.003600 train_ce=0.010225 ap_exact=39.7517% ap_tol1=39.7587% mae=83.95 len_match=0.5000% lr=7.555593e-05
+epoch=672 train_loss=0.006565 test_loss=0.024713 train_mse=0.003519 train_ce=0.010154 ap_exact=39.7004% ap_tol1=39.7065% mae=83.75 len_match=0.5000% lr=7.513885e-05
+epoch=673 train_loss=0.006940 test_loss=0.021218 train_mse=0.003726 train_ce=0.010714 ap_exact=40.2254% ap_tol1=40.2324% mae=81.72 len_match=0.5000% lr=7.472255e-05
+epoch=674 train_loss=0.006760 test_loss=0.022049 train_mse=0.003657 train_ce=0.010342 ap_exact=40.4938% ap_tol1=40.4958% mae=80.99 len_match=0.5000% lr=7.430702e-05
+epoch=675 train_loss=0.006680 test_loss=0.027903 train_mse=0.003585 train_ce=0.010318 ap_exact=39.7099% ap_tol1=39.7140% mae=85.76 len_match=0.5000% lr=7.389226e-05
+epoch=676 train_loss=0.006695 test_loss=0.027237 train_mse=0.003654 train_ce=0.010138 ap_exact=40.3653% ap_tol1=40.3693% mae=80.47 len_match=0.5000% lr=7.347829e-05
+epoch=677 train_loss=0.006776 test_loss=0.023258 train_mse=0.003653 train_ce=0.010410 ap_exact=40.0062% ap_tol1=40.0103% mae=82.76 len_match=0.5000% lr=7.306511e-05
+epoch=678 train_loss=0.006710 test_loss=0.027772 train_mse=0.003591 train_ce=0.010399 ap_exact=40.1131% ap_tol1=40.1181% mae=83.29 len_match=0.5000% lr=7.265271e-05
+epoch=679 train_loss=0.006460 test_loss=0.026601 train_mse=0.003456 train_ce=0.010013 ap_exact=40.0486% ap_tol1=40.0516% mae=83.92 len_match=0.5000% lr=7.224111e-05
+epoch=680 train_loss=0.006641 test_loss=0.023177 train_mse=0.003641 train_ce=0.009998 ap_exact=39.8452% ap_tol1=39.8512% mae=82.54 len_match=0.5000% lr=7.183031e-05
+epoch=681 train_loss=0.006629 test_loss=0.023024 train_mse=0.003536 train_ce=0.010312 ap_exact=40.0079% ap_tol1=40.0109% mae=83.38 len_match=0.5000% lr=7.142032e-05
+epoch=682 train_loss=0.006721 test_loss=0.026168 train_mse=0.003613 train_ce=0.010358 ap_exact=39.4429% ap_tol1=39.4479% mae=85.44 len_match=0.5000% lr=7.101113e-05
+epoch=683 train_loss=0.006677 test_loss=0.026859 train_mse=0.003585 train_ce=0.010307 ap_exact=39.7313% ap_tol1=39.7353% mae=84.19 len_match=0.5000% lr=7.060275e-05
+epoch=684 train_loss=0.006463 test_loss=0.022015 train_mse=0.003430 train_ce=0.010108 ap_exact=40.2129% ap_tol1=40.2189% mae=81.88 len_match=0.5000% lr=7.019519e-05
+epoch=685 train_loss=0.006742 test_loss=0.023772 train_mse=0.003629 train_ce=0.010377 ap_exact=39.9510% ap_tol1=39.9540% mae=82.27 len_match=0.5000% lr=6.978845e-05
+epoch=686 train_loss=0.006747 test_loss=0.021251 train_mse=0.003627 train_ce=0.010402 ap_exact=40.1544% ap_tol1=40.1584% mae=82.63 len_match=0.5000% lr=6.938253e-05
+epoch=687 train_loss=0.006521 test_loss=0.024372 train_mse=0.003530 train_ce=0.009968 ap_exact=40.2506% ap_tol1=40.2566% mae=81.63 len_match=0.5000% lr=6.897744e-05
+epoch=688 train_loss=0.006589 test_loss=0.023936 train_mse=0.003543 train_ce=0.010153 ap_exact=40.6877% ap_tol1=40.6938% mae=80.03 len_match=0.5000% lr=6.857318e-05
+epoch=689 train_loss=0.006377 test_loss=0.023205 train_mse=0.003414 train_ce=0.009877 ap_exact=39.5187% ap_tol1=39.5207% mae=84.76 len_match=0.5000% lr=6.816976e-05
+epoch=690 train_loss=0.006389 test_loss=0.024851 train_mse=0.003470 train_ce=0.009732 ap_exact=40.1820% ap_tol1=40.1881% mae=81.27 len_match=0.5000% lr=6.776719e-05
+epoch=691 train_loss=0.006329 test_loss=0.023702 train_mse=0.003418 train_ce=0.009703 ap_exact=40.3833% ap_tol1=40.3884% mae=82.77 len_match=0.5000% lr=6.736545e-05
+epoch=692 train_loss=0.006630 test_loss=0.029033 train_mse=0.003598 train_ce=0.010106 ap_exact=40.6874% ap_tol1=40.6905% mae=81.94 len_match=0.5000% lr=6.696457e-05
+epoch=693 train_loss=0.006431 test_loss=0.021753 train_mse=0.003463 train_ce=0.009895 ap_exact=40.5009% ap_tol1=40.5029% mae=81.83 len_match=0.5000% lr=6.656454e-05
+epoch=694 train_loss=0.006539 test_loss=0.021082 train_mse=0.003529 train_ce=0.010033 ap_exact=40.0077% ap_tol1=40.0147% mae=84.44 len_match=0.5000% lr=6.616536e-05
+epoch=695 train_loss=0.006582 test_loss=0.028435 train_mse=0.003563 train_ce=0.010063 ap_exact=40.6227% ap_tol1=40.6258% mae=82.57 len_match=0.5000% lr=6.576705e-05
+epoch=696 train_loss=0.006630 test_loss=0.023029 train_mse=0.003594 train_ce=0.010120 ap_exact=40.3963% ap_tol1=40.3993% mae=82.58 len_match=0.5000% lr=6.536961e-05
+epoch=697 train_loss=0.006134 test_loss=0.024534 train_mse=0.003367 train_ce=0.009223 ap_exact=40.1610% ap_tol1=40.1641% mae=83.70 len_match=0.5000% lr=6.497303e-05
+epoch=698 train_loss=0.006620 test_loss=0.027150 train_mse=0.003520 train_ce=0.010333 ap_exact=40.4216% ap_tol1=40.4287% mae=83.05 len_match=0.5000% lr=6.457733e-05
+epoch=699 train_loss=0.006456 test_loss=0.024192 train_mse=0.003470 train_ce=0.009954 ap_exact=40.9344% ap_tol1=40.9354% mae=79.24 len_match=0.5000% lr=6.418250e-05
+epoch=700 train_loss=0.006572 test_loss=0.023208 train_mse=0.003507 train_ce=0.010218 ap_exact=40.0984% ap_tol1=40.1024% mae=83.40 len_match=0.5000% lr=6.378856e-05
+epoch=701 train_loss=0.006561 test_loss=0.023808 train_mse=0.003533 train_ce=0.010094 ap_exact=40.3745% ap_tol1=40.3805% mae=82.50 len_match=0.5000% lr=6.339550e-05
+epoch=702 train_loss=0.006455 test_loss=0.026082 train_mse=0.003480 train_ce=0.009916 ap_exact=40.3604% ap_tol1=40.3695% mae=82.60 len_match=0.5000% lr=6.300333e-05
+epoch=703 train_loss=0.006367 test_loss=0.024394 train_mse=0.003434 train_ce=0.009776 ap_exact=39.6643% ap_tol1=39.6684% mae=84.60 len_match=0.5000% lr=6.261206e-05
+epoch=704 train_loss=0.006233 test_loss=0.024247 train_mse=0.003346 train_ce=0.009621 ap_exact=40.5781% ap_tol1=40.5872% mae=80.57 len_match=0.5000% lr=6.222169e-05
+epoch=705 train_loss=0.006063 test_loss=0.026174 train_mse=0.003260 train_ce=0.009345 ap_exact=39.9571% ap_tol1=39.9651% mae=84.90 len_match=0.5000% lr=6.183221e-05
+epoch=706 train_loss=0.006175 test_loss=0.025482 train_mse=0.003310 train_ce=0.009547 ap_exact=40.5873% ap_tol1=40.5903% mae=82.02 len_match=0.6000% lr=6.144365e-05
+epoch=707 train_loss=0.006401 test_loss=0.024502 train_mse=0.003443 train_ce=0.009857 ap_exact=39.9200% ap_tol1=39.9230% mae=83.49 len_match=0.5000% lr=6.105599e-05
+epoch=708 train_loss=0.006245 test_loss=0.025033 train_mse=0.003391 train_ce=0.009515 ap_exact=40.2931% ap_tol1=40.2991% mae=81.75 len_match=0.5000% lr=6.066925e-05
+epoch=709 train_loss=0.006444 test_loss=0.025692 train_mse=0.003473 train_ce=0.009904 ap_exact=40.1169% ap_tol1=40.1209% mae=82.13 len_match=0.5000% lr=6.028342e-05
+epoch=710 train_loss=0.006227 test_loss=0.023187 train_mse=0.003372 train_ce=0.009517 ap_exact=39.8266% ap_tol1=39.8297% mae=83.05 len_match=0.5000% lr=5.989852e-05
+epoch=711 train_loss=0.006020 test_loss=0.029375 train_mse=0.003291 train_ce=0.009095 ap_exact=40.6867% ap_tol1=40.6948% mae=80.40 len_match=0.5000% lr=5.951454e-05
+epoch=712 train_loss=0.006150 test_loss=0.025507 train_mse=0.003354 train_ce=0.009320 ap_exact=40.1085% ap_tol1=40.1135% mae=82.67 len_match=0.5000% lr=5.913149e-05
+epoch=713 train_loss=0.006460 test_loss=0.026702 train_mse=0.003426 train_ce=0.010114 ap_exact=40.6630% ap_tol1=40.6670% mae=80.41 len_match=0.6000% lr=5.874938e-05
+epoch=714 train_loss=0.006179 test_loss=0.029231 train_mse=0.003393 train_ce=0.009285 ap_exact=40.1403% ap_tol1=40.1434% mae=81.93 len_match=0.5000% lr=5.836820e-05
+epoch=715 train_loss=0.006004 test_loss=0.026639 train_mse=0.003289 train_ce=0.009050 ap_exact=39.9089% ap_tol1=39.9149% mae=83.33 len_match=0.5000% lr=5.798797e-05
+epoch=716 train_loss=0.006190 test_loss=0.022975 train_mse=0.003325 train_ce=0.009551 ap_exact=40.2221% ap_tol1=40.2272% mae=82.77 len_match=0.5000% lr=5.760868e-05
+epoch=717 train_loss=0.006161 test_loss=0.023079 train_mse=0.003308 train_ce=0.009512 ap_exact=40.4487% ap_tol1=40.4538% mae=81.22 len_match=0.5000% lr=5.723034e-05
+epoch=718 train_loss=0.006278 test_loss=0.022986 train_mse=0.003343 train_ce=0.009782 ap_exact=40.0800% ap_tol1=40.0841% mae=82.55 len_match=0.5000% lr=5.685296e-05
+epoch=719 train_loss=0.005954 test_loss=0.027094 train_mse=0.003208 train_ce=0.009153 ap_exact=40.1887% ap_tol1=40.1917% mae=81.52 len_match=0.5000% lr=5.647653e-05
+epoch=720 train_loss=0.006153 test_loss=0.023366 train_mse=0.003330 train_ce=0.009408 ap_exact=40.3576% ap_tol1=40.3606% mae=82.14 len_match=0.5000% lr=5.610106e-05
+epoch=721 train_loss=0.006141 test_loss=0.022150 train_mse=0.003285 train_ce=0.009519 ap_exact=40.7113% ap_tol1=40.7194% mae=80.91 len_match=0.5000% lr=5.572656e-05
+epoch=722 train_loss=0.006162 test_loss=0.027156 train_mse=0.003304 train_ce=0.009527 ap_exact=40.2512% ap_tol1=40.2592% mae=82.65 len_match=0.5000% lr=5.535303e-05
+epoch=723 train_loss=0.006144 test_loss=0.025164 train_mse=0.003335 train_ce=0.009363 ap_exact=39.8960% ap_tol1=39.9000% mae=83.38 len_match=0.5000% lr=5.498047e-05
+epoch=724 train_loss=0.005988 test_loss=0.020035 train_mse=0.003258 train_ce=0.009100 ap_exact=40.2137% ap_tol1=40.2187% mae=82.17 len_match=0.5000% lr=5.460888e-05
+epoch=725 train_loss=0.006333 test_loss=0.024480 train_mse=0.003425 train_ce=0.009693 ap_exact=40.3386% ap_tol1=40.3457% mae=80.92 len_match=0.5000% lr=5.423828e-05
+epoch=726 train_loss=0.006118 test_loss=0.023825 train_mse=0.003257 train_ce=0.009535 ap_exact=40.1490% ap_tol1=40.1550% mae=81.93 len_match=0.5000% lr=5.386866e-05
+epoch=727 train_loss=0.006080 test_loss=0.022375 train_mse=0.003255 train_ce=0.009418 ap_exact=40.1032% ap_tol1=40.1143% mae=82.21 len_match=0.5000% lr=5.350003e-05
+epoch=728 train_loss=0.005947 test_loss=0.024019 train_mse=0.003251 train_ce=0.008986 ap_exact=40.1856% ap_tol1=40.1937% mae=83.35 len_match=0.5000% lr=5.313239e-05
+epoch=729 train_loss=0.005857 test_loss=0.024316 train_mse=0.003121 train_ce=0.009120 ap_exact=39.8561% ap_tol1=39.8621% mae=83.25 len_match=0.5000% lr=5.276574e-05
+epoch=730 train_loss=0.006005 test_loss=0.025893 train_mse=0.003236 train_ce=0.009230 ap_exact=40.2824% ap_tol1=40.2885% mae=82.09 len_match=0.5000% lr=5.240010e-05
+epoch=731 train_loss=0.005875 test_loss=0.025806 train_mse=0.003165 train_ce=0.009033 ap_exact=39.9133% ap_tol1=39.9153% mae=82.71 len_match=0.5000% lr=5.203545e-05
+epoch=732 train_loss=0.005899 test_loss=0.025785 train_mse=0.003190 train_ce=0.009030 ap_exact=39.9976% ap_tol1=40.0016% mae=83.05 len_match=0.5000% lr=5.167182e-05
+epoch=733 train_loss=0.005949 test_loss=0.023244 train_mse=0.003203 train_ce=0.009154 ap_exact=40.1490% ap_tol1=40.1540% mae=81.54 len_match=0.5000% lr=5.130919e-05
+epoch=734 train_loss=0.005722 test_loss=0.026719 train_mse=0.003105 train_ce=0.008723 ap_exact=39.9581% ap_tol1=39.9631% mae=82.08 len_match=0.5000% lr=5.094758e-05
+epoch=735 train_loss=0.005972 test_loss=0.026192 train_mse=0.003206 train_ce=0.009220 ap_exact=40.6033% ap_tol1=40.6073% mae=81.09 len_match=0.5000% lr=5.058699e-05
+epoch=736 train_loss=0.005759 test_loss=0.024303 train_mse=0.003139 train_ce=0.008736 ap_exact=39.5807% ap_tol1=39.5847% mae=84.41 len_match=0.5000% lr=5.022741e-05
+epoch=737 train_loss=0.005883 test_loss=0.026812 train_mse=0.003206 train_ce=0.008924 ap_exact=40.1296% ap_tol1=40.1336% mae=82.80 len_match=0.5000% lr=4.986887e-05
+epoch=738 train_loss=0.005772 test_loss=0.027075 train_mse=0.003119 train_ce=0.008845 ap_exact=40.0478% ap_tol1=40.0518% mae=82.81 len_match=0.5000% lr=4.951135e-05
+epoch=739 train_loss=0.006080 test_loss=0.027311 train_mse=0.003314 train_ce=0.009222 ap_exact=40.1096% ap_tol1=40.1137% mae=82.53 len_match=0.5000% lr=4.915487e-05
+epoch=740 train_loss=0.006052 test_loss=0.022909 train_mse=0.003267 train_ce=0.009284 ap_exact=39.9966% ap_tol1=39.9996% mae=83.01 len_match=0.5000% lr=4.879942e-05
+epoch=741 train_loss=0.006093 test_loss=0.023392 train_mse=0.003302 train_ce=0.009304 ap_exact=40.1752% ap_tol1=40.1792% mae=81.43 len_match=0.5000% lr=4.844501e-05
+epoch=742 train_loss=0.005828 test_loss=0.025736 train_mse=0.003167 train_ce=0.008872 ap_exact=39.4325% ap_tol1=39.4355% mae=84.49 len_match=0.5000% lr=4.809165e-05
+epoch=743 train_loss=0.005869 test_loss=0.028591 train_mse=0.003204 train_ce=0.008881 ap_exact=40.1340% ap_tol1=40.1391% mae=83.07 len_match=0.5000% lr=4.773933e-05
+epoch=744 train_loss=0.005705 test_loss=0.025684 train_mse=0.003123 train_ce=0.008609 ap_exact=40.3086% ap_tol1=40.3106% mae=82.15 len_match=0.5000% lr=4.738806e-05
+epoch=745 train_loss=0.005703 test_loss=0.025366 train_mse=0.003113 train_ce=0.008635 ap_exact=40.2800% ap_tol1=40.2860% mae=83.17 len_match=0.5000% lr=4.703785e-05
+epoch=746 train_loss=0.005820 test_loss=0.028116 train_mse=0.003135 train_ce=0.008950 ap_exact=40.3544% ap_tol1=40.3614% mae=82.47 len_match=0.5000% lr=4.668869e-05
+epoch=747 train_loss=0.005782 test_loss=0.024341 train_mse=0.003136 train_ce=0.008819 ap_exact=40.2098% ap_tol1=40.2159% mae=82.02 len_match=0.5000% lr=4.634060e-05
+epoch=748 train_loss=0.006016 test_loss=0.024267 train_mse=0.003235 train_ce=0.009270 ap_exact=40.3961% ap_tol1=40.3991% mae=82.68 len_match=0.5000% lr=4.599358e-05
+epoch=749 train_loss=0.005944 test_loss=0.029933 train_mse=0.003201 train_ce=0.009146 ap_exact=40.0413% ap_tol1=40.0444% mae=82.30 len_match=0.5000% lr=4.564762e-05
+epoch=750 train_loss=0.005858 test_loss=0.025598 train_mse=0.003177 train_ce=0.008936 ap_exact=40.3056% ap_tol1=40.3096% mae=81.31 len_match=0.5000% lr=4.530273e-05
+epoch=751 train_loss=0.005811 test_loss=0.025318 train_mse=0.003145 train_ce=0.008887 ap_exact=39.5726% ap_tol1=39.5787% mae=84.74 len_match=0.5000% lr=4.495892e-05
+epoch=752 train_loss=0.005781 test_loss=0.028977 train_mse=0.003137 train_ce=0.008811 ap_exact=39.7718% ap_tol1=39.7778% mae=82.20 len_match=0.5000% lr=4.461619e-05
+epoch=753 train_loss=0.005623 test_loss=0.025280 train_mse=0.003011 train_ce=0.008705 ap_exact=40.3141% ap_tol1=40.3191% mae=81.30 len_match=0.5000% lr=4.427454e-05
+epoch=754 train_loss=0.005578 test_loss=0.028505 train_mse=0.003035 train_ce=0.008478 ap_exact=39.9901% ap_tol1=39.9952% mae=83.06 len_match=0.5000% lr=4.393398e-05
+epoch=755 train_loss=0.005826 test_loss=0.022985 train_mse=0.003166 train_ce=0.008865 ap_exact=40.1109% ap_tol1=40.1119% mae=82.54 len_match=0.5000% lr=4.359451e-05
+epoch=756 train_loss=0.005786 test_loss=0.028210 train_mse=0.003146 train_ce=0.008798 ap_exact=39.8405% ap_tol1=39.8456% mae=82.94 len_match=0.5000% lr=4.325613e-05
+epoch=757 train_loss=0.005814 test_loss=0.027768 train_mse=0.003126 train_ce=0.008960 ap_exact=40.2618% ap_tol1=40.2659% mae=81.61 len_match=0.5000% lr=4.291885e-05
+epoch=758 train_loss=0.005614 test_loss=0.028323 train_mse=0.003054 train_ce=0.008531 ap_exact=40.0228% ap_tol1=40.0278% mae=81.97 len_match=0.5000% lr=4.258267e-05
+epoch=759 train_loss=0.005672 test_loss=0.027190 train_mse=0.003018 train_ce=0.008849 ap_exact=39.8655% ap_tol1=39.8675% mae=83.52 len_match=0.5000% lr=4.224760e-05
+epoch=760 train_loss=0.005817 test_loss=0.028530 train_mse=0.003129 train_ce=0.008959 ap_exact=39.9492% ap_tol1=39.9542% mae=83.18 len_match=0.5000% lr=4.191363e-05
+epoch=761 train_loss=0.005716 test_loss=0.022703 train_mse=0.003055 train_ce=0.008872 ap_exact=40.3907% ap_tol1=40.3957% mae=81.64 len_match=0.5000% lr=4.158077e-05
+epoch=762 train_loss=0.005796 test_loss=0.025726 train_mse=0.003146 train_ce=0.008833 ap_exact=40.1208% ap_tol1=40.1258% mae=81.29 len_match=0.5000% lr=4.124903e-05
+epoch=763 train_loss=0.005585 test_loss=0.026860 train_mse=0.002984 train_ce=0.008671 ap_exact=39.6635% ap_tol1=39.6696% mae=82.48 len_match=0.5000% lr=4.091840e-05
+epoch=764 train_loss=0.005678 test_loss=0.023302 train_mse=0.003083 train_ce=0.008651 ap_exact=40.0056% ap_tol1=40.0117% mae=82.42 len_match=0.5000% lr=4.058889e-05
+epoch=765 train_loss=0.005558 test_loss=0.025007 train_mse=0.003036 train_ce=0.008409 ap_exact=40.3050% ap_tol1=40.3080% mae=81.27 len_match=0.5000% lr=4.026051e-05
+epoch=766 train_loss=0.005649 test_loss=0.029629 train_mse=0.003072 train_ce=0.008590 ap_exact=39.9684% ap_tol1=39.9714% mae=83.36 len_match=0.5000% lr=3.993326e-05
+epoch=767 train_loss=0.005378 test_loss=0.026604 train_mse=0.002930 train_ce=0.008162 ap_exact=39.7629% ap_tol1=39.7660% mae=83.97 len_match=0.5000% lr=3.960714e-05
+epoch=768 train_loss=0.005590 test_loss=0.025885 train_mse=0.003072 train_ce=0.008392 ap_exact=40.1564% ap_tol1=40.1605% mae=81.08 len_match=0.5000% lr=3.928215e-05
+epoch=769 train_loss=0.005412 test_loss=0.026041 train_mse=0.002912 train_ce=0.008332 ap_exact=39.9962% ap_tol1=40.0022% mae=83.11 len_match=0.5000% lr=3.895830e-05
+epoch=770 train_loss=0.005341 test_loss=0.025535 train_mse=0.002942 train_ce=0.007999 ap_exact=40.1780% ap_tol1=40.1820% mae=82.22 len_match=0.5000% lr=3.863559e-05
+epoch=771 train_loss=0.005742 test_loss=0.023115 train_mse=0.003090 train_ce=0.008841 ap_exact=39.5228% ap_tol1=39.5268% mae=83.99 len_match=0.5000% lr=3.831403e-05
+epoch=772 train_loss=0.005430 test_loss=0.024862 train_mse=0.002914 train_ce=0.008387 ap_exact=39.9238% ap_tol1=39.9278% mae=82.15 len_match=0.5000% lr=3.799361e-05
+epoch=773 train_loss=0.005599 test_loss=0.027271 train_mse=0.003041 train_ce=0.008528 ap_exact=39.7224% ap_tol1=39.7244% mae=83.88 len_match=0.5000% lr=3.767435e-05
+epoch=774 train_loss=0.005529 test_loss=0.027306 train_mse=0.003022 train_ce=0.008358 ap_exact=39.7440% ap_tol1=39.7460% mae=83.31 len_match=0.5000% lr=3.735623e-05
+epoch=775 train_loss=0.005355 test_loss=0.027337 train_mse=0.002909 train_ce=0.008155 ap_exact=39.7581% ap_tol1=39.7621% mae=84.04 len_match=0.5000% lr=3.703928e-05
+epoch=776 train_loss=0.005608 test_loss=0.029413 train_mse=0.003066 train_ce=0.008473 ap_exact=39.9385% ap_tol1=39.9446% mae=84.12 len_match=0.5000% lr=3.672349e-05
+epoch=777 train_loss=0.005336 test_loss=0.025568 train_mse=0.002866 train_ce=0.008236 ap_exact=40.0024% ap_tol1=40.0054% mae=83.24 len_match=0.5000% lr=3.640886e-05
+epoch=778 train_loss=0.005255 test_loss=0.024558 train_mse=0.002878 train_ce=0.007924 ap_exact=39.6885% ap_tol1=39.6946% mae=82.95 len_match=0.5000% lr=3.609540e-05
+epoch=779 train_loss=0.005198 test_loss=0.024264 train_mse=0.002799 train_ce=0.007997 ap_exact=40.0800% ap_tol1=40.0861% mae=83.83 len_match=0.5000% lr=3.578311e-05
+epoch=780 train_loss=0.005303 test_loss=0.029409 train_mse=0.002867 train_ce=0.008121 ap_exact=40.1341% ap_tol1=40.1371% mae=82.25 len_match=0.5000% lr=3.547199e-05
+epoch=781 train_loss=0.005633 test_loss=0.026047 train_mse=0.003045 train_ce=0.008627 ap_exact=40.0724% ap_tol1=40.0764% mae=82.65 len_match=0.5000% lr=3.516205e-05
+epoch=782 train_loss=0.005515 test_loss=0.025979 train_mse=0.002943 train_ce=0.008574 ap_exact=39.8797% ap_tol1=39.8837% mae=82.84 len_match=0.5000% lr=3.485329e-05
+epoch=783 train_loss=0.005302 test_loss=0.027281 train_mse=0.002874 train_ce=0.008091 ap_exact=40.1895% ap_tol1=40.1915% mae=83.03 len_match=0.5000% lr=3.454571e-05
+epoch=784 train_loss=0.005270 test_loss=0.026748 train_mse=0.002851 train_ce=0.008060 ap_exact=40.3487% ap_tol1=40.3538% mae=80.99 len_match=0.5000% lr=3.423932e-05
+epoch=785 train_loss=0.005480 test_loss=0.027236 train_mse=0.002894 train_ce=0.008617 ap_exact=40.2818% ap_tol1=40.2868% mae=82.11 len_match=0.5000% lr=3.393412e-05
+epoch=786 train_loss=0.005686 test_loss=0.027874 train_mse=0.003129 train_ce=0.008523 ap_exact=40.0073% ap_tol1=40.0093% mae=82.27 len_match=0.5000% lr=3.363011e-05
+epoch=787 train_loss=0.005441 test_loss=0.022825 train_mse=0.002951 train_ce=0.008302 ap_exact=39.9960% ap_tol1=40.0010% mae=82.63 len_match=0.5000% lr=3.332730e-05
+epoch=788 train_loss=0.005368 test_loss=0.027656 train_mse=0.002889 train_ce=0.008262 ap_exact=39.8547% ap_tol1=39.8547% mae=83.47 len_match=0.5000% lr=3.302569e-05
+epoch=789 train_loss=0.005499 test_loss=0.030160 train_mse=0.003044 train_ce=0.008181 ap_exact=40.0857% ap_tol1=40.0887% mae=82.20 len_match=0.5000% lr=3.272528e-05
+epoch=790 train_loss=0.005586 test_loss=0.024394 train_mse=0.003040 train_ce=0.008486 ap_exact=40.0949% ap_tol1=40.0970% mae=83.62 len_match=0.5000% lr=3.242607e-05
+epoch=791 train_loss=0.005472 test_loss=0.024067 train_mse=0.002993 train_ce=0.008264 ap_exact=40.0597% ap_tol1=40.0637% mae=82.51 len_match=0.5000% lr=3.212807e-05
+epoch=792 train_loss=0.005320 test_loss=0.026167 train_mse=0.002883 train_ce=0.008123 ap_exact=40.4979% ap_tol1=40.5039% mae=81.32 len_match=0.5000% lr=3.183129e-05
+epoch=793 train_loss=0.005492 test_loss=0.028918 train_mse=0.002968 train_ce=0.008414 ap_exact=40.1441% ap_tol1=40.1471% mae=82.11 len_match=0.5000% lr=3.153572e-05
+epoch=794 train_loss=0.005461 test_loss=0.026730 train_mse=0.002979 train_ce=0.008275 ap_exact=40.1705% ap_tol1=40.1725% mae=81.62 len_match=0.5000% lr=3.124136e-05
+epoch=795 train_loss=0.005407 test_loss=0.027933 train_mse=0.002931 train_ce=0.008253 ap_exact=39.8857% ap_tol1=39.8907% mae=82.61 len_match=0.5000% lr=3.094823e-05
+epoch=796 train_loss=0.005549 test_loss=0.025108 train_mse=0.003015 train_ce=0.008446 ap_exact=39.9438% ap_tol1=39.9468% mae=83.15 len_match=0.5000% lr=3.065632e-05
+epoch=797 train_loss=0.005427 test_loss=0.025879 train_mse=0.002926 train_ce=0.008336 ap_exact=40.0978% ap_tol1=40.0988% mae=82.34 len_match=0.5000% lr=3.036563e-05
+epoch=798 train_loss=0.005449 test_loss=0.028319 train_mse=0.002936 train_ce=0.008376 ap_exact=39.5859% ap_tol1=39.5900% mae=83.52 len_match=0.5000% lr=3.007618e-05
+epoch=799 train_loss=0.005436 test_loss=0.027399 train_mse=0.002949 train_ce=0.008291 ap_exact=40.2268% ap_tol1=40.2348% mae=83.57 len_match=0.5000% lr=2.978796e-05
+epoch=800 train_loss=0.005351 test_loss=0.024199 train_mse=0.002882 train_ce=0.008232 ap_exact=39.7283% ap_tol1=39.7313% mae=84.13 len_match=0.5000% lr=2.950097e-05
+epoch=801 train_loss=0.005151 test_loss=0.025112 train_mse=0.002817 train_ce=0.007783 ap_exact=40.2717% ap_tol1=40.2747% mae=82.90 len_match=0.5000% lr=2.921522e-05
+epoch=802 train_loss=0.005090 test_loss=0.026438 train_mse=0.002794 train_ce=0.007653 ap_exact=40.1103% ap_tol1=40.1163% mae=83.08 len_match=0.5000% lr=2.893071e-05
+epoch=803 train_loss=0.005088 test_loss=0.025989 train_mse=0.002767 train_ce=0.007738 ap_exact=39.7267% ap_tol1=39.7357% mae=83.43 len_match=0.5000% lr=2.864745e-05
+epoch=804 train_loss=0.005213 test_loss=0.026861 train_mse=0.002846 train_ce=0.007891 ap_exact=40.2852% ap_tol1=40.2902% mae=83.16 len_match=0.5000% lr=2.836543e-05
+epoch=805 train_loss=0.005132 test_loss=0.027608 train_mse=0.002786 train_ce=0.007820 ap_exact=40.0939% ap_tol1=40.0959% mae=83.05 len_match=0.5000% lr=2.808467e-05
+epoch=806 train_loss=0.005288 test_loss=0.028177 train_mse=0.002861 train_ce=0.008091 ap_exact=39.6563% ap_tol1=39.6613% mae=83.19 len_match=0.5000% lr=2.780516e-05
+epoch=807 train_loss=0.005232 test_loss=0.025757 train_mse=0.002821 train_ce=0.008035 ap_exact=40.3632% ap_tol1=40.3662% mae=82.49 len_match=0.5000% lr=2.752690e-05
+epoch=808 train_loss=0.005247 test_loss=0.027487 train_mse=0.002869 train_ce=0.007925 ap_exact=40.1490% ap_tol1=40.1520% mae=82.57 len_match=0.5000% lr=2.724990e-05
+epoch=809 train_loss=0.005191 test_loss=0.028020 train_mse=0.002854 train_ce=0.007787 ap_exact=40.3070% ap_tol1=40.3110% mae=81.81 len_match=0.5000% lr=2.697416e-05
+epoch=810 train_loss=0.005315 test_loss=0.033334 train_mse=0.002857 train_ce=0.008194 ap_exact=40.1423% ap_tol1=40.1463% mae=82.17 len_match=0.5000% lr=2.669969e-05
+epoch=811 train_loss=0.005228 test_loss=0.023889 train_mse=0.002869 train_ce=0.007864 ap_exact=40.0135% ap_tol1=40.0145% mae=82.27 len_match=0.5000% lr=2.642648e-05
+epoch=812 train_loss=0.005344 test_loss=0.029764 train_mse=0.002902 train_ce=0.008141 ap_exact=40.0710% ap_tol1=40.0750% mae=83.06 len_match=0.5000% lr=2.615455e-05
+epoch=813 train_loss=0.005512 test_loss=0.029385 train_mse=0.003019 train_ce=0.008309 ap_exact=40.0490% ap_tol1=40.0540% mae=82.73 len_match=0.5000% lr=2.588388e-05
+epoch=814 train_loss=0.005131 test_loss=0.025604 train_mse=0.002798 train_ce=0.007778 ap_exact=40.0266% ap_tol1=40.0306% mae=82.97 len_match=0.5000% lr=2.561450e-05
+epoch=815 train_loss=0.005160 test_loss=0.025121 train_mse=0.002833 train_ce=0.007754 ap_exact=40.1637% ap_tol1=40.1667% mae=81.56 len_match=0.5000% lr=2.534639e-05
+epoch=816 train_loss=0.005156 test_loss=0.025649 train_mse=0.002835 train_ce=0.007739 ap_exact=39.6731% ap_tol1=39.6801% mae=84.65 len_match=0.5000% lr=2.507956e-05
+epoch=817 train_loss=0.005154 test_loss=0.028153 train_mse=0.002830 train_ce=0.007745 ap_exact=39.9361% ap_tol1=39.9381% mae=82.74 len_match=0.5000% lr=2.481401e-05
+epoch=818 train_loss=0.005273 test_loss=0.029281 train_mse=0.002854 train_ce=0.008061 ap_exact=39.8012% ap_tol1=39.8063% mae=83.00 len_match=0.5000% lr=2.454975e-05
+epoch=819 train_loss=0.005254 test_loss=0.024541 train_mse=0.002847 train_ce=0.008025 ap_exact=39.9716% ap_tol1=39.9776% mae=83.15 len_match=0.5000% lr=2.428678e-05
+epoch=820 train_loss=0.005329 test_loss=0.028869 train_mse=0.002893 train_ce=0.008121 ap_exact=39.8305% ap_tol1=39.8345% mae=83.77 len_match=0.5000% lr=2.402511e-05
+epoch=821 train_loss=0.005233 test_loss=0.026832 train_mse=0.002860 train_ce=0.007909 ap_exact=39.9847% ap_tol1=39.9877% mae=82.33 len_match=0.5000% lr=2.376472e-05
+epoch=822 train_loss=0.005287 test_loss=0.027255 train_mse=0.002839 train_ce=0.008161 ap_exact=39.8543% ap_tol1=39.8573% mae=83.41 len_match=0.5000% lr=2.350564e-05
+epoch=823 train_loss=0.005235 test_loss=0.027839 train_mse=0.002843 train_ce=0.007975 ap_exact=40.0574% ap_tol1=40.0615% mae=82.27 len_match=0.5000% lr=2.324785e-05
+epoch=824 train_loss=0.005015 test_loss=0.027369 train_mse=0.002749 train_ce=0.007552 ap_exact=39.9722% ap_tol1=39.9762% mae=83.24 len_match=0.5000% lr=2.299137e-05
+epoch=825 train_loss=0.005160 test_loss=0.024643 train_mse=0.002828 train_ce=0.007774 ap_exact=40.0576% ap_tol1=40.0637% mae=82.21 len_match=0.5000% lr=2.273619e-05
+epoch=826 train_loss=0.005222 test_loss=0.024342 train_mse=0.002823 train_ce=0.007998 ap_exact=40.2088% ap_tol1=40.2118% mae=82.23 len_match=0.5000% lr=2.248232e-05
+epoch=827 train_loss=0.004939 test_loss=0.026830 train_mse=0.002760 train_ce=0.007265 ap_exact=40.1473% ap_tol1=40.1514% mae=82.00 len_match=0.5000% lr=2.222976e-05
+epoch=828 train_loss=0.005060 test_loss=0.028507 train_mse=0.002764 train_ce=0.007653 ap_exact=40.5739% ap_tol1=40.5789% mae=81.68 len_match=0.5000% lr=2.197852e-05
+epoch=829 train_loss=0.004972 test_loss=0.024392 train_mse=0.002728 train_ce=0.007479 ap_exact=39.9665% ap_tol1=39.9716% mae=82.50 len_match=0.5000% lr=2.172859e-05
+epoch=830 train_loss=0.005384 test_loss=0.032333 train_mse=0.002933 train_ce=0.008169 ap_exact=40.3320% ap_tol1=40.3400% mae=82.39 len_match=0.5000% lr=2.147997e-05
+epoch=831 train_loss=0.005153 test_loss=0.028147 train_mse=0.002791 train_ce=0.007872 ap_exact=39.8754% ap_tol1=39.8795% mae=83.50 len_match=0.5000% lr=2.123268e-05
+epoch=832 train_loss=0.005100 test_loss=0.026385 train_mse=0.002791 train_ce=0.007698 ap_exact=40.2522% ap_tol1=40.2582% mae=81.82 len_match=0.5000% lr=2.098671e-05
+epoch=833 train_loss=0.005155 test_loss=0.031824 train_mse=0.002775 train_ce=0.007931 ap_exact=39.8305% ap_tol1=39.8375% mae=83.23 len_match=0.5000% lr=2.074207e-05
+epoch=834 train_loss=0.005101 test_loss=0.025977 train_mse=0.002806 train_ce=0.007651 ap_exact=40.3217% ap_tol1=40.3247% mae=82.99 len_match=0.5000% lr=2.049875e-05
+epoch=835 train_loss=0.005047 test_loss=0.026998 train_mse=0.002749 train_ce=0.007660 ap_exact=40.1381% ap_tol1=40.1441% mae=82.11 len_match=0.5000% lr=2.025677e-05
+epoch=836 train_loss=0.005275 test_loss=0.028318 train_mse=0.002912 train_ce=0.007874 ap_exact=39.9180% ap_tol1=39.9240% mae=83.41 len_match=0.5000% lr=2.001612e-05
+epoch=837 train_loss=0.005103 test_loss=0.027598 train_mse=0.002833 train_ce=0.007564 ap_exact=39.9159% ap_tol1=39.9230% mae=82.78 len_match=0.5000% lr=1.977681e-05
+epoch=838 train_loss=0.004950 test_loss=0.028989 train_mse=0.002718 train_ce=0.007440 ap_exact=40.1897% ap_tol1=40.1927% mae=82.23 len_match=0.5000% lr=1.953883e-05
+epoch=839 train_loss=0.005252 test_loss=0.027982 train_mse=0.002876 train_ce=0.007921 ap_exact=40.3535% ap_tol1=40.3586% mae=82.45 len_match=0.5000% lr=1.930219e-05
+epoch=840 train_loss=0.005103 test_loss=0.026972 train_mse=0.002723 train_ce=0.007932 ap_exact=39.7771% ap_tol1=39.7871% mae=85.01 len_match=0.5000% lr=1.906690e-05
+epoch=841 train_loss=0.004985 test_loss=0.025752 train_mse=0.002704 train_ce=0.007605 ap_exact=40.2431% ap_tol1=40.2461% mae=82.40 len_match=0.5000% lr=1.883295e-05
+epoch=842 train_loss=0.004847 test_loss=0.028753 train_mse=0.002658 train_ce=0.007295 ap_exact=39.6315% ap_tol1=39.6376% mae=83.50 len_match=0.5000% lr=1.860036e-05
+epoch=843 train_loss=0.004970 test_loss=0.026546 train_mse=0.002735 train_ce=0.007450 ap_exact=39.8970% ap_tol1=39.9000% mae=83.34 len_match=0.5000% lr=1.836911e-05
+epoch=844 train_loss=0.005117 test_loss=0.030003 train_mse=0.002788 train_ce=0.007762 ap_exact=39.8704% ap_tol1=39.8774% mae=82.56 len_match=0.5000% lr=1.813921e-05
+epoch=845 train_loss=0.005241 test_loss=0.030821 train_mse=0.002831 train_ce=0.008034 ap_exact=39.9111% ap_tol1=39.9161% mae=83.67 len_match=0.5000% lr=1.791067e-05
+epoch=846 train_loss=0.005282 test_loss=0.030457 train_mse=0.002869 train_ce=0.008043 ap_exact=39.6934% ap_tol1=39.6964% mae=84.12 len_match=0.5000% lr=1.768349e-05
+epoch=847 train_loss=0.005087 test_loss=0.026505 train_mse=0.002758 train_ce=0.007765 ap_exact=39.9859% ap_tol1=39.9909% mae=82.66 len_match=0.5000% lr=1.745766e-05
+epoch=848 train_loss=0.005092 test_loss=0.028870 train_mse=0.002817 train_ce=0.007584 ap_exact=39.9786% ap_tol1=39.9867% mae=83.37 len_match=0.5000% lr=1.723320e-05
+epoch=849 train_loss=0.004805 test_loss=0.027402 train_mse=0.002648 train_ce=0.007189 ap_exact=40.1191% ap_tol1=40.1211% mae=82.71 len_match=0.5000% lr=1.701010e-05
+epoch=850 train_loss=0.005087 test_loss=0.030741 train_mse=0.002815 train_ce=0.007573 ap_exact=40.0482% ap_tol1=40.0512% mae=83.33 len_match=0.5000% lr=1.678837e-05
+epoch=851 train_loss=0.005000 test_loss=0.028190 train_mse=0.002733 train_ce=0.007555 ap_exact=39.9875% ap_tol1=39.9905% mae=83.70 len_match=0.5000% lr=1.656801e-05
+epoch=852 train_loss=0.005191 test_loss=0.030991 train_mse=0.002834 train_ce=0.007858 ap_exact=40.0881% ap_tol1=40.0921% mae=83.18 len_match=0.5000% lr=1.634902e-05
+epoch=853 train_loss=0.004991 test_loss=0.024172 train_mse=0.002710 train_ce=0.007601 ap_exact=39.8591% ap_tol1=39.8621% mae=83.17 len_match=0.5000% lr=1.613140e-05
+epoch=854 train_loss=0.005052 test_loss=0.027409 train_mse=0.002705 train_ce=0.007824 ap_exact=39.9962% ap_tol1=40.0012% mae=82.85 len_match=0.5000% lr=1.591516e-05
+epoch=855 train_loss=0.004926 test_loss=0.027080 train_mse=0.002717 train_ce=0.007364 ap_exact=40.2639% ap_tol1=40.2649% mae=82.11 len_match=0.5000% lr=1.570030e-05
+epoch=856 train_loss=0.005137 test_loss=0.030110 train_mse=0.002831 train_ce=0.007688 ap_exact=40.4519% ap_tol1=40.4559% mae=81.28 len_match=0.5000% lr=1.548682e-05
+epoch=857 train_loss=0.005125 test_loss=0.031300 train_mse=0.002801 train_ce=0.007748 ap_exact=40.2280% ap_tol1=40.2340% mae=82.08 len_match=0.5000% lr=1.527472e-05
+epoch=858 train_loss=0.005228 test_loss=0.028029 train_mse=0.002868 train_ce=0.007865 ap_exact=40.2314% ap_tol1=40.2344% mae=82.55 len_match=0.5000% lr=1.506400e-05
+epoch=859 train_loss=0.004807 test_loss=0.027190 train_mse=0.002642 train_ce=0.007217 ap_exact=40.1602% ap_tol1=40.1643% mae=82.28 len_match=0.5000% lr=1.485467e-05
+epoch=860 train_loss=0.005030 test_loss=0.028717 train_mse=0.002756 train_ce=0.007579 ap_exact=40.1612% ap_tol1=40.1622% mae=82.76 len_match=0.5000% lr=1.464673e-05
+epoch=861 train_loss=0.004854 test_loss=0.025790 train_mse=0.002633 train_ce=0.007404 ap_exact=40.0514% ap_tol1=40.0524% mae=83.26 len_match=0.5000% lr=1.444018e-05
+epoch=862 train_loss=0.004912 test_loss=0.024701 train_mse=0.002743 train_ce=0.007232 ap_exact=40.0103% ap_tol1=40.0204% mae=82.75 len_match=0.5000% lr=1.423502e-05
+epoch=863 train_loss=0.004862 test_loss=0.025824 train_mse=0.002668 train_ce=0.007311 ap_exact=40.0127% ap_tol1=40.0137% mae=82.63 len_match=0.5000% lr=1.403126e-05
+epoch=864 train_loss=0.005009 test_loss=0.024471 train_mse=0.002726 train_ce=0.007611 ap_exact=40.1302% ap_tol1=40.1332% mae=82.78 len_match=0.5000% lr=1.382890e-05
+epoch=865 train_loss=0.005063 test_loss=0.027522 train_mse=0.002825 train_ce=0.007460 ap_exact=39.6702% ap_tol1=39.6753% mae=83.51 len_match=0.5000% lr=1.362793e-05
+epoch=866 train_loss=0.005134 test_loss=0.029633 train_mse=0.002803 train_ce=0.007770 ap_exact=40.0014% ap_tol1=40.0034% mae=82.36 len_match=0.5000% lr=1.342837e-05
+epoch=867 train_loss=0.004891 test_loss=0.027405 train_mse=0.002670 train_ce=0.007404 ap_exact=39.9145% ap_tol1=39.9176% mae=82.93 len_match=0.5000% lr=1.323021e-05
+epoch=868 train_loss=0.004821 test_loss=0.029811 train_mse=0.002633 train_ce=0.007296 ap_exact=40.1457% ap_tol1=40.1488% mae=82.24 len_match=0.5000% lr=1.303345e-05
+epoch=869 train_loss=0.004713 test_loss=0.031073 train_mse=0.002590 train_ce=0.007075 ap_exact=40.0548% ap_tol1=40.0599% mae=83.04 len_match=0.5000% lr=1.283811e-05
+epoch=870 train_loss=0.004965 test_loss=0.028820 train_mse=0.002732 train_ce=0.007442 ap_exact=40.3245% ap_tol1=40.3316% mae=82.15 len_match=0.5000% lr=1.264417e-05
+epoch=871 train_loss=0.004910 test_loss=0.029787 train_mse=0.002680 train_ce=0.007433 ap_exact=39.9038% ap_tol1=39.9079% mae=83.16 len_match=0.5000% lr=1.245164e-05
+epoch=872 train_loss=0.005030 test_loss=0.029708 train_mse=0.002764 train_ce=0.007554 ap_exact=40.0022% ap_tol1=40.0062% mae=82.73 len_match=0.5000% lr=1.226053e-05
+epoch=873 train_loss=0.004807 test_loss=0.028481 train_mse=0.002622 train_ce=0.007282 ap_exact=39.8901% ap_tol1=39.8932% mae=83.04 len_match=0.5000% lr=1.207083e-05
+epoch=874 train_loss=0.004884 test_loss=0.028486 train_mse=0.002680 train_ce=0.007348 ap_exact=39.8184% ap_tol1=39.8224% mae=82.71 len_match=0.5000% lr=1.188255e-05
+epoch=875 train_loss=0.005047 test_loss=0.029239 train_mse=0.002724 train_ce=0.007744 ap_exact=40.1014% ap_tol1=40.1034% mae=82.61 len_match=0.5000% lr=1.169569e-05
+epoch=876 train_loss=0.004776 test_loss=0.029142 train_mse=0.002639 train_ce=0.007123 ap_exact=40.0248% ap_tol1=40.0278% mae=82.71 len_match=0.5000% lr=1.151026e-05
+epoch=877 train_loss=0.004897 test_loss=0.025525 train_mse=0.002688 train_ce=0.007363 ap_exact=40.0488% ap_tol1=40.0518% mae=83.63 len_match=0.5000% lr=1.132624e-05
+epoch=878 train_loss=0.004655 test_loss=0.026226 train_mse=0.002568 train_ce=0.006956 ap_exact=40.0663% ap_tol1=40.0703% mae=83.12 len_match=0.5000% lr=1.114365e-05
+epoch=879 train_loss=0.004842 test_loss=0.027603 train_mse=0.002634 train_ce=0.007358 ap_exact=40.1476% ap_tol1=40.1536% mae=82.56 len_match=0.5000% lr=1.096249e-05
+epoch=880 train_loss=0.004941 test_loss=0.031326 train_mse=0.002670 train_ce=0.007569 ap_exact=40.0843% ap_tol1=40.0923% mae=81.96 len_match=0.5000% lr=1.078275e-05
+epoch=881 train_loss=0.004837 test_loss=0.028639 train_mse=0.002637 train_ce=0.007331 ap_exact=40.0258% ap_tol1=40.0268% mae=82.74 len_match=0.5000% lr=1.060445e-05
+epoch=882 train_loss=0.005014 test_loss=0.027254 train_mse=0.002713 train_ce=0.007671 ap_exact=39.9266% ap_tol1=39.9296% mae=82.95 len_match=0.5000% lr=1.042758e-05
+epoch=883 train_loss=0.005055 test_loss=0.027569 train_mse=0.002785 train_ce=0.007570 ap_exact=40.0208% ap_tol1=40.0228% mae=83.34 len_match=0.5000% lr=1.025214e-05
+epoch=884 train_loss=0.004841 test_loss=0.026752 train_mse=0.002652 train_ce=0.007295 ap_exact=40.0855% ap_tol1=40.0885% mae=82.39 len_match=0.5000% lr=1.007814e-05
+epoch=885 train_loss=0.004566 test_loss=0.025164 train_mse=0.002511 train_ce=0.006847 ap_exact=39.9885% ap_tol1=39.9925% mae=82.20 len_match=0.5000% lr=9.905575e-06
+epoch=886 train_loss=0.004968 test_loss=0.026191 train_mse=0.002758 train_ce=0.007365 ap_exact=39.8024% ap_tol1=39.8075% mae=83.56 len_match=0.5000% lr=9.734451e-06
+epoch=887 train_loss=0.004685 test_loss=0.029324 train_mse=0.002573 train_ce=0.007038 ap_exact=39.8339% ap_tol1=39.8369% mae=82.89 len_match=0.5000% lr=9.564769e-06
+epoch=888 train_loss=0.004813 test_loss=0.030922 train_mse=0.002636 train_ce=0.007255 ap_exact=40.1641% ap_tol1=40.1681% mae=82.19 len_match=0.5000% lr=9.396531e-06
+epoch=889 train_loss=0.004848 test_loss=0.028599 train_mse=0.002637 train_ce=0.007370 ap_exact=40.0931% ap_tol1=40.0972% mae=82.74 len_match=0.5000% lr=9.229737e-06
+epoch=890 train_loss=0.005071 test_loss=0.029321 train_mse=0.002793 train_ce=0.007594 ap_exact=40.2201% ap_tol1=40.2242% mae=82.34 len_match=0.5000% lr=9.064389e-06
+epoch=891 train_loss=0.004782 test_loss=0.029522 train_mse=0.002631 train_ce=0.007171 ap_exact=39.9401% ap_tol1=39.9421% mae=82.53 len_match=0.5000% lr=8.900490e-06
+epoch=892 train_loss=0.004682 test_loss=0.031295 train_mse=0.002561 train_ce=0.007070 ap_exact=39.4359% ap_tol1=39.4409% mae=83.81 len_match=0.5000% lr=8.738042e-06
+epoch=893 train_loss=0.004913 test_loss=0.027720 train_mse=0.002745 train_ce=0.007227 ap_exact=39.9692% ap_tol1=39.9732% mae=81.75 len_match=0.5000% lr=8.577044e-06
+epoch=894 train_loss=0.004919 test_loss=0.027174 train_mse=0.002696 train_ce=0.007410 ap_exact=39.9448% ap_tol1=39.9498% mae=83.07 len_match=0.5000% lr=8.417500e-06
+epoch=895 train_loss=0.004915 test_loss=0.028481 train_mse=0.002694 train_ce=0.007402 ap_exact=39.9153% ap_tol1=39.9184% mae=83.28 len_match=0.5000% lr=8.259412e-06
+epoch=896 train_loss=0.004999 test_loss=0.029160 train_mse=0.002695 train_ce=0.007680 ap_exact=40.0970% ap_tol1=40.1010% mae=81.61 len_match=0.5000% lr=8.102779e-06
+epoch=897 train_loss=0.004970 test_loss=0.028936 train_mse=0.002690 train_ce=0.007603 ap_exact=39.9883% ap_tol1=39.9923% mae=82.16 len_match=0.5000% lr=7.947605e-06
+epoch=898 train_loss=0.004843 test_loss=0.030002 train_mse=0.002690 train_ce=0.007178 ap_exact=40.0379% ap_tol1=40.0450% mae=82.57 len_match=0.5000% lr=7.793891e-06
+epoch=899 train_loss=0.004870 test_loss=0.026428 train_mse=0.002714 train_ce=0.007187 ap_exact=40.0423% ap_tol1=40.0494% mae=82.32 len_match=0.5000% lr=7.641638e-06
+epoch=900 train_loss=0.004936 test_loss=0.025637 train_mse=0.002749 train_ce=0.007291 ap_exact=40.0214% ap_tol1=40.0244% mae=82.94 len_match=0.5000% lr=7.490848e-06
+epoch=901 train_loss=0.004930 test_loss=0.027136 train_mse=0.002710 train_ce=0.007399 ap_exact=40.0294% ap_tol1=40.0314% mae=82.36 len_match=0.5000% lr=7.341523e-06
+epoch=902 train_loss=0.004794 test_loss=0.026087 train_mse=0.002612 train_ce=0.007273 ap_exact=40.1998% ap_tol1=40.2038% mae=82.53 len_match=0.5000% lr=7.193663e-06
+epoch=903 train_loss=0.004586 test_loss=0.029744 train_mse=0.002529 train_ce=0.006858 ap_exact=40.2030% ap_tol1=40.2090% mae=81.80 len_match=0.5000% lr=7.047271e-06
+epoch=904 train_loss=0.004883 test_loss=0.027757 train_mse=0.002660 train_ce=0.007411 ap_exact=39.9573% ap_tol1=39.9613% mae=83.33 len_match=0.5000% lr=6.902349e-06
+epoch=905 train_loss=0.004662 test_loss=0.031259 train_mse=0.002588 train_ce=0.006913 ap_exact=40.0595% ap_tol1=40.0605% mae=81.86 len_match=0.5000% lr=6.758896e-06
+epoch=906 train_loss=0.004613 test_loss=0.027139 train_mse=0.002542 train_ce=0.006904 ap_exact=40.0099% ap_tol1=40.0119% mae=82.18 len_match=0.5000% lr=6.616916e-06
+epoch=907 train_loss=0.004763 test_loss=0.028281 train_mse=0.002605 train_ce=0.007194 ap_exact=40.0478% ap_tol1=40.0488% mae=82.59 len_match=0.5000% lr=6.476409e-06
+epoch=908 train_loss=0.004652 test_loss=0.028970 train_mse=0.002572 train_ce=0.006932 ap_exact=40.0742% ap_tol1=40.0792% mae=83.49 len_match=0.5000% lr=6.337377e-06
+epoch=909 train_loss=0.004883 test_loss=0.027383 train_mse=0.002725 train_ce=0.007193 ap_exact=39.9665% ap_tol1=39.9706% mae=83.18 len_match=0.5000% lr=6.199822e-06
+epoch=910 train_loss=0.004752 test_loss=0.027035 train_mse=0.002592 train_ce=0.007199 ap_exact=39.8833% ap_tol1=39.8853% mae=82.61 len_match=0.5000% lr=6.063744e-06
+epoch=911 train_loss=0.004801 test_loss=0.031174 train_mse=0.002650 train_ce=0.007168 ap_exact=40.0992% ap_tol1=40.1042% mae=82.58 len_match=0.5000% lr=5.929146e-06
+epoch=912 train_loss=0.004767 test_loss=0.028216 train_mse=0.002625 train_ce=0.007140 ap_exact=39.9089% ap_tol1=39.9119% mae=83.33 len_match=0.5000% lr=5.796028e-06
+epoch=913 train_loss=0.004641 test_loss=0.025336 train_mse=0.002561 train_ce=0.006933 ap_exact=39.9720% ap_tol1=39.9811% mae=83.12 len_match=0.5000% lr=5.664392e-06
+epoch=914 train_loss=0.004673 test_loss=0.033286 train_mse=0.002570 train_ce=0.007010 ap_exact=39.9587% ap_tol1=39.9627% mae=82.35 len_match=0.5000% lr=5.534239e-06
+epoch=915 train_loss=0.004933 test_loss=0.028854 train_mse=0.002658 train_ce=0.007583 ap_exact=40.3733% ap_tol1=40.3753% mae=82.58 len_match=0.5000% lr=5.405571e-06
+epoch=916 train_loss=0.004778 test_loss=0.025850 train_mse=0.002647 train_ce=0.007103 ap_exact=40.0417% ap_tol1=40.0427% mae=82.84 len_match=0.5000% lr=5.278389e-06
+epoch=917 train_loss=0.004938 test_loss=0.028793 train_mse=0.002687 train_ce=0.007504 ap_exact=40.0468% ap_tol1=40.0488% mae=82.41 len_match=0.5000% lr=5.152694e-06
+epoch=918 train_loss=0.004792 test_loss=0.028208 train_mse=0.002624 train_ce=0.007226 ap_exact=39.9284% ap_tol1=39.9335% mae=82.79 len_match=0.5000% lr=5.028487e-06
+epoch=919 train_loss=0.004841 test_loss=0.027848 train_mse=0.002685 train_ce=0.007189 ap_exact=39.9734% ap_tol1=39.9754% mae=82.83 len_match=0.5000% lr=4.905771e-06
+epoch=920 train_loss=0.004811 test_loss=0.028141 train_mse=0.002644 train_ce=0.007221 ap_exact=39.9998% ap_tol1=40.0058% mae=82.68 len_match=0.5000% lr=4.784545e-06
+epoch=921 train_loss=0.004606 test_loss=0.028390 train_mse=0.002590 train_ce=0.006721 ap_exact=39.8569% ap_tol1=39.8609% mae=84.01 len_match=0.5000% lr=4.664812e-06
+epoch=922 train_loss=0.004791 test_loss=0.031573 train_mse=0.002625 train_ce=0.007222 ap_exact=39.8615% ap_tol1=39.8655% mae=82.67 len_match=0.5000% lr=4.546572e-06
+epoch=923 train_loss=0.004567 test_loss=0.025921 train_mse=0.002546 train_ce=0.006737 ap_exact=40.1568% ap_tol1=40.1619% mae=82.32 len_match=0.5000% lr=4.429827e-06
+epoch=924 train_loss=0.004733 test_loss=0.026252 train_mse=0.002613 train_ce=0.007069 ap_exact=39.9355% ap_tol1=39.9415% mae=83.41 len_match=0.5000% lr=4.314578e-06
+epoch=925 train_loss=0.004781 test_loss=0.029855 train_mse=0.002627 train_ce=0.007182 ap_exact=39.9030% ap_tol1=39.9091% mae=83.95 len_match=0.5000% lr=4.200826e-06
+epoch=926 train_loss=0.004692 test_loss=0.030588 train_mse=0.002569 train_ce=0.007077 ap_exact=39.9452% ap_tol1=39.9522% mae=83.35 len_match=0.5000% lr=4.088573e-06
+epoch=927 train_loss=0.004596 test_loss=0.026431 train_mse=0.002513 train_ce=0.006943 ap_exact=39.9631% ap_tol1=39.9671% mae=83.18 len_match=0.5000% lr=3.977818e-06
+epoch=928 train_loss=0.004623 test_loss=0.030549 train_mse=0.002565 train_ce=0.006861 ap_exact=39.8589% ap_tol1=39.8609% mae=84.58 len_match=0.5000% lr=3.868565e-06
+epoch=929 train_loss=0.004920 test_loss=0.027419 train_mse=0.002711 train_ce=0.007363 ap_exact=40.0234% ap_tol1=40.0274% mae=83.33 len_match=0.5000% lr=3.760813e-06
+epoch=930 train_loss=0.004779 test_loss=0.027462 train_mse=0.002668 train_ce=0.007034 ap_exact=39.7583% ap_tol1=39.7603% mae=84.24 len_match=0.5000% lr=3.654564e-06
+epoch=931 train_loss=0.004587 test_loss=0.027602 train_mse=0.002526 train_ce=0.006872 ap_exact=39.8938% ap_tol1=39.8958% mae=82.65 len_match=0.5000% lr=3.549819e-06
+epoch=932 train_loss=0.004727 test_loss=0.030390 train_mse=0.002608 train_ce=0.007063 ap_exact=39.7279% ap_tol1=39.7289% mae=83.31 len_match=0.5000% lr=3.446579e-06
+epoch=933 train_loss=0.004616 test_loss=0.027454 train_mse=0.002541 train_ce=0.006917 ap_exact=39.9671% ap_tol1=39.9702% mae=82.66 len_match=0.5000% lr=3.344845e-06
+epoch=934 train_loss=0.004814 test_loss=0.027202 train_mse=0.002704 train_ce=0.007036 ap_exact=39.6823% ap_tol1=39.6904% mae=84.34 len_match=0.5000% lr=3.244618e-06
+epoch=935 train_loss=0.004604 test_loss=0.029563 train_mse=0.002518 train_ce=0.006954 ap_exact=39.8186% ap_tol1=39.8216% mae=82.95 len_match=0.5000% lr=3.145900e-06
+epoch=936 train_loss=0.004668 test_loss=0.030065 train_mse=0.002578 train_ce=0.006967 ap_exact=40.0615% ap_tol1=40.0645% mae=83.05 len_match=0.5000% lr=3.048690e-06
+epoch=937 train_loss=0.004794 test_loss=0.028021 train_mse=0.002575 train_ce=0.007397 ap_exact=39.9180% ap_tol1=39.9220% mae=83.50 len_match=0.5000% lr=2.952991e-06
+epoch=938 train_loss=0.004759 test_loss=0.024426 train_mse=0.002648 train_ce=0.007036 ap_exact=40.1356% ap_tol1=40.1377% mae=82.60 len_match=0.5000% lr=2.858803e-06
+epoch=939 train_loss=0.004785 test_loss=0.027341 train_mse=0.002629 train_ce=0.007188 ap_exact=40.0740% ap_tol1=40.0780% mae=82.94 len_match=0.5000% lr=2.766126e-06
+epoch=940 train_loss=0.004760 test_loss=0.028777 train_mse=0.002633 train_ce=0.007091 ap_exact=39.8924% ap_tol1=39.8964% mae=83.21 len_match=0.5000% lr=2.674963e-06
+epoch=941 train_loss=0.004636 test_loss=0.028327 train_mse=0.002616 train_ce=0.006734 ap_exact=39.8206% ap_tol1=39.8236% mae=82.90 len_match=0.5000% lr=2.585314e-06
+epoch=942 train_loss=0.004605 test_loss=0.026784 train_mse=0.002552 train_ce=0.006845 ap_exact=40.1004% ap_tol1=40.1044% mae=82.26 len_match=0.5000% lr=2.497180e-06
+epoch=943 train_loss=0.004639 test_loss=0.026780 train_mse=0.002539 train_ce=0.007000 ap_exact=40.1736% ap_tol1=40.1766% mae=82.30 len_match=0.5000% lr=2.410562e-06
+epoch=944 train_loss=0.004726 test_loss=0.025332 train_mse=0.002589 train_ce=0.007122 ap_exact=40.1705% ap_tol1=40.1736% mae=82.65 len_match=0.5000% lr=2.325460e-06
+epoch=945 train_loss=0.004936 test_loss=0.026639 train_mse=0.002698 train_ce=0.007461 ap_exact=39.9534% ap_tol1=39.9565% mae=82.35 len_match=0.5000% lr=2.241876e-06
+epoch=946 train_loss=0.004962 test_loss=0.028083 train_mse=0.002698 train_ce=0.007547 ap_exact=39.6636% ap_tol1=39.6666% mae=83.98 len_match=0.5000% lr=2.159810e-06
+epoch=947 train_loss=0.004950 test_loss=0.030386 train_mse=0.002669 train_ce=0.007604 ap_exact=39.8379% ap_tol1=39.8430% mae=83.74 len_match=0.5000% lr=2.079264e-06
+epoch=948 train_loss=0.004818 test_loss=0.027752 train_mse=0.002616 train_ce=0.007340 ap_exact=39.9077% ap_tol1=39.9107% mae=83.34 len_match=0.5000% lr=2.000238e-06
+epoch=949 train_loss=0.004560 test_loss=0.027443 train_mse=0.002514 train_ce=0.006822 ap_exact=39.5123% ap_tol1=39.5174% mae=83.43 len_match=0.5000% lr=1.922732e-06
+epoch=950 train_loss=0.004720 test_loss=0.026573 train_mse=0.002525 train_ce=0.007318 ap_exact=39.9966% ap_tol1=39.9986% mae=82.85 len_match=0.5000% lr=1.846749e-06
+epoch=951 train_loss=0.004822 test_loss=0.029626 train_mse=0.002617 train_ce=0.007351 ap_exact=39.7881% ap_tol1=39.7922% mae=83.32 len_match=0.5000% lr=1.772288e-06
+epoch=952 train_loss=0.004761 test_loss=0.028436 train_mse=0.002625 train_ce=0.007118 ap_exact=39.8827% ap_tol1=39.8887% mae=82.86 len_match=0.5000% lr=1.699350e-06
+epoch=953 train_loss=0.004904 test_loss=0.027150 train_mse=0.002640 train_ce=0.007546 ap_exact=40.2802% ap_tol1=40.2873% mae=82.13 len_match=0.5000% lr=1.627936e-06
+epoch=954 train_loss=0.004705 test_loss=0.028225 train_mse=0.002603 train_ce=0.007006 ap_exact=39.6222% ap_tol1=39.6273% mae=83.75 len_match=0.5000% lr=1.558047e-06
+epoch=955 train_loss=0.004898 test_loss=0.026812 train_mse=0.002716 train_ce=0.007276 ap_exact=40.0429% ap_tol1=40.0439% mae=83.01 len_match=0.5000% lr=1.489684e-06
+epoch=956 train_loss=0.004730 test_loss=0.027626 train_mse=0.002606 train_ce=0.007081 ap_exact=39.9557% ap_tol1=39.9597% mae=83.03 len_match=0.5000% lr=1.422846e-06
+epoch=957 train_loss=0.004705 test_loss=0.029281 train_mse=0.002601 train_ce=0.007015 ap_exact=39.7756% ap_tol1=39.7807% mae=83.29 len_match=0.5000% lr=1.357536e-06
+epoch=958 train_loss=0.004903 test_loss=0.028765 train_mse=0.002658 train_ce=0.007481 ap_exact=40.1010% ap_tol1=40.1050% mae=82.23 len_match=0.5000% lr=1.293753e-06
+epoch=959 train_loss=0.004741 test_loss=0.026675 train_mse=0.002640 train_ce=0.007004 ap_exact=40.0437% ap_tol1=40.0508% mae=82.56 len_match=0.5000% lr=1.231498e-06
+epoch=960 train_loss=0.004727 test_loss=0.028342 train_mse=0.002623 train_ce=0.007013 ap_exact=40.1060% ap_tol1=40.1101% mae=82.76 len_match=0.5000% lr=1.170772e-06
+epoch=961 train_loss=0.004580 test_loss=0.024222 train_mse=0.002543 train_ce=0.006788 ap_exact=40.0726% ap_tol1=40.0766% mae=82.36 len_match=0.5000% lr=1.111575e-06
+epoch=962 train_loss=0.004717 test_loss=0.027910 train_mse=0.002597 train_ce=0.007065 ap_exact=39.6404% ap_tol1=39.6444% mae=83.74 len_match=0.5000% lr=1.053909e-06
+epoch=963 train_loss=0.004755 test_loss=0.030062 train_mse=0.002661 train_ce=0.006983 ap_exact=39.8946% ap_tol1=39.8956% mae=83.16 len_match=0.5000% lr=1.000000e-06
+epoch=964 train_loss=0.004654 test_loss=0.028257 train_mse=0.002553 train_ce=0.007002 ap_exact=39.6371% ap_tol1=39.6381% mae=83.82 len_match=0.5000% lr=1.000000e-06
+epoch=965 train_loss=0.004989 test_loss=0.023410 train_mse=0.002729 train_ce=0.007532 ap_exact=39.8375% ap_tol1=39.8416% mae=83.35 len_match=0.5000% lr=1.000000e-06
+epoch=966 train_loss=0.004825 test_loss=0.028914 train_mse=0.002630 train_ce=0.007319 ap_exact=39.9167% ap_tol1=39.9208% mae=83.05 len_match=0.5000% lr=1.000000e-06
+epoch=967 train_loss=0.004623 test_loss=0.029769 train_mse=0.002541 train_ce=0.006941 ap_exact=40.0331% ap_tol1=40.0351% mae=83.26 len_match=0.5000% lr=1.000000e-06
+epoch=968 train_loss=0.004525 test_loss=0.028792 train_mse=0.002515 train_ce=0.006700 ap_exact=39.8928% ap_tol1=39.8968% mae=83.34 len_match=0.5000% lr=1.000000e-06
+epoch=969 train_loss=0.004616 test_loss=0.030097 train_mse=0.002538 train_ce=0.006929 ap_exact=40.1530% ap_tol1=40.1570% mae=82.92 len_match=0.5000% lr=1.000000e-06
+epoch=970 train_loss=0.004690 test_loss=0.028079 train_mse=0.002613 train_ce=0.006923 ap_exact=40.0939% ap_tol1=40.0990% mae=82.46 len_match=0.5000% lr=1.000000e-06
+epoch=971 train_loss=0.004307 test_loss=0.025925 train_mse=0.002409 train_ce=0.006324 ap_exact=40.0659% ap_tol1=40.0689% mae=82.49 len_match=0.5000% lr=1.000000e-06
+epoch=972 train_loss=0.004638 test_loss=0.028128 train_mse=0.002563 train_ce=0.006917 ap_exact=40.2723% ap_tol1=40.2764% mae=82.44 len_match=0.5000% lr=1.000000e-06
+epoch=973 train_loss=0.004964 test_loss=0.026735 train_mse=0.002732 train_ce=0.007442 ap_exact=39.6928% ap_tol1=39.6968% mae=83.06 len_match=0.5000% lr=1.000000e-06
+epoch=974 train_loss=0.004600 test_loss=0.026003 train_mse=0.002515 train_ce=0.006951 ap_exact=40.1318% ap_tol1=40.1379% mae=83.20 len_match=0.5000% lr=1.000000e-06
+epoch=975 train_loss=0.004613 test_loss=0.025120 train_mse=0.002592 train_ce=0.006734 ap_exact=39.9127% ap_tol1=39.9157% mae=82.91 len_match=0.5000% lr=1.000000e-06
+epoch=976 train_loss=0.004725 test_loss=0.026765 train_mse=0.002575 train_ce=0.007168 ap_exact=39.9470% ap_tol1=39.9530% mae=82.38 len_match=0.5000% lr=1.000000e-06
+epoch=977 train_loss=0.004840 test_loss=0.027541 train_mse=0.002673 train_ce=0.007226 ap_exact=40.0280% ap_tol1=40.0310% mae=82.47 len_match=0.5000% lr=1.000000e-06
+epoch=978 train_loss=0.004765 test_loss=0.028840 train_mse=0.002612 train_ce=0.007180 ap_exact=40.1308% ap_tol1=40.1338% mae=82.76 len_match=0.5000% lr=1.000000e-06
+epoch=979 train_loss=0.004630 test_loss=0.028329 train_mse=0.002598 train_ce=0.006773 ap_exact=40.2621% ap_tol1=40.2691% mae=81.33 len_match=0.5000% lr=1.000000e-06
+epoch=980 train_loss=0.004558 test_loss=0.030227 train_mse=0.002524 train_ce=0.006780 ap_exact=39.8464% ap_tol1=39.8494% mae=83.17 len_match=0.5000% lr=1.000000e-06
+epoch=981 train_loss=0.004506 test_loss=0.025879 train_mse=0.002501 train_ce=0.006685 ap_exact=39.7132% ap_tol1=39.7152% mae=83.63 len_match=0.5000% lr=1.000000e-06
+epoch=982 train_loss=0.004746 test_loss=0.028752 train_mse=0.002627 train_ce=0.007063 ap_exact=39.9212% ap_tol1=39.9252% mae=83.53 len_match=0.5000% lr=1.000000e-06
+epoch=983 train_loss=0.004627 test_loss=0.030971 train_mse=0.002573 train_ce=0.006847 ap_exact=39.9345% ap_tol1=39.9395% mae=82.57 len_match=0.5000% lr=1.000000e-06
+epoch=984 train_loss=0.004615 test_loss=0.029423 train_mse=0.002522 train_ce=0.006977 ap_exact=39.8674% ap_tol1=39.8724% mae=83.33 len_match=0.5000% lr=1.000000e-06
+epoch=985 train_loss=0.004793 test_loss=0.027412 train_mse=0.002604 train_ce=0.007296 ap_exact=40.0373% ap_tol1=40.0413% mae=82.40 len_match=0.5000% lr=1.000000e-06
+epoch=986 train_loss=0.004660 test_loss=0.030752 train_mse=0.002581 train_ce=0.006931 ap_exact=39.8944% ap_tol1=39.8974% mae=83.21 len_match=0.5000% lr=1.000000e-06
+epoch=987 train_loss=0.004872 test_loss=0.031119 train_mse=0.002671 train_ce=0.007336 ap_exact=39.7214% ap_tol1=39.7244% mae=83.22 len_match=0.5000% lr=1.000000e-06
+epoch=988 train_loss=0.004703 test_loss=0.029592 train_mse=0.002596 train_ce=0.007024 ap_exact=40.0214% ap_tol1=40.0254% mae=83.13 len_match=0.5000% lr=1.000000e-06
+epoch=989 train_loss=0.004544 test_loss=0.027821 train_mse=0.002512 train_ce=0.006771 ap_exact=40.0145% ap_tol1=40.0196% mae=83.00 len_match=0.5000% lr=1.000000e-06
+epoch=990 train_loss=0.004730 test_loss=0.028951 train_mse=0.002640 train_ce=0.006967 ap_exact=39.9470% ap_tol1=39.9510% mae=83.26 len_match=0.5000% lr=1.000000e-06
+epoch=991 train_loss=0.004430 test_loss=0.027669 train_mse=0.002440 train_ce=0.006635 ap_exact=39.8905% ap_tol1=39.8976% mae=83.51 len_match=0.5000% lr=1.000000e-06
+epoch=992 train_loss=0.004758 test_loss=0.026292 train_mse=0.002599 train_ce=0.007199 ap_exact=40.1607% ap_tol1=40.1627% mae=82.45 len_match=0.5000% lr=1.000000e-06
+epoch=993 train_loss=0.004803 test_loss=0.030155 train_mse=0.002645 train_ce=0.007194 ap_exact=39.9940% ap_tol1=39.9960% mae=83.17 len_match=0.5000% lr=1.000000e-06
+epoch=994 train_loss=0.004665 test_loss=0.026848 train_mse=0.002573 train_ce=0.006974 ap_exact=40.1187% ap_tol1=40.1258% mae=82.67 len_match=0.5000% lr=1.000000e-06
+epoch=995 train_loss=0.004553 test_loss=0.025873 train_mse=0.002515 train_ce=0.006794 ap_exact=39.9051% ap_tol1=39.9081% mae=83.53 len_match=0.5000% lr=1.000000e-06
+epoch=996 train_loss=0.004862 test_loss=0.025694 train_mse=0.002677 train_ce=0.007283 ap_exact=40.2076% ap_tol1=40.2127% mae=82.49 len_match=0.5000% lr=1.000000e-06
+epoch=997 train_loss=0.004388 test_loss=0.025183 train_mse=0.002454 train_ce=0.006445 ap_exact=39.8218% ap_tol1=39.8268% mae=83.28 len_match=0.5000% lr=1.000000e-06
+epoch=998 train_loss=0.004727 test_loss=0.030480 train_mse=0.002624 train_ce=0.007013 ap_exact=40.0373% ap_tol1=40.0433% mae=82.63 len_match=0.5000% lr=1.000000e-06
+epoch=999 train_loss=0.004759 test_loss=0.028636 train_mse=0.002620 train_ce=0.007130 ap_exact=40.0826% ap_tol1=40.0867% mae=83.33 len_match=0.5000% lr=1.000000e-06
+[viz] epoch=999 codebook map saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0999_codebook.png
+[viz] epoch=999 diffusion denoise saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\epoch_0999_diffusion_denoise.png
+[viz] training curves saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\training_curves.png
+[viz] confusion matrix saved -> Checkpoint\DiffSeqPRI_Miss_dataset_random_len\visuals\confusion_matrix.png
+
+=== Final Test-Mode Evaluation (Raw Model) ===
+  exact_acc  = 40.4900%
+  tol1_acc   = 40.4930%

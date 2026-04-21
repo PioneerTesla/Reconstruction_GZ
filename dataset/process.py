@@ -16,9 +16,9 @@ args = create_argparser().parse_args()
 
 # ==================== 用户配置 ====================
 # 处理模式: 'Miss' / 'Spurious' / 'Mix'
-PROCESS_NAME='Mix'
+PROCESS_NAME='Miss'
 # 数据集根目录: 'dataset'(定长) / 'dataset_random_len'(变长60~80)
-DATASET_ROOT='dataset_random_len'
+DATASET_ROOT='dataset_3W'
 # ==================================================
 
 SEQUENCE_LENGTH=args.ground_truth_seq_length

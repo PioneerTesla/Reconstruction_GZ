@@ -538,7 +538,7 @@ if __name__ == "__main__":
         else:
             word_function_name='word_22_28'
         word_function=globals().get(word_function_name)
-        seq, _, _ = word_function(if_add_noise)
+        seq, _, _ = word_function(if_add_noise, seq_len=seq_len)
         # seq=de_normalize(seq)
         # seq=discrete_process(seq)
         # seqs_list.append(seq)
@@ -555,7 +555,7 @@ if __name__ == "__main__":
     
     current_dir = os.getcwd()
     
-    basic_path='dataset_random_len'
+    basic_path='dataset_3W'
     data_dir = os.path.join(current_dir, os.path.join(basic_path,'Ground_Truth'))
     if not os.path.exists(data_dir):
         os.makedirs(data_dir)

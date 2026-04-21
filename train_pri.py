@@ -14,7 +14,7 @@ from torch.utils.data import DataLoader
 from pri_tokenizer import PRIQuantizer, QuantizerConfig
 from pri_dataset import PRISample, PRIDiffuSeqDataset, PRICollator
 from model import PRIDiffuSeq, PRIDiffuSeqConfig, EMAModel
-from utlis import get_clean_pri_range, get_pri_range, create_argparser, load_defaults_config, choose_training_schedule
+from utlis import get_clean_pri_range, get_pri_range, create_argparser, load_defaults_config
 from evaluation import (
     parse_target_tokens,
     parse_gt_target_tokens,
@@ -50,7 +50,10 @@ class DualOutput:
     def write(self, data):
         if self.closed:
             return
-        self.console.write(data)
+        try:
+            self.console.write(data)
+        except UnicodeEncodeError:
+            self.console.write(data.encode('utf-8', errors='replace').decode(self.console.encoding or 'utf-8', errors='replace'))
         self.file.write(data)
 
     def flush(self):
@@ -281,11 +284,13 @@ def main():
     args = create_argparser(config_path).parse_args()
     model_name = (getattr(args, 'model_name', 'DiffSeqPRI') or 'DiffSeqPRI') + '_' + args.scene + '_' + args.root
     set_seed(int(getattr(args, 'seed', 42)))
+    # save_root_path = os.path.join('CheckPoint', 'normal_len') # normal_len or random_len
+    save_root_path = 'Checkpoint'
 
-    log_path = os.path.join('CheckPoint', model_name, 'log.txt')
-    best_model_path = os.path.join('CheckPoint', model_name, 'best_model.pth')
-    latest_model_path = os.path.join('CheckPoint', model_name, 'latest_model.pth')
-    vis_dir = os.path.join('CheckPoint', model_name, 'visuals')
+    log_path = os.path.join(save_root_path, model_name, 'log.txt')
+    best_model_path = os.path.join(save_root_path, model_name, 'best_model.pth')
+    latest_model_path = os.path.join(save_root_path, model_name, 'latest_model.pth')
+    vis_dir = os.path.join(save_root_path, model_name, 'visuals')
     os.makedirs(os.path.dirname(latest_model_path), exist_ok=True)
 
     dual_output = DualOutput(log_path)
@@ -335,8 +340,16 @@ def main():
 
         p_full_target = float(getattr(args, 'p_full_target', 0.0))
         loss_mode = str(getattr(args, 'loss_mode', 'mse+ce'))
+        label_smoothing = float(getattr(args, 'label_smoothing', 0.0))
+        end_loss_weight = float(getattr(args, 'end_loss_weight', 0.0))
+        p_full_target_curriculum = bool(getattr(args, 'p_full_target_curriculum', False))
+        curriculum_warmup_epochs = int(getattr(args, 'curriculum_warmup_epochs', 200))
         print(f'p_full_target={p_full_target}')
         print(f'loss_mode={loss_mode}')
+        print(f'label_smoothing={label_smoothing}')
+        print(f'end_loss_weight={end_loss_weight}')
+        print(f'p_full_target_curriculum={p_full_target_curriculum}')
+        print(f'curriculum_warmup_epochs={curriculum_warmup_epochs}')
 
         cfg = PRIDiffuSeqConfig(
             vocab_size=quantizer.vocab_size,
@@ -349,13 +362,31 @@ def main():
             device=device_name,
             p_full_target=p_full_target,
             loss_mode=loss_mode,
+            label_smoothing=label_smoothing,
+            end_loss_weight=end_loss_weight,
+            p_full_target_curriculum=p_full_target_curriculum,
+            curriculum_warmup_epochs=curriculum_warmup_epochs,
         )
         model = PRIDiffuSeq(cfg)
-        ema = EMAModel(model, decay=0.9999)
+        # EMA decay must match the total number of update steps.
+        # With ~14 batches/epoch and 1000 epochs ≈ 14000 steps,
+        # decay=0.9999 retains ~25% random init even after full training.
+        # decay=0.999 converges after ~5000 steps (≈360 epochs).
+        ema = EMAModel(model, decay=0.999)
         optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate, weight_decay=0.01)
-        scheduler = torch.optim.lr_scheduler.CosineAnnealingWarmRestarts(
-            optimizer, T_0=50, T_mult=2, eta_min=1e-6
+
+        # ── Learning rate schedule: 200 epochs constant lr, then ReduceLROnPlateau ──
+        lr_warmup_epochs = int(getattr(args, 'lr_warmup_epochs', 200))
+        lr_plateau_patience = int(getattr(args, 'lr_plateau_patience', 10))
+        lr_plateau_factor = float(getattr(args, 'lr_plateau_factor', 0.5))
+        lr_plateau_min = float(getattr(args, 'lr_plateau_min', 1e-6))
+
+        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+            optimizer, mode='min', factor=lr_plateau_factor,
+            patience=lr_plateau_patience, min_lr=lr_plateau_min,
         )
+        print(f'lr_schedule=ReduceLROnPlateau (active after epoch {lr_warmup_epochs})  '
+              f'patience={lr_plateau_patience}  factor={lr_plateau_factor}  min_lr={lr_plateau_min}')
 
         vis_batch = next(iter(test_loader))
         viz_epochs = {0, max(0, args.epochs // 2), max(0, args.epochs - 1)}
@@ -370,14 +401,16 @@ def main():
 
         best_test_loss = float('inf')
         for epoch in range(args.epochs):
-            train_stats = model.fit_epoch(train_loader, optimizer, schedual=scheduler)
+            # Pass scheduler only after warmup epochs so lr stays constant during warmup
+            active_scheduler = scheduler if epoch >= lr_warmup_epochs else None
+            train_stats = model.fit_epoch(train_loader, optimizer, schedual=active_scheduler, current_epoch=epoch, total_epochs=args.epochs)
             ema.update(model)
             test_stats = model.evaluate(test_loader)
 
             test_loss_now = test_stats['loss']
 
-            # Use EMA model for evaluation metrics
-            ema.apply_shadow(model)
+            # Evaluate reconstruction metrics with the raw model (every 5 epochs)
+
             tm = evaluate_testmode_metrics(
                 model, test_loader, quantizer,
                 sampling_method=sampling_method,
@@ -385,7 +418,6 @@ def main():
                 ddim_eta=ddim_eta,
                 tolerance=1,
             )
-            ema.restore(model)
 
             # Record history
             history['train_loss'].append(train_stats['loss'])
@@ -426,8 +458,8 @@ def main():
         # Save confusion matrix
         save_final_confusion_matrix(model, test_loader, quantizer, vis_dir, sampling_method, ddim_steps, ddim_eta)
 
-        # ----- Final test-mode evaluation -----
-        print('\n=== Final Test-Mode Evaluation ===')
+        # ----- Final test-mode evaluation (raw model) -----
+        print('\n=== Final Test-Mode Evaluation (Raw Model) ===')
         final_tm = evaluate_testmode_metrics(
             model, test_loader, quantizer,
             sampling_method=sampling_method,
@@ -437,8 +469,27 @@ def main():
         )
         print(f'  exact_acc  = {final_tm["exact_acc"]:.4%}')
         print(f'  tol1_acc   = {final_tm["tol_acc"]:.4%}')
-        print(f'  MAE (\u00b5s)  = {final_tm["mae"]:.4f}')
+        print(f'  MAE (us)   = {final_tm["mae"]:.4f}')
         print(f'  len_match  = {final_tm["len_match_rate"]:.4%}')
+
+        # ----- Final test-mode evaluation (EMA model) -----
+        ema_model_path = best_model_path.replace('.pth', '_ema.pth')
+        if os.path.exists(ema_model_path):
+            ema.load_state_dict(torch.load(ema_model_path, map_location=model.device))
+            ema.apply_shadow(model)
+            print('\n=== Final Test-Mode Evaluation (EMA Model) ===')
+            ema_tm = evaluate_testmode_metrics(
+                model, test_loader, quantizer,
+                sampling_method=sampling_method,
+                ddim_steps=ddim_steps,
+                ddim_eta=ddim_eta,
+                tolerance=1,
+            )
+            print(f'  exact_acc  = {ema_tm["exact_acc"]:.4%}')
+            print(f'  tol1_acc   = {ema_tm["tol_acc"]:.4%}')
+            print(f'  MAE (us)   = {ema_tm["mae"]:.4f}')
+            print(f'  len_match  = {ema_tm["len_match_rate"]:.4%}')
+            ema.restore(model)
 
         # Per-sample accuracy histogram
         if final_tm['per_sample_exact']:
@@ -479,7 +530,7 @@ def main():
         )
         print(f'  exact_acc  = {vote_tm["exact_acc"]:.4%}')
         print(f'  tol1_acc   = {vote_tm["tol_acc"]:.4%}')
-        print(f'  MAE (\u00b5s)  = {vote_tm["mae"]:.4f}')
+        print(f'  MAE (us)   = {vote_tm["mae"]:.4f}')
         print(f'  len_match  = {vote_tm["len_match_rate"]:.4%}')
 
         if vote_tm['per_sample_exact']:

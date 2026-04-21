@@ -1,0 +1,34 @@
+[
+    {
+        "scene": "Mix",
+        "root": "dataset_3W",
+        "epochs": 1200,
+        "model_name": "DiffSeqPRI_NEW_p_full_target_0.0_mse+ce_no_tw",
+        "loss_mode": "mse+ce_no_tw",
+        "learning_rate": 0.0002,
+        "p_full_target": 0.0,
+        "p_full_target_curriculum": false,
+        "curriculum_warmup_epochs": 150,
+        "end_loss_weight": 0.5,
+        "label_smoothing": 0.1,
+        "lr_warmup_epochs": 300,
+        "lr_plateau_patience": 8,
+        "lr_plateau_factor": 0.98
+    },
+    {
+        "scene": "Miss",
+        "root": "dataset_3W",
+        "epochs": 1500,
+        "model_name": "DiffSeqPRI_NEW_p_full_target_0.0",
+        "loss_mode": "mse+ce",
+        "learning_rate": 0.0002,
+        "p_full_target": 0.0,
+        "p_full_target_curriculum": false,
+        "curriculum_warmup_epochs": 150,
+        "end_loss_weight": 0.5,
+        "label_smoothing": 0.1,
+        "lr_warmup_epochs": 300,
+        "lr_plateau_patience": 8,
+        "lr_plateau_factor": 0.98
+    }
+]

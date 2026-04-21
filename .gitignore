@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+
+CheckPoint/
+dataset/
+dataset_3W_random_len/
+dataset_3W/
+tmpvis/
+tmpvis2/
+
+.vscode/

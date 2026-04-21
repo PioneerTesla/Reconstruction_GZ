@@ -27,6 +27,11 @@ class PRIDiffuSeqConfig:
     # --- variable-length & ablation options ---
     p_full_target: float = 0.0      # 0.0 = original behaviour; >0 extends target mask to full SEP-onwards region
     loss_mode: str = 'mse+ce'       # 'mse+ce' (default) | 'mse_only' | 'mse+ce_no_tw' (CE without time weighting)
+    # --- stabilization options (values injected from config.json via train_pri.py) ---
+    label_smoothing: float = 0.0
+    end_loss_weight: float = 0.0
+    p_full_target_curriculum: bool = False
+    curriculum_warmup_epochs: int = 200
 
 
 
@@ -299,18 +304,24 @@ class PRIDiffuSeq(nn.Module):
     def forward(self, x_t: torch.Tensor, t: torch.Tensor, padding_mask: Optional[torch.Tensor] = None) -> torch.Tensor:
         return self.model(x_t, t, padding_mask=padding_mask)
 
-    def compute_loss(self, input_ids: torch.Tensor, input_mask: torch.Tensor, category_ids=None) -> Dict[str, torch.Tensor]:
+    def compute_loss(self, input_ids: torch.Tensor, input_mask: torch.Tensor, category_ids=None, current_epoch: int = 0, total_epochs: int = 1) -> Dict[str, torch.Tensor]:
         del category_ids
         input_ids = input_ids.to(self.device)
         input_mask = input_mask.to(self.device)
         target_mask = input_mask.float()
 
         # ── Variable-length alignment ──────────────────────────────────
-        # With p_full_target > 0, randomly extend target_mask to cover
-        # everything after SEP (including PAD region), so the model also
-        # learns to predict END + PAD from pure noise — matching test_mode.
-        SEP_ID, PAD_ID = 4, 3
+        # With p_full_target > 0, extend target_mask to cover everything
+        # after SEP (including PAD region), so the model also learns to
+        # predict END + PAD from pure noise — matching test_mode.
+        SEP_ID, PAD_ID, END_ID = 4, 3, 1
         p_ft = self.cfg.p_full_target
+
+        # Curriculum: gradually ramp p_full_target from 0 to its max value
+        if self.cfg.p_full_target_curriculum and self.training:
+            warmup = max(1, self.cfg.curriculum_warmup_epochs)
+            p_ft = p_ft * min(1.0, current_epoch / warmup)
+
         if self.training and p_ft > 0.0:
             full_mask = torch.zeros_like(target_mask)
             for i in range(input_ids.size(0)):
@@ -337,15 +348,21 @@ class PRIDiffuSeq(nn.Module):
 
         # ── Loss mode selection (ablation interface) ──────────────────
         loss_mode = self.cfg.loss_mode
+        label_smoothing = self.cfg.label_smoothing
 
         if loss_mode == 'mse_only':
             # Ablation: pure MSE, no CE
             ce = torch.zeros_like(mse)
             loss = mse.mean()
         else:
-            # CE loss from predicted x_0
+            # CE loss from predicted x_0 (with optional label smoothing)
             logits = self.model.get_logits(pred_x0)
-            ce = F.cross_entropy(logits.view(-1, logits.size(-1)), input_ids.view(-1), reduction='none').view_as(input_ids)
+            ce = F.cross_entropy(
+                logits.view(-1, logits.size(-1)),
+                input_ids.view(-1),
+                reduction='none',
+                label_smoothing=label_smoothing,
+            ).view_as(input_ids)
             ce = (ce * target_mask).sum(dim=-1) / target_mask.sum(dim=-1).clamp_min(1.0)
 
             if loss_mode == 'mse+ce':
@@ -356,14 +373,29 @@ class PRIDiffuSeq(nn.Module):
 
             loss = mse.mean() + self.cfg.ce_weight * ce.mean()
 
+        # ── Extra END-token prediction loss ───────────────────────────
+        end_loss_w = self.cfg.end_loss_weight
+        if end_loss_w > 0.0 and loss_mode != 'mse_only':
+            # Locate positions where GT is END token within target region
+            end_positions = ((input_ids == END_ID) & (target_mask > 0.5)).float()
+            if end_positions.sum() > 0:
+                end_logits = self.model.get_logits(pred_x0)
+                end_ce = F.cross_entropy(
+                    end_logits.view(-1, end_logits.size(-1)),
+                    input_ids.view(-1),
+                    reduction='none',
+                ).view_as(input_ids)
+                end_loss = (end_ce * end_positions).sum() / end_positions.sum().clamp_min(1.0)
+                loss = loss + end_loss_w * end_loss
+
         return {'loss': loss, 'mse': mse.mean(), 'ce': ce.mean()}
 
-    def fit_epoch(self, dataloader, optimizer: torch.optim.Optimizer, grad_clip: float = 1.0, schedual=None, category_ids=None) -> Dict[str, float]:
+    def fit_epoch(self, dataloader, optimizer: torch.optim.Optimizer, grad_clip: float = 1.0, schedual=None, category_ids=None, current_epoch: int = 0, total_epochs: int = 1) -> Dict[str, float]:
         self.train()
         meters = {'loss': 0.0, 'mse': 0.0, 'ce': 0.0}
         count = 0
         for batch in dataloader:
-            stats = self.compute_loss(batch['input_ids'], batch['input_mask'], category_ids)
+            stats = self.compute_loss(batch['input_ids'], batch['input_mask'], category_ids, current_epoch=current_epoch, total_epochs=total_epochs)
             optimizer.zero_grad(set_to_none=True)
             stats['loss'].backward()
             if grad_clip is not None and grad_clip > 0:
