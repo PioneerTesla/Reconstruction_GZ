@@ -1,11 +1,69 @@
+# ---------------------------------------------------------------------------
+# Python
+# ---------------------------------------------------------------------------
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+*.egg
+.pytest_cache/
+.ipynb_checkpoints/
 
-
-dataset/
-dataset_3W_random_len/
+# ---------------------------------------------------------------------------
+# Datasets (data files only — keep .py modules like dataset/Radar_words.py)
+# ---------------------------------------------------------------------------
+dataset/Ground_Truth/
+dataset/Miss/
+dataset/Spurious/
+dataset/Mix/
 dataset_3W/
+dataset_3W_random_len/
+dataset_random_len/
+
+# ---------------------------------------------------------------------------
+# Model checkpoints and training artefacts
+# Matches any directory named CheckPoint, at any depth.
+# ---------------------------------------------------------------------------
+CheckPoint/
+*.pth
+*.ckpt
+*.pt.tmp
+
+# ---------------------------------------------------------------------------
+# Logs / runtime outputs
+# ---------------------------------------------------------------------------
+logs/
+*.log
+batch_progress.json
+batch_runner.log
+
+# ---------------------------------------------------------------------------
+# Generated outputs / scratch
+# NOTE: paper_figures/ and docs/figures/ are KEPT under version control for
+#       algorithm-analysis / paper figures. Do not add them here.
+# ---------------------------------------------------------------------------
+generated_outputs/
+test_results/
+results/
 tmpvis/
 tmpvis2/
 
+# Explicitly keep curated figure directories, even if parents get ignored later.
+!paper_figures/
+!paper_figures/**
+!docs/
+!docs/figures/
+!docs/figures/**
+
+# ---------------------------------------------------------------------------
+# Large binary assets (host via GitHub Releases / external storage instead)
+# ---------------------------------------------------------------------------
+*.xlsx
+*.pdf
+
+# ---------------------------------------------------------------------------
+# Editor / OS
+# ---------------------------------------------------------------------------
 .vscode/
+.idea/
+.DS_Store
+Thumbs.db

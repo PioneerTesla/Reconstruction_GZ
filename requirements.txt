@@ -1,0 +1,7 @@
+# Runtime dependencies for Reconstruction_GZ (PRI reconstruction via DiffuSeq).
+# Tested with Python 3.10+ on Linux / CUDA 11.8.
+# Install PyTorch matching your CUDA version from https://pytorch.org/get-started/locally/.
+
+torch>=2.0
+numpy>=1.24
+matplotlib>=3.7

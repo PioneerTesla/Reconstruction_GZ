@@ -10,7 +10,7 @@ import math
 import sys
 from pathlib import Path
 sys.path.insert(0, str(Path(__file__).parent.parent))  # 优先搜索根目录
-from utlis import load_defaults_config, create_argparser
+from utils import load_defaults_config, create_argparser
 
 args = create_argparser().parse_args()
 
