@@ -38,16 +38,15 @@ import numpy as np
 from pri_tokenizer import PRIQuantizer
 from pri_dataset import PRISample, PRIDiffuSeqDataset, PRICollator
 from model import PRIDiffuSeq, PRIDiffuSeqConfig
-from utils import load_defaults_config
-from evaluation import parse_target_tokens, parse_gt_target_tokens, extract_target_pri
-from train_pri import (
+from utils import (
+    load_defaults_config,
     set_seed,
     resolve_device,
     normalize_optional_float,
     normalize_optional_int,
-    build_quantizer,
-    _extract_word_type,
 )
+from data_loader import build_quantizer, extract_word_type
+from evaluation import parse_target_tokens, parse_gt_target_tokens, extract_target_pri
 
 
 def build_test_loader(
@@ -84,7 +83,7 @@ def build_test_loader(
     test_indices = all_nums[int(0.9 * n_samples):]
     test_samples = [samples[i] for i in test_indices]
     test_filenames = [filenames[i] for i in test_indices]
-    test_word_types = [_extract_word_type(filenames[i]) for i in test_indices]
+    test_word_types = [extract_word_type(filenames[i]) for i in test_indices]
 
     if max_test_samples is not None:
         test_samples = test_samples[:max_test_samples]
