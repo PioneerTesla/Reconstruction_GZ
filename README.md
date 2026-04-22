@@ -12,16 +12,19 @@
 
 ```
 .
-├── train_pri.py               # 主训练脚本
+├── train_pri.py               # 主训练入口（精简后的 main，~140 行）
 ├── test.py                    # 推理脚本（加载 checkpoint、导出重建结果）
 ├── run_file.py                # 批量任务调度器（多 scene × 多数据集）
+├── trainer.py                 # Trainer 类：epoch 循环、双 best checkpoint、LR schedule、early stop
+├── reporting.py               # 训练后评估与出图流程（confusion / EMA / 多样性 / 多数投票 / 重建样例）
+├── data_loader.py             # 量化器构建 + 90/10 划分 + DataLoader
 ├── model.py                   # PRIDiffuSeq 模型 + EMA
 ├── pri_tokenizer.py           # PRI 量化器（prototype / uniform）
 ├── pri_dataset.py             # DiffuSeq 风格 seq2seq Dataset / Collator
 ├── rounding.py                # 连续 hidden → 最近 token id
 ├── evaluation.py              # 测试指标、多样性、多数投票、混淆矩阵
 ├── visualization.py           # 论文风格绘图
-├── utils.py                   # argparse / config 加载 / PRI 取值范围
+├── utils.py                   # 日志 tee / 随机种子 / argparse / PRI 取值范围 / DDIM trace 步
 ├── config.json                # 基础超参
 ├── jobs.json                  # 批量任务定义（可覆盖 config.json）
 ├── requirements.txt
@@ -156,14 +159,32 @@ python BaseLine/SemanticCoding/run.py
 
 ## 输出结构
 
-默认训练会在 `CheckPoint/<model_name>_<scene>_<root>/` 下产出：
+默认训练会在 `Checkpoint/<model_name>_<scene>_<root>/` 下产出：
 
 ```
-best_model.pth / best_model_ema.pth     # 权重
+best_model.pth            / best_model_ema.pth             # 按 test_loss 选的最优权重
+best_model_by_metric.pth  / best_model_by_metric_ema.pth   # 按重建指标选的最优权重 (exact_acc + 0.5·len_match_rate)
 latest_model.pth
 log.txt                                 # 训练日志（stdout/stderr 镜像）
-visuals/                                # 码本、去噪过程、混淆矩阵、训练曲线等
+visuals/                                # 码本、去噪过程、混淆矩阵、训练曲线、每字类柱状图等
 ```
+
+最终 `visuals/` 与终端 final report 默认使用 `best_model_by_metric.pth`；若想退回原先行为，在 `config.json` 里设 `"final_eval_use_best_metric": false`。
+
+---
+
+## 代码模块划分
+
+| 模块 | 职责 |
+| --- | --- |
+| `train_pri.py` | 组装：读 config → 建数据 → 建模型/EMA/optimizer → `Trainer(...).fit()` → `reporting.run_full_report(...)` |
+| `data_loader.py` | `build_quantizer` / `build_demo_loader` / `extract_word_type` —— 90/10 划分 + 量化器 |
+| `trainer.py` | `Trainer`, `TrainerPaths` —— 训练循环、双 best-checkpoint、LR schedule (warmup + Plateau / Cosine)、early stop |
+| `reporting.py` | `run_full_report` 及其子函数 —— confusion matrix / test-mode & EMA 评估 / per-sample & per-word-type 图 / 多样性 / 多数投票 / 重建样例 / terminal demo |
+| `utils.py` | 通用工具：`DualOutput`, `set_seed`, `resolve_device`, `create_argparser`, `choose_trace_steps`, `get_pri_range` |
+| `evaluation.py` | 核心评估指标与混淆矩阵数据收集（被 `trainer.py` 和 `reporting.py` 调用） |
+| `visualization.py` | 纯绘图函数（无 torch/训练依赖） |
+| `model.py` / `pri_dataset.py` / `pri_tokenizer.py` / `rounding.py` | 模型与数据层 |
 
 ---
 
