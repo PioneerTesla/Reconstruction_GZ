@@ -101,6 +101,7 @@ def evaluate_testmode_metrics(
     model, dataloader, quantizer,
     sampling_method='ddpm', ddim_steps=None, ddim_eta=0.0,
     tolerance=1,
+    word_types: Optional[List[str]] = None,
 ) -> Dict:
     """Evaluate using *test-mode* reconstruction (no GT target/pad mask).
 
@@ -110,6 +111,10 @@ def evaluate_testmode_metrics(
       mae            – mean absolute error on decoded PRI values (µs)
       len_match_rate – fraction of samples whose predicted length equals GT
       per_sample_exact – per-sample exact accuracy list
+      per_word_type_exact – optional dict {word_type: [per-sample exact acc, ...]},
+                            present only when *word_types* is provided. Indexing
+                            assumes the dataloader preserves sample order
+                            (shuffle=False) and matches *word_types* one-to-one.
     """
     model.eval()
     total_exact = total_tol = total_tokens = 0
@@ -117,6 +122,8 @@ def evaluate_testmode_metrics(
     mae_count = 0
     len_matches = sample_count = 0
     per_sample_exact: List[float] = []
+    per_word_type_exact: Dict[str, List[float]] = {}
+    global_idx = 0
 
     with torch.no_grad():
         for batch in dataloader:
@@ -135,6 +142,9 @@ def evaluate_testmode_metrics(
             B = input_ids.size(0)
 
             for i in range(B):
+                wt = word_types[global_idx] if (word_types is not None and global_idx < len(word_types)) else None
+                global_idx += 1
+
                 gt_tok = parse_gt_target_tokens(input_ids[i], input_mask[i], quantizer)
                 pred_tok = parse_target_tokens(pred_ids[i], quantizer)
                 if not gt_tok:
@@ -154,7 +164,10 @@ def evaluate_testmode_metrics(
                 total_exact += ec
                 total_tol += tc
                 total_tokens += max_l
-                per_sample_exact.append(ec / max_l if max_l > 0 else 0.0)
+                sample_acc = ec / max_l if max_l > 0 else 0.0
+                per_sample_exact.append(sample_acc)
+                if wt is not None:
+                    per_word_type_exact.setdefault(wt, []).append(sample_acc)
 
                 gv = quantizer.decode_ids(gt_tok, remove_special=False)
                 pv = quantizer.decode_ids(pred_tok, remove_special=False)
@@ -164,13 +177,16 @@ def evaluate_testmode_metrics(
                         total_mae += abs(g - p)
                         mae_count += 1
 
-    return {
+    result = {
         'exact_acc': total_exact / max(total_tokens, 1),
         'tol_acc': total_tol / max(total_tokens, 1),
         'mae': total_mae / max(mae_count, 1),
         'len_match_rate': len_matches / max(sample_count, 1),
         'per_sample_exact': per_sample_exact,
     }
+    if word_types is not None:
+        result['per_word_type_exact'] = per_word_type_exact
+    return result
 
 
 # ---------------------------------------------------------------------------

@@ -551,3 +551,67 @@ def save_per_sample_accuracy_histogram(
     fig.savefig(save_path)
     plt.close(fig)
     return save_path
+
+
+# ===================================================================
+# 9. Per-word-type exact-accuracy bar chart
+# ===================================================================
+
+def save_per_word_type_accuracy(
+    per_word_type_exact: Dict[str, List[float]],
+    out_dir: str,
+    label: str = '',
+) -> Optional[str]:
+    """Bar chart of mean per-sample exact accuracy grouped by word type.
+
+    *per_word_type_exact* is a dict mapping word-type string (e.g. ``word1_12``)
+    to a list of per-sample exact accuracies (as returned by
+    :func:`evaluate_testmode_metrics` when ``word_types`` is supplied).
+    """
+    if not per_word_type_exact:
+        return None
+    _apply_style()
+    ensure_dir(out_dir)
+
+    def _sort_key(name: str):
+        # Natural-sort: word<N>_<M> -> (N, M); fallback to string.
+        import re
+        m = re.match(r'word(\d+)_(\d+)', name)
+        if m:
+            return (int(m.group(1)), int(m.group(2)))
+        return (float('inf'), name)
+
+    names = sorted(per_word_type_exact.keys(), key=_sort_key)
+    means = np.asarray([float(np.mean(per_word_type_exact[n])) for n in names])
+    counts = [len(per_word_type_exact[n]) for n in names]
+    overall = float(np.mean(np.concatenate([
+        np.asarray(per_word_type_exact[n], dtype=np.float32) for n in names
+    ])))
+
+    fig_w = max(6.0, 0.28 * len(names) + 2.0)
+    fig, ax = plt.subplots(figsize=(fig_w, 4))
+    x = np.arange(len(names))
+    bars = ax.bar(x, means, color='#4C72B0', edgecolor='white', linewidth=0.6, alpha=0.88)
+    ax.axhline(overall, color='#C44E52', linestyle='--', linewidth=1.0,
+               label=f'Overall mean = {overall:.2%}')
+    ax.set_xticks(x)
+    ax.set_xticklabels(names, rotation=60, ha='right', fontsize=8)
+    ax.set_ylim(0.0, 1.0)
+    ax.set_ylabel('Mean Exact Accuracy')
+    title = 'Per-Word-Type Exact Accuracy'
+    if label:
+        title += f'  ({label})'
+    ax.set_title(title)
+    ax.grid(True, axis='y', linewidth=0.3, alpha=0.4)
+    ax.legend(loc='upper right', framealpha=0.7)
+    # annotate sample count above each bar
+    for rect, c in zip(bars, counts):
+        ax.text(rect.get_x() + rect.get_width() / 2.0, rect.get_height() + 0.01,
+                f'n={c}', ha='center', va='bottom', fontsize=7, color='#333333')
+    fig.tight_layout()
+
+    suffix = f'_{label}' if label else ''
+    save_path = os.path.join(out_dir, f'per_word_type_accuracy{suffix}.png')
+    fig.savefig(save_path)
+    plt.close(fig)
+    return save_path

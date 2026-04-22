@@ -28,7 +28,7 @@
     "quantizer_max": 1500,
     "sampling_method": "ddpm",
     "diff_steps": 50,
-    "ddim_steps": 5,
+    "ddim_steps": 50,
     "ddim_eta": 0.0,
     "ce_weight": 0.3,
     "p_full_target": 0.0,
@@ -37,8 +37,14 @@
     "end_loss_weight": 0.5,
     "p_full_target_curriculum": false,
     "curriculum_warmup_epochs": 150,
-    "lr_warmup_epochs": 300,
+    "lr_warmup_epochs": 80,
     "lr_plateau_patience": 8,
-    "lr_plateau_factor": 0.98,
-    "lr_plateau_min": 1e-05
+    "lr_plateau_factor": 0.5,
+    "lr_plateau_min": 1e-05,
+    "use_cosine_lr": false,
+    "cosine_lr_min": 1e-05,
+    "early_stop_patience": 0,
+    "early_stop_metric": "ap_exact_acc",
+    "best_metric_name": "ap_exact_acc_plus_half_len",
+    "final_eval_use_best_metric": true
 }

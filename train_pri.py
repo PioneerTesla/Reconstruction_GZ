@@ -33,6 +33,7 @@ from visualization import (
     save_diversity_visualization,
     save_diversity_mean_variance,
     save_per_sample_accuracy_histogram,
+    save_per_word_type_accuracy,
 )
 
 
@@ -289,6 +290,7 @@ def main():
 
     log_path = os.path.join(save_root_path, model_name, 'log.txt')
     best_model_path = os.path.join(save_root_path, model_name, 'best_model.pth')
+    best_metric_model_path = os.path.join(save_root_path, model_name, 'best_model_by_metric.pth')
     latest_model_path = os.path.join(save_root_path, model_name, 'latest_model.pth')
     vis_dir = os.path.join(save_root_path, model_name, 'visuals')
     os.makedirs(os.path.dirname(latest_model_path), exist_ok=True)
@@ -375,18 +377,43 @@ def main():
         ema = EMAModel(model, decay=0.999)
         optimizer = torch.optim.AdamW(model.parameters(), lr=args.learning_rate, weight_decay=0.01)
 
-        # ── Learning rate schedule: 200 epochs constant lr, then ReduceLROnPlateau ──
+        # ── Learning rate schedule: `lr_warmup_epochs` constant lr, then decay ──
         lr_warmup_epochs = int(getattr(args, 'lr_warmup_epochs', 200))
         lr_plateau_patience = int(getattr(args, 'lr_plateau_patience', 10))
         lr_plateau_factor = float(getattr(args, 'lr_plateau_factor', 0.5))
         lr_plateau_min = float(getattr(args, 'lr_plateau_min', 1e-6))
+        use_cosine_lr = bool(getattr(args, 'use_cosine_lr', False))
+        cosine_lr_min = float(getattr(args, 'cosine_lr_min', lr_plateau_min))
 
-        scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
-            optimizer, mode='min', factor=lr_plateau_factor,
-            patience=lr_plateau_patience, min_lr=lr_plateau_min,
-        )
-        print(f'lr_schedule=ReduceLROnPlateau (active after epoch {lr_warmup_epochs})  '
-              f'patience={lr_plateau_patience}  factor={lr_plateau_factor}  min_lr={lr_plateau_min}')
+        if use_cosine_lr:
+            # Cosine anneals lr from current value to `cosine_lr_min` over the
+            # remaining (args.epochs - lr_warmup_epochs) epochs.
+            cosine_T = max(1, int(args.epochs) - lr_warmup_epochs)
+            scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(
+                optimizer, T_max=cosine_T, eta_min=cosine_lr_min,
+            )
+            print(f'lr_schedule=CosineAnnealingLR (active after epoch {lr_warmup_epochs})  '
+                  f'T_max={cosine_T}  eta_min={cosine_lr_min}')
+        else:
+            scheduler = torch.optim.lr_scheduler.ReduceLROnPlateau(
+                optimizer, mode='min', factor=lr_plateau_factor,
+                patience=lr_plateau_patience, min_lr=lr_plateau_min,
+            )
+            print(f'lr_schedule=ReduceLROnPlateau (active after epoch {lr_warmup_epochs})  '
+                  f'patience={lr_plateau_patience}  factor={lr_plateau_factor}  min_lr={lr_plateau_min}')
+
+        # ── Early stopping on reconstruction metric (opt-in) ───────────────
+        early_stop_patience = int(getattr(args, 'early_stop_patience', 0))
+        early_stop_metric = str(getattr(args, 'early_stop_metric', 'ap_exact_acc'))
+        if early_stop_patience > 0:
+            print(f'early_stop_metric={early_stop_metric}  patience={early_stop_patience}')
+
+        # ── Best-by-metric checkpoint selection ────────────────────────────
+        # Composite metric: exact_acc weighs reconstruction fidelity, len_match
+        # weighs END-token prediction. Weighted so exact_acc dominates.
+        best_metric_name = str(getattr(args, 'best_metric_name', 'ap_exact_acc_plus_half_len'))
+        final_eval_use_best_metric = bool(getattr(args, 'final_eval_use_best_metric', True))
+        print(f'best_metric_name={best_metric_name}  final_eval_use_best_metric={final_eval_use_best_metric}')
 
         vis_batch = next(iter(test_loader))
         viz_epochs = {0, max(0, args.epochs // 2), max(0, args.epochs - 1)}
@@ -400,10 +427,24 @@ def main():
         }
 
         best_test_loss = float('inf')
+        best_metric_value = -float('inf')
+        best_metric_epoch = -1
+        epochs_since_metric_improved = 0
         for epoch in range(args.epochs):
-            # Pass scheduler only after warmup epochs so lr stays constant during warmup
-            active_scheduler = scheduler if epoch >= lr_warmup_epochs else None
-            train_stats = model.fit_epoch(train_loader, optimizer, schedual=active_scheduler, current_epoch=epoch, total_epochs=args.epochs)
+            # Pass scheduler only after warmup epochs so lr stays constant during warmup.
+            # CosineAnnealingLR expects no argument; ReduceLROnPlateau consumes train loss.
+            if epoch >= lr_warmup_epochs:
+                active_scheduler = scheduler
+            else:
+                active_scheduler = None
+            # CosineAnnealingLR must be stepped every epoch inside main loop, not
+            # inside fit_epoch (which only passes train loss). Handle it here.
+            if use_cosine_lr:
+                train_stats = model.fit_epoch(train_loader, optimizer, schedual=None, current_epoch=epoch, total_epochs=args.epochs)
+                if active_scheduler is not None:
+                    active_scheduler.step()
+            else:
+                train_stats = model.fit_epoch(train_loader, optimizer, schedual=active_scheduler, current_epoch=epoch, total_epochs=args.epochs)
             ema.update(model)
             test_stats = model.evaluate(test_loader)
 
@@ -429,11 +470,14 @@ def main():
             history['ap_mae'].append(tm['mae'])
             history['len_match'].append(tm['len_match_rate'])
 
+            # Composite metric for best-by-metric checkpoint
+            metric_value = tm['exact_acc'] + 0.5 * tm['len_match_rate']
+
             print(
                 f'epoch={epoch} train_loss={train_stats["loss"]:.6f} test_loss={test_loss_now:.6f}',
                 f'train_mse={train_stats["mse"]:.6f} train_ce={train_stats["ce"]:.6f}',
                 f'ap_exact={tm["exact_acc"]:.4%} ap_tol1={tm["tol_acc"]:.4%} mae={tm["mae"]:.2f}',
-                f'len_match={tm["len_match_rate"]:.4%} lr={optimizer.param_groups[0]["lr"]:.6e}',
+                f'len_match={tm["len_match_rate"]:.4%} metric={metric_value:.4f} lr={optimizer.param_groups[0]["lr"]:.6e}',
             )
 
             torch.save(model.state_dict(), latest_model_path)
@@ -445,15 +489,51 @@ def main():
                 best_test_loss = test_loss_now
                 torch.save(model.state_dict(), best_model_path)
                 torch.save(ema.state_dict(), best_model_path.replace('.pth', '_ema.pth'))
-                print(f'New best model saved at epoch {epoch} with test_loss={best_test_loss:.6f}')
+                print(f'New best (by test_loss) model saved at epoch {epoch} with test_loss={best_test_loss:.6f}')
+
+            # Track best-by-metric checkpoint independently
+            if metric_value > best_metric_value:
+                best_metric_value = metric_value
+                best_metric_epoch = epoch
+                epochs_since_metric_improved = 0
+                torch.save(model.state_dict(), best_metric_model_path)
+                torch.save(ema.state_dict(), best_metric_model_path.replace('.pth', '_ema.pth'))
+                print(f'New best (by {best_metric_name}) model saved at epoch {epoch} '
+                      f'with metric={best_metric_value:.4f} '
+                      f'(exact={tm["exact_acc"]:.4%}, len_match={tm["len_match_rate"]:.4%})')
+            else:
+                epochs_since_metric_improved += 1
+
+            # Early stopping based on reconstruction metric (opt-in)
+            if early_stop_patience > 0 and epochs_since_metric_improved >= early_stop_patience:
+                print(f'Early stopping triggered at epoch {epoch}: '
+                      f'no improvement in {early_stop_metric}-based metric for '
+                      f'{early_stop_patience} epochs (best epoch={best_metric_epoch}, '
+                      f'best metric={best_metric_value:.4f}).')
+                break
 
         # Save training curves
         curves_path = save_training_curves(history, vis_dir)
         print(f'[viz] training curves saved -> {curves_path}')
 
-        # Load best model for final evaluation
-        if os.path.exists(best_model_path):
-            model.load_state_dict(torch.load(best_model_path, map_location=model.device))
+        # ── Select checkpoint for final evaluation / visuals ──────────────
+        # When final_eval_use_best_metric=True, prefer the metric-selected
+        # checkpoint (optimizing reconstruction fidelity + END prediction) over
+        # the test_loss-selected one. Falls back if the metric checkpoint is
+        # absent (e.g. no valid metric was recorded).
+        if final_eval_use_best_metric and os.path.exists(best_metric_model_path):
+            final_ckpt_path = best_metric_model_path
+            final_ckpt_label = f'best_by_metric ({best_metric_name}, epoch={best_metric_epoch}, metric={best_metric_value:.4f})'
+        elif os.path.exists(best_model_path):
+            final_ckpt_path = best_model_path
+            final_ckpt_label = 'best_by_test_loss'
+        else:
+            final_ckpt_path = None
+            final_ckpt_label = 'latest (no best checkpoint found)'
+        print(f'\n=== Final checkpoint for visuals/report: {final_ckpt_label} ===')
+        if final_ckpt_path is not None:
+            model.load_state_dict(torch.load(final_ckpt_path, map_location=model.device))
+        ema_final_path = final_ckpt_path.replace('.pth', '_ema.pth') if final_ckpt_path else None
 
         # Save confusion matrix
         save_final_confusion_matrix(model, test_loader, quantizer, vis_dir, sampling_method, ddim_steps, ddim_eta)
@@ -466,6 +546,7 @@ def main():
             ddim_steps=ddim_steps,
             ddim_eta=ddim_eta,
             tolerance=1,
+            word_types=test_word_types,
         )
         print(f'  exact_acc  = {final_tm["exact_acc"]:.4%}')
         print(f'  tol1_acc   = {final_tm["tol_acc"]:.4%}')
@@ -473,9 +554,8 @@ def main():
         print(f'  len_match  = {final_tm["len_match_rate"]:.4%}')
 
         # ----- Final test-mode evaluation (EMA model) -----
-        ema_model_path = best_model_path.replace('.pth', '_ema.pth')
-        if os.path.exists(ema_model_path):
-            ema.load_state_dict(torch.load(ema_model_path, map_location=model.device))
+        if ema_final_path and os.path.exists(ema_final_path):
+            ema.load_state_dict(torch.load(ema_final_path, map_location=model.device))
             ema.apply_shadow(model)
             print('\n=== Final Test-Mode Evaluation (EMA Model) ===')
             ema_tm = evaluate_testmode_metrics(
@@ -497,6 +577,23 @@ def main():
                 final_tm['per_sample_exact'], out_dir=vis_dir, label='single',
             )
             print(f'[viz] per-sample accuracy histogram saved -> {hist_path}')
+
+        # Per-word-type exact-accuracy bar chart (P3-2)
+        if final_tm.get('per_word_type_exact'):
+            pwt_path = save_per_word_type_accuracy(
+                final_tm['per_word_type_exact'], out_dir=vis_dir, label='single',
+            )
+            if pwt_path:
+                print(f'[viz] per-word-type accuracy saved -> {pwt_path}')
+            # Also print a compact per-type summary to the log
+            print('\n=== Per-Word-Type Exact Accuracy ===')
+            import re as _re
+            def _wt_sort(n):
+                m = _re.match(r'word(\d+)_(\d+)', n)
+                return (int(m.group(1)), int(m.group(2))) if m else (float('inf'), n)
+            for wt in sorted(final_tm['per_word_type_exact'].keys(), key=_wt_sort):
+                accs = final_tm['per_word_type_exact'][wt]
+                print(f'  {wt:>16s}  n={len(accs):3d}  mean_exact={float(np.mean(accs)):.4%}')
 
         # ----- Diversity evaluation -----
         print('\n=== Diversity Evaluation (10 runs) ===')
